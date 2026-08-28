@@ -1,2 +1,2 @@
 # Concerto-Rebirth
-迈向新的纪元。
+与所有虚妄诀别。
