@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赫尔墨斯记忆库 · 协奏曲联盟</title>
+    <style>
+        /* === 全局重置 & 基础 === */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0c10;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        /* === 容器 === */
+        .container {
+            background-color: #111316;
+            border: 1px solid #2a2e35;
+            border-radius: 6px;
+            max-width: 1200px;
+            width: 100%;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        /* === 顶部栏 === */
+        .topbar {
+            background: #111316;
+            border-bottom: 1px solid #2a2e35;
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .topbar .datetime {
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            color: #9aa8b9;
+            letter-spacing: 0.5px;
+        }
+
+        .topbar .status {
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            color: #9aa8b9;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4ade80;
+            flex-shrink: 0;
+        }
+
+        .status-dot.unstable {
+            background: #e06b6b;
+        }
+
+        /* === 主标题区 === */
+        .hero {
+            padding: 3rem 1rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+
+        .hero .subtitle {
+            font-size: 1rem;
+            color: #6d7a8c;
+            letter-spacing: 4px;
+            margin-top: 0.25rem;
+        }
+
+        .hero .quote {
+            font-size: 0.95rem;
+            color: #9aa8b9;
+            font-style: italic;
+            margin-top: 1.5rem;
+        }
+
+        /* === 插槽区域 === */
+        .slots {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            padding: 1.5rem 2rem 2rem;
+            flex-wrap: wrap;
+        }
+
+        .slot {
+            background: #0f1217;
+            border: 1px solid #2a2e35;
+            border-radius: 6px;
+            padding: 1.5rem;
+            flex: 1;
+            min-width: 200px;
+            max-width: 320px;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slot.unlocked {
+            border-color: #e06b6b;
+        }
+
+        .slot.error {
+            border-color: #e06b6b;
+        }
+
+        .slot.success {
+            border-color: #6ba6e0;
+        }
+
+        /* 可悬停仅当未锁定（非 .unlocked） */
+        .slot:not(.unlocked):hover {
+            border-color: #3a3e45;
+        }
+
+        .slot .slot-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .slot .slot-sub {
+            font-size: 0.7rem;
+            color: #6d7a8c;
+            letter-spacing: 2px;
+            margin-top: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .slot .input-group {
+            display: flex;
+            gap: 0.5rem;
+            width: 100%;
+            margin-bottom: 0.6rem;
+        }
+
+        .slot .input-group input {
+            flex: 1;
+            background: #0b0d10;
+            border: 1px solid #2a2e35;
+            border-radius: 4px;
+            padding: 0.5rem 0.8rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            outline: none;
+            transition: border-color 0.2s ease;
+            min-width: 0;
+            width: 100%;
+        }
+
+        .slot .input-group input:focus {
+            border-color: #e06b6b;
+        }
+
+        .slot .input-group input:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background: #0b0d10;
+        }
+
+        .slot .input-group input::placeholder {
+            color: #6d7a8c;
+            font-size: 0.8rem;
+        }
+
+        .slot .input-group .btn {
+            background: transparent;
+            border: 1px solid #2a2e35;
+            border-radius: 4px;
+            padding: 0.3rem 1.2rem;
+            color: #c0c8d5;
+            font-size: 0.8rem;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s;
+            white-space: nowrap;
+            flex-shrink: 0;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slot .input-group .btn:hover:not(:disabled) {
+            border-color: #e06b6b;
+            color: #e06b6b;
+        }
+
+        .slot .input-group .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .slot .slot-status {
+            font-size: 0.7rem;
+            color: #6d7a8c;
+            font-family: 'Courier New', monospace;
+            min-height: 1.2rem;
+            transition: color 0.25s;
+        }
+
+        .slot .slot-status.open {
+            color: #6ba6e0;
+        }
+
+        .slot .slot-status.granted {
+            color: #e06b6b;
+        }
+
+        .slot .slot-status.error-msg {
+            color: #e06b6b;
+        }
+
+        .slot .slot-status.success-msg {
+            color: #6ba6e0;
+        }
+
+        /* 插槽二点击跳转（整个插槽） */
+        .slot.clickable {
+            cursor: pointer;
+        }
+
+        /* === 底部 === */
+        .footer {
+            padding: 1.5rem 2rem 2rem;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            border-top: 1px solid #1e2228;
+        }
+
+        .footer .server-status {
+            flex: 1 1 60%;
+            min-width: 180px;
+        }
+
+        .footer .server-status .label {
+            font-size: 0.75rem;
+            color: #9aa8b9;
+            margin-bottom: 0.3rem;
+        }
+
+        .footer .server-status .bar-track {
+            background: #1c2129;
+            height: 4px;
+            border-radius: 2px;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .footer .server-status .bar-fill {
+            height: 100%;
+            width: 65%;
+            background: linear-gradient(90deg, #6ba6e0, #e06b6b);
+            border-radius: 2px;
+            transition: width 0.8s ease;
+        }
+
+        .footer .server-status .bar-info {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Courier New', monospace;
+            font-size: 0.7rem;
+            color: #6d7a8c;
+            margin-top: 0.2rem;
+        }
+
+        .footer .log {
+            flex: 1 1 40%;
+            min-width: 160px;
+            background: #0b0d10;
+            border-radius: 4px;
+            padding: 0.5rem 0.8rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.7rem;
+            color: #9aa8b9;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid #1e2228;
+        }
+
+        .footer .log .line {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .footer .log .line .prompt {
+            color: #6ba6e0;
+        }
+
+        /* === 响应式 === */
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .container {
+                border-radius: 4px;
+            }
+
+            .topbar {
+                padding: 0.6rem 1rem;
+                font-size: 0.7rem;
+            }
+
+            .topbar .datetime,
+            .topbar .status {
+                font-size: 0.65rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 0.85rem;
+                letter-spacing: 3px;
+            }
+
+            .hero .quote {
+                font-size: 0.85rem;
+                margin-top: 1rem;
+            }
+
+            .slots {
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 1rem 1.5rem;
+                gap: 1.2rem;
+            }
+
+            .slot {
+                max-width: 100%;
+                width: 100%;
+                min-width: 0;
+                padding: 1.2rem;
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1.2rem 1rem 1.5rem;
+            }
+
+            .footer .server-status,
+            .footer .log {
+                flex: 1 1 100%;
+                min-width: 0;
+            }
+
+            .footer .log .line {
+                white-space: normal;
+                word-break: break-all;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .slot .input-group {
+                flex-wrap: wrap;
+            }
+
+            .slot .input-group .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- 顶部栏 -->
+        <header class="topbar">
+            <span class="datetime" id="clock">2026.08.28 00:00:00</span>
+            <span class="status">
+                <span class="status-dot" id="statusDot"></span>
+                <span id="statusText">信号 稳定</span>
+            </span>
+        </header>
+
+        <!-- 主标题 -->
+        <section class="hero">
+            <h1>赫尔墨斯记忆库</h1>
+            <div class="subtitle">HERMES MEMORY ARCHIVE</div>
+            <div class="quote">「与所有虚妄诀别。」</div>
+        </section>
+
+        <!-- 三个插槽 -->
+        <section class="slots" id="slotsContainer">
+
+            <!-- 插槽一：内部节点访问（结社层） -->
+            <div class="slot" id="slot1" data-target="society.html">
+                <div class="slot-title">内部节点访问</div>
+                <div class="slot-sub">INTERNAL NODE</div>
+                <div class="input-group">
+                    <input type="password" id="key1" placeholder="请输入密钥" autocomplete="off" spellcheck="false">
+                    <button class="btn" id="btn1">提交</button>
+                </div>
+                <div class="slot-status" id="status1">权限：未验证</div>
+            </div>
+
+            <!-- 插槽二：常规人员登入（联盟层）默认开放 -->
+            <div class="slot unlocked clickable" id="slot2" data-target="alliance.html">
+                <div class="slot-title">常规人员登入</div>
+                <div class="slot-sub">GENERAL ACCESS</div>
+                <div class="input-group">
+                    <input type="text" id="key2" placeholder="开放访问" disabled>
+                    <button class="btn" id="btn2" disabled style="display:none;">提交</button>
+                </div>
+                <div class="slot-status open" id="status2">权限：已开放</div>
+            </div>
+
+            <!-- 插槽三：查看行动记录（作战记录层） -->
+            <div class="slot" id="slot3" data-target="record.html">
+                <div class="slot-title">查看行动记录</div>
+                <div class="slot-sub">OPERATION RECORDS</div>
+                <div class="input-group">
+                    <input type="password" id="key3" placeholder="请输入密钥" autocomplete="off" spellcheck="false">
+                    <button class="btn" id="btn3">提交</button>
+                </div>
+                <div class="slot-status" id="status3">权限：未验证</div>
+            </div>
+
+        </section>
+
+        <!-- 底部 -->
+        <footer class="footer">
+            <div class="server-status">
+                <div class="label">服务器群状态</div>
+                <div class="bar-track">
+                    <div class="bar-fill" id="progressFill"></div>
+                </div>
+                <div class="bar-info">
+                    <span>稳定</span>
+                    <span id="progressText">65%</span>
+                </div>
+            </div>
+            <div class="log" id="logContainer">
+                <div class="line"><span class="prompt">&gt;</span> 欢迎访问赫尔墨斯记忆库。输入密钥以继续。</div>
+                <div class="line"><span class="prompt">&gt;</span> 您当前的位置：入口节点_未授权</div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // === 密钥配置（不区分大小写） ===
+            const KEYS = {
+                slot1: 'society', // 结社层
+                slot3: 'records' // 作战记录层
+            };
+
+            // === DOM 引用 ===
+            const clockEl = document.getElementById('clock');
+            const statusDot = document.getElementById('statusDot');
+            const statusText = document.getElementById('statusText');
+
+            const slot1 = document.getElementById('slot1');
+            const slot2 = document.getElementById('slot2');
+            const slot3 = document.getElementById('slot3');
+            const input1 = document.getElementById('key1');
+            const input3 = document.getElementById('key3');
+            const btn1 = document.getElementById('btn1');
+            const btn3 = document.getElementById('btn3');
+            const status1 = document.getElementById('status1');
+            const status3 = document.getElementById('status3');
+
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+
+            // 存储插槽的解锁状态（用于防重复触发）
+            let slot1Unlocked = false;
+            let slot3Unlocked = false;
+
+            // === 辅助：写入日志（底部） ===
+            function appendLog(message) {
+                const container = document.getElementById('logContainer');
+                const line = document.createElement('div');
+                line.className = 'line';
+                line.innerHTML = `<span class="prompt">&gt;</span> ${message}`;
+                container.appendChild(line);
+                // 保留最多6行，保持整洁
+                while (container.children.length > 6) {
+                    container.removeChild(container.firstChild);
+                }
+            }
+
+            // === 时钟更新 ===
+            function updateClock() {
+                const now = new Date();
+                const y = now.getFullYear();
+                const m = String(now.getMonth() + 1).padStart(2, '0');
+                const d = String(now.getDate()).padStart(2, '0');
+                const hh = String(now.getHours()).padStart(2, '0');
+                const mm = String(now.getMinutes()).padStart(2, '0');
+                const ss = String(now.getSeconds()).padStart(2, '0');
+                clockEl.textContent = `${y}.${m}.${d} ${hh}:${mm}:${ss}`;
+            }
+            updateClock();
+            setInterval(updateClock, 1000);
+
+            // === 信号状态（模拟） ===
+            // 默认稳定，每30秒随机模拟不稳定（仅演示）
+            function updateSignal() {
+                const stable = Math.random() > 0.15; // 85% 稳定
+                if (stable) {
+                    statusDot.className = 'status-dot';
+                    statusText.textContent = '信号 稳定';
+                } else {
+                    statusDot.className = 'status-dot unstable';
+                    statusText.textContent = '信号 不稳定';
+                }
+            }
+            updateSignal();
+            setInterval(updateSignal, 30000);
+
+            // === 进度条模拟 ===
+            function updateProgress() {
+                const base = 65;
+                const variation = Math.floor(Math.random() * 6) - 3; // -3 ~ +3
+                let val = Math.min(92, Math.max(48, base + variation));
+                progressFill.style.width = val + '%';
+                progressText.textContent = val + '%';
+            }
+            updateProgress();
+            setInterval(updateProgress, 18000);
+
+            // === 通用密钥校验函数 ===
+            function validateSlot(slotEl, inputEl, statusEl, correctKey, targetUrl, unlockFlagRef) {
+                // 如果已经解锁，不允许再次提交
+                if (unlockFlagRef && unlockFlagRef.value === true) {
+                    return;
+                }
+
+                const raw = inputEl.value;
+                const trimmed = raw.trim();
+                if (trimmed === '') {
+                    // 空输入不触发错误，仅清空占位
+                    inputEl.value = '';
+                    return;
+                }
+
+                // 不区分大小写比较
+                const normalized = trimmed.toLowerCase();
+                const isValid = (normalized === correctKey.toLowerCase());
+
+                if (isValid) {
+                    // === 成功 ===
+                    slotEl.classList.remove('error');
+                    slotEl.classList.add('success');
+                    statusEl.textContent = '✓ 已解锁';
+                    statusEl.className = 'slot-status success-msg';
+                    // 记录解锁
+                    if (unlockFlagRef) {
+                        unlockFlagRef.value = true;
+                    }
+                    // 禁用输入和按钮
+                    inputEl.disabled = true;
+                    const btn = slotEl.querySelector('.btn');
+                    if (btn) btn.disabled = true;
+                    appendLog(`✓ 访问授权通过 → ${targetUrl}`);
+                    // 1.5s 后跳转
+                    setTimeout(function() {
+                        window.location.href = targetUrl;
+                    }, 1500);
+                } else {
+                    // === 失败 ===
+                    slotEl.classList.remove('success');
+                    slotEl.classList.add('error');
+                    statusEl.textContent = '密钥无效';
+                    statusEl.className = 'slot-status error-msg';
+                    appendLog(`✗ 密钥验证失败 (${inputEl.id})`);
+                    // 1.5s 后清空重置
+                    setTimeout(function() {
+                        inputEl.value = '';
+                        slotEl.classList.remove('error');
+                        statusEl.textContent = '权限：未验证';
+                        statusEl.className = 'slot-status';
+                    }, 1500);
+                }
+            }
+
+            // === 插槽一校验 ===
+            function validateSlot1() {
+                validateSlot(
+                    slot1,
+                    input1,
+                    status1,
+                    KEYS.slot1,
+                    slot1.dataset.target,
+                    { value: slot1Unlocked }
+                );
+                // 由于闭包，需要更新外部变量
+                // 但 validateSlot 内部修改的是对象引用，我们通过返回值更新
+                // 简便处理：直接在成功后手动标记
+                // 但为了保持一致性，使用一个变量来跟踪
+            }
+
+            // === 插槽三校验 ===
+            function validateSlot3() {
+                validateSlot(
+                    slot3,
+                    input3,
+                    status3,
+                    KEYS.slot3,
+                    slot3.dataset.target,
+                    { value: slot3Unlocked }
+                );
+            }
+
+            // 使用全局标志的 hack：因为 validateSlot 内部使用了 unlockFlagRef.value
+            // 但传入的是对象，修改后外部可以感知。但我们需要在外部重新读取。
+            // 更好的做法：直接使用闭包变量。
+            // 重构: 使用闭包变量和回调
+            function makeValidator(slotEl, inputEl, statusEl, correctKey, targetUrl) {
+                let unlocked = false;
+                return function() {
+                    if (unlocked) return;
+                    const raw = inputEl.value;
+                    const trimmed = raw.trim();
+                    if (trimmed === '') {
+                        inputEl.value = '';
+                        return;
+                    }
+                    const normalized = trimmed.toLowerCase();
+                    const isValid = (normalized === correctKey.toLowerCase());
+                    if (isValid) {
+                        unlocked = true;
+                        slotEl.classList.remove('error');
+                        slotEl.classList.add('success');
+                        statusEl.textContent = '✓ 已解锁';
+                        statusEl.className = 'slot-status success-msg';
+                        inputEl.disabled = true;
+                        const btn = slotEl.querySelector('.btn');
+                        if (btn) btn.disabled = true;
+                        appendLog(`✓ 访问授权通过 → ${targetUrl}`);
+                        setTimeout(function() {
+                            window.location.href = targetUrl;
+                        }, 1500);
+                    } else {
+                        slotEl.classList.remove('success');
+                        slotEl.classList.add('error');
+                        statusEl.textContent = '密钥无效';
+                        statusEl.className = 'slot-status error-msg';
+                        appendLog(`✗ 密钥验证失败 (${inputEl.id})`);
+                        setTimeout(function() {
+                            inputEl.value = '';
+                            slotEl.classList.remove('error');
+                            statusEl.textContent = '权限：未验证';
+                            statusEl.className = 'slot-status';
+                        }, 1500);
+                    }
+                };
+            }
+
+            // 重新绑定校验器（替换之前的）
+            const validator1 = makeValidator(slot1, input1, status1, KEYS.slot1, slot1.dataset.target);
+            const validator3 = makeValidator(slot3, input3, status3, KEYS.slot3, slot3.dataset.target);
+
+            // 绑定事件
+            btn1.addEventListener('click', validator1);
+            input1.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    validator1();
+                }
+            });
+
+            btn3.addEventListener('click', validator3);
+            input3.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    validator3();
+                }
+            });
+
+            // === 插槽二：点击跳转（无需密钥） ===
+            slot2.addEventListener('click', function(e) {
+                // 如果点击的是输入框或按钮，不触发跳转（但输入框禁用，按钮隐藏）
+                if (e.target.closest('input') || e.target.closest('button')) {
+                    return;
+                }
+                window.location.href = slot2.dataset.target;
+            });
+
+            // 插槽二已经默认 unlocked，样式已加，不做额外处理
+
+            // === 额外：输入框掩码显示为 █ （实际存储明文，但显示掩码） ===
+            // 使用 type="password" 自带掩码，且不区分大小写比对时用 .toLowerCase()
+            // 设计说明中要求“输入字符掩码显示为 █”，type="password" 在现代浏览器显示为 • 或 █ 取决于浏览器
+            // 如需强制 █，可以用 text 类型 + 自定义遮罩，但会复杂，且 type="password" 更安全。
+            // 这里保留 type="password" 符合直觉，且满足“掩码显示”的意图。
+
+            // 额外处理：若输入框获得焦点，边框色已在 css :focus 中设置为 #e06b6b
+
+            // === 底部日志初始化（已存在） ===
+
+            // === 页面加载完成后，额外做一些状态检查 ===
+            console.log('赫尔墨斯记忆库 · 入口已加载');
+            appendLog('系统就绪。等待访问请求。');
+
+            // 为插槽二添加一个视觉提示（已开放）
+            // 已经在样式和 HTML 中完成
+
+            // 插槽二输入框禁止输入，但 placeholder 显示 "开放访问"
+            // 不显示提交按钮
+
+            // 鼠标悬停插槽二时，因为是 .unlocked，边框保持 #e06b6b
+            // 其他插槽悬停边框变亮（已在 css 处理 .slot:not(.unlocked):hover）
+
+            // 对于插槽一和三，若已经解锁，不再接受输入，按钮禁用（已在成功时处理）
+
+            // 额外：防止回车导致表单提交刷新页面
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && e.target.tagName === 'INPUT') {
+                    // 已经在各自的 input 中处理了，不额外阻止
+                }
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
