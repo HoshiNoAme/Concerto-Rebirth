@@ -1,0 +1,231 @@
+/* ============================================================
+   O5 阅档系统  —— assets/css/o5.css
+   ------------------------------------------------------------
+   给「SCP-9644-B」这类高密级文件用。现代深色界面：
+   纯黑底 + 极细分割线 + 红色警示带 + 等宽小标签。
+
+   与 style.css 无关，不要 import。
+   ============================================================ */
+
+:root{
+  --bg:       #07080a;
+  --panel:    #0f1114;
+  --panel-2:  #15181c;
+  --line:     #23272c;
+  --line-2:   #363b42;
+  --fg:       #e9ebee;
+  --fg-2:     #b6bcc4;
+  --fg-3:     #6d747d;
+  --alert:    #ff4b4b;
+  --amber:    #ffb020;
+  --mono:     "Cascadia Mono",ui-monospace,SFMono-Regular,Consolas,"Courier New",monospace;
+  --sans:     "Segoe UI",system-ui,-apple-system,"Microsoft YaHei","PingFang SC",sans-serif;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:
+    radial-gradient(130% 80% at 50% -10%, #12151a, transparent 60%),
+    var(--bg);
+  color:var(--fg);
+  font-family:var(--sans);
+  font-size:15px;line-height:1.82;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:rgba(255,75,75,.35);color:#fff;}
+
+/* ---------------- 顶部粘性警示带 ---------------- */
+.ribbon{
+  position:sticky;top:0;z-index:20;
+  display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;
+  padding:9px 18px;
+  background:repeating-linear-gradient(135deg, #191c21 0 14px, #0a0b0d 14px 28px);
+  border-bottom:1px solid var(--line-2);
+  font-family:var(--mono);font-size:11px;letter-spacing:.24em;
+  color:#ff9d9d;
+  backdrop-filter:blur(6px);
+}
+.ribbon .dot{
+  width:6px;height:6px;border-radius:50%;background:var(--alert);
+  box-shadow:0 0 10px var(--alert);flex:none;
+  animation:pulse 2.2s ease-in-out infinite;
+}
+@keyframes pulse{50%{opacity:.35;}}
+
+/* ---------------- 容器 ---------------- */
+.doc{max-width:1060px;margin:0 auto;padding:0 28px 100px;}
+
+.back{
+  display:inline-block;margin:26px 0 0;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;
+  color:var(--fg-3);text-decoration:none;
+  border-bottom:1px solid transparent;transition:.15s;
+}
+.back:hover{color:var(--fg);border-bottom-color:var(--line-2);}
+
+/* ---------------- 报头 ---------------- */
+.hd{margin-top:40px;}
+.hd .kicker{
+  display:flex;align-items:center;gap:12px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--fg-3);
+}
+.hd .kicker::after{content:"";flex:1;height:1px;background:var(--line);}
+.hd h1{
+  margin:16px 0 0;font-size:clamp(44px,7.4vw,92px);line-height:.98;
+  letter-spacing:-.035em;font-weight:700;
+}
+.hd .sub{margin-top:16px;font-size:17px;color:var(--fg-2);max-width:62ch;}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;}
+.chip{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;
+  padding:5px 12px;border:1px solid var(--line-2);border-radius:999px;color:var(--fg-2);
+}
+.chip.alert{color:#ff8080;border-color:rgba(255,75,75,.45);background:rgba(255,75,75,.08);}
+.chip.o5{color:var(--amber);border-color:rgba(255,176,32,.42);background:rgba(255,176,32,.07);}
+
+/* ---------------- 元数据格 ---------------- */
+.meta{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1px;background:var(--line);border:1px solid var(--line);
+  border-radius:10px;overflow:hidden;margin-top:38px;
+}
+.meta > div{background:var(--panel);padding:15px 17px;}
+.meta .k{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--fg-3);}
+.meta .v{margin-top:7px;font-size:14px;color:var(--fg);}
+.meta .v.alert{color:#ff8080;}
+
+/* ---------------- 章节 ---------------- */
+.sec{margin-top:58px;}
+.sec .label{
+  display:flex;align-items:center;gap:12px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.3em;color:var(--fg-3);
+}
+.sec .label::after{content:"";flex:1;height:1px;background:var(--line);}
+.sec h2{margin:14px 0 18px;font-size:26px;letter-spacing:-.015em;font-weight:650;}
+.sec p{margin:0 0 1.05em;color:#ccd0d6;}
+.sec p:last-child{margin-bottom:0;}
+
+/* 整段划掉（作废的收容措施） */
+.strike{
+  color:var(--fg-3);
+  text-decoration:line-through;
+  text-decoration-color:rgba(255,75,75,.75);
+  text-decoration-thickness:1.5px;
+}
+
+/* 记录小标签 */
+.rec{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.26em;color:var(--fg-3);
+  margin:30px 0 14px;
+}
+
+/* 页边批注 */
+.note{
+  margin:22px 0;padding:14px 18px;
+  border-left:2px solid rgba(255,75,75,.45);
+  background:linear-gradient(90deg, rgba(255,75,75,.05), transparent);
+  font-style:italic;font-size:13.5px;line-height:1.9;color:#ffc9c9;
+}
+.note .by{
+  display:block;margin-top:8px;font-style:normal;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--fg-3);
+  text-align:right;
+}
+
+/* 手册里单独一行的警告 */
+.warnline{
+  font-family:var(--mono);font-size:12.5px;color:var(--amber);margin:0 0 1.1em;
+}
+
+/* 编号步骤 */
+.step{display:flex;gap:14px;margin:0 0 1.05em;}
+.step .n{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  color:var(--fg-3);flex:none;width:2.2em;padding-top:.3em;
+}
+
+/* 结尾一句话 */
+.closing{
+  margin:44px 0 0;text-align:center;font-style:italic;
+  font-family:var(--mono);font-size:13px;letter-spacing:.34em;color:#fff;
+  text-shadow:0 0 18px rgba(255,75,75,.7);
+}
+
+/* ---------------- 封存 / 提示 ---------------- */
+.sealed{
+  margin:22px 0;padding:20px 22px;border-radius:10px;
+  border:1px solid rgba(255,75,75,.32);
+  background:linear-gradient(180deg, rgba(255,75,75,.07), rgba(255,75,75,.015));
+  box-shadow:inset 0 0 40px rgba(255,75,75,.05);
+  color:#ffc0c0;
+}
+.sealed .sk{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.3em;color:var(--alert);
+  display:flex;align-items:center;gap:9px;
+}
+.sealed .sb{margin-top:10px;font-size:13.5px;line-height:1.85;color:#ffd0d0;}
+
+.red{background:#2b2f36;color:transparent;border-radius:3px;padding:0 .22em;user-select:none;}
+
+/* ---------------- 列表 ---------------- */
+.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);}
+.list li{
+  display:flex;gap:16px;padding:14px 2px;border-bottom:1px solid var(--line);
+  font-size:14px;color:#ccd0d6;
+}
+.list li .no{
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--fg-3);
+  flex:none;width:3.4em;
+}
+
+/* ---------------- 「下一篇」 ---------------- */
+.next{
+  display:block;margin-top:58px;padding:18px 20px;
+  border:1px solid var(--line);border-radius:10px;
+  text-decoration:none;color:var(--fg);transition:.15s;
+}
+.next:hover{border-color:rgba(255,75,75,.45);background:var(--panel-2);}
+.next .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.3em;color:var(--fg-3);}
+.next .m{display:flex;align-items:baseline;gap:12px;margin-top:10px;}
+.next .no{font-size:18px;letter-spacing:.06em;}
+.next .a{margin-left:auto;color:var(--fg-3);transition:.15s;}
+.next:hover .a{color:var(--alert);transform:translateX(3px);}
+
+/* ---------------- 标签 + 署名 ---------------- */
+.docfoot{
+  margin-top:46px;padding-top:20px;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+}
+.dtag{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  color:var(--fg-2);padding:4px 10px;border:1px solid var(--line-2);
+  border-radius:5px;background:rgba(255,255,255,.022);
+}
+.dtag:hover{color:var(--fg);border-color:var(--fg-3);}
+.credit{
+  margin-top:15px;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:var(--fg-3);
+}
+.credit b{color:var(--fg-2);font-weight:600;}
+
+/* ---------------- 页脚 ---------------- */
+.foot{
+  margin-top:74px;padding-top:18px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--fg-3);
+}
+.foot .warn{color:#ff8a8a;}
+
+/* ---------------- 响应式 ---------------- */
+@media (max-width:760px){
+  .doc{padding:0 18px 70px;}
+  .hd h1{font-size:clamp(36px,11vw,58px);}
+  .sec{margin-top:44px;}
+  .sec h2{font-size:22px;}
+  .ribbon{font-size:10px;letter-spacing:.16em;gap:10px;padding:8px 12px;}
+  .meta{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (prefers-reduced-motion:reduce){
+  .ribbon .dot{animation:none;}
+}

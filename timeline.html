@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · 时间线</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：时间线
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关人员档案</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">安保设施</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">技术与协议</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="timeline">
+      <div class="crumbs">主页：foundation / <b>时间线</b></div>
+
+      <div class="page-grid">
+        <div>
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>世界线大事记<span class="right">纵向时间轴</span></div>
+            <div class="panel-b">
+              <ul class="tl">
+                <li>
+                  <div class="yr">████ 年</div>
+                  <div class="tt">【占位】时间轴节点标题一</div>
+                  <div class="ds">【占位】节点说明文字。时间轴左侧有一条发光竖线，节点用圆点标记，适合按年代排列世界观大事件。</div>
+                </li>
+                <li>
+                  <div class="yr">████ 年</div>
+                  <div class="tt">【占位】时间轴节点标题二</div>
+                  <div class="ds">【占位】节点说明文字，可以写两三行，宽度上限 70 字符以保证可读性。</div>
+                </li>
+                <li class="dim">
+                  <div class="yr">████ 年</div>
+                  <div class="tt">【占位】模糊 / 存疑节点</div>
+                  <div class="ds">【占位】加上 <code style="color:var(--fg-dim)">class="dim"</code> 即可把节点变暗，用来表示传闻、被删除的历史或未确认事件。</div>
+                </li>
+                <li>
+                  <div class="yr">████ 年</div>
+                  <div class="tt">【占位】时间轴节点标题四</div>
+                  <div class="ds">【占位】节点说明文字。</div>
+                </li>
+                <li>
+                  <div class="yr">20██ 年</div>
+                  <div class="tt">【占位】当代 / 故事起始点</div>
+                  <div class="ds">【占位】节点说明文字。时间轴的起点与终点都会做渐隐处理，视觉上更自然。</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>项目分级<span class="right">外部链接</span></div>
+            <div class="panel-b">
+              <p class="prose" style="font-size:12.5px;color:var(--fg-dim);">
+                【占位】项目分级（Safe / Euclid / Keter 等）沿用基金会官方定义，本站不再重复收录。
+                需要查阅分级体系请直接前往基金会官网。
+              </p>
+              <a class="btn" href="https://scp-wiki-cn.wikidot.com/" target="_blank" rel="noopener">→ 基金会官网 · 中文分部</a>
+              <a class="btn" href="https://scp-wiki.wikidot.com/" target="_blank" rel="noopener" style="margin-left:8px;">→ 英文原站</a>
+            </div>
+          </div>
+        </div>
+
+        <aside class="rail">
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>时间轴用法</div>
+            <div class="panel-b" style="font-size:12.5px;color:var(--fg-dim);">
+              <p>【占位】把每个年代写成一对 <code style="color:var(--fg)">&lt;li&gt;</code>：年份 + 标题 + 说明。</p>
+              <p>需要「被抹除的历史」时，给该 <code style="color:var(--fg)">&lt;li&gt;</code> 加 <code style="color:var(--fg)">class="dim"</code>。</p>
+              <p style="margin-bottom:0;">若年代很多，可以按「纪元」拆成多个时间轴面板。</p>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>还可扩展的版式</div>
+            <div class="panel-b" style="font-size:12.5px;color:var(--fg-dim);">
+              <ul style="padding-left:1.1em;margin-bottom:0;">
+                <li>站点 / 设施平面图（大图 + 标注点）</li>
+                <li>人物档案（头像卡 + 属性条）</li>
+                <li>组织关系图（节点连线）</li>
+                <li>技术协议条目（参数表 + 版本对比）</li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    
+    </section>
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：时间线</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 · 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

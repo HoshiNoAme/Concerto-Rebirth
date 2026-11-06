@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · SCP-912</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：档案详情
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关人员档案</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">安保设施</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">技术与协议</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="scp912">
+      <div class="crumbs">
+        <a class="back" href="archive.html">← 返回异常项目列表</a>
+        <span style="color:var(--fg-mute);margin:0 8px;">·</span>主页：foundation / <b>异常项目列表</b> / SCP-912
+      </div>
+
+      <div class="page-grid">
+        <div>
+          <!-- 文档头（非 ACS 型：用普通字段表） -->
+          <div class="dossier-h">
+            <div class="top">
+              <span class="scp-id">SCP-912</span>
+              <span class="tag euclid">EUCLID</span>
+              <span class="name">（“自主型SWAT盔甲”）</span>
+            </div>
+            <div class="fields">
+              <div class="f"><span class="k">项目编号</span><span class="v">SCP-912</span></div>
+              <div class="f"><span class="k">项目等级</span><span class="v">Euclid</span></div>
+              <div class="f"><span class="k">收容区域</span><span class="v">Site-17重型收容区域第四号走廊-HCZ0408号标准人形异常收容间</span></div>
+              <div class="f"><span class="k">权限要求</span><span class="v">Level 3</span></div>
+              <div class="f"><span class="k">建档日期</span><span class="v">██/█/████</span></div>
+              <div class="f"><span class="k">最后修订</span><span class="v">5/10/2035</span></div>
+              <div class="f"><span class="k">负责研究员</span><span class="v">Dr.R████ T███</span></div>
+              <div class="f"><span class="k">状态</span><span class="v"><del>收容中</del> 失踪</span></div>
+            </div>
+          </div>
+
+          <h3 class="sec-title"><span>特殊收容措施</span><span class="tail">SCP-912</span></h3>
+          <div class="prose">
+            <p>SCP-912被收容在Site-17的重型收容区域第四号走廊的HCZ0408号标准人形异常收容间。</p>
+            <p>收容间的门的伤害抵抗评价必须有3A及以上，对SCP-912的合规物理接触一天最多三次。</p>
+          </div>
+
+          <h3 class="sec-title"><span>描述</span><span class="tail">DESCRIPTION</span></h3>
+          <div class="prose">
+            <p>SCP-912包含一套SWAT警用护甲，制服和警棍在内的数件物品，这些物品组合成为一个能够独立行动且拥有低级智能的个体，类似于一个身高1.5m的女性穿着这些护甲与制服。</p>
+            <p>SCP-912一般不会理会与其的交流尝试，但会严格执行逻辑上不矛盾的，一定程度上符合道义的，被称为是“正义”和“警察的职责”的指令。（下称“指令”）</p>
+            <p>以下是物品清单：</p>
+            <ul>
+              <li>一件黑色的战术护甲，由███警察局派发，█████制造。弹挂部分完全是空的，有一定程度上的破损，在初次发现项目时有弹片嵌入。</li>
+              <li>一顶灰色的F███战术头盔，带有D█-█型可掀式防弹面罩。防弹面罩上存在严重擦痕。</li>
+              <li>一对黑色的护膝。由████公司生产。</li>
+              <li>一对黑色的护肘。由████公司生产。左护肘有两个弹孔。</li>
+              <li>一副黑色的战斗手套。来源与制造商未知。</li>
+              <li>一双鞋带松垮的战斗靴。</li>
+              <li>一根21英寸长的警棍。钢制。</li>
+            </ul>
+            <p>SCP-912在遵守指令时一般不会犹豫并严格执行，但在执行“逮捕”指令时，SCP-912经过多次尝试才成功把目标的手反铐到背后。</p>
+            <p>SCP-912在观测到其视野内的任何对他人造成物理性伤害，谩骂他人等行为后将寻找作出该行为的目标，这具有一个明显的过程。在找到该目标后，SCP-912将根据其行为的轻重逮捕或使用警棍殴打目标。事实上，“殴打”力量极轻，除殴打的部位红肿外基本无法造成有效伤害。</p>
+            <p>若目标激烈反抗，SCP-912可能失去对目标的控制。</p>
+            <p>SCP-912会对对其的夸奖作出反应。但无法发出声音。</p>
+            <p>特别的，SCP-912在见到Site-17的一名<a href="howaito.html">纸质档案管理员Howaito</a>后作出特殊反应，并通过抽象的肢体语言表达希望再次见到后者。</p>
+            <p>为稳定SCP-912的状态，纸质档案管理员Howaito应每隔三天进入一次SCP-912收容室，应当有至少1名安保人员和1名中级研究员陪同。</p>
+          </div>
+
+          <h3 class="sec-title"><span>附录912-1</span><span class="tail">ADDENDUM</span></h3>
+          <div class="prose">
+            <p>在一次误播放枪声以及炸药爆炸的音频后，SCP-912立即急切地寻找声音的来源并试图保护附近的测试人员D-90437。</p>
+            <p>D-90437因PTSD症状昏厥，SCP-912在墙角进行了长达3.5个小时的掩面行为并轻微颤动。</p>
+          </div>
+
+          <h3 class="sec-title"><span>附录912-2</span><span class="tail">ADDENDUM</span></h3>
+          <div class="prose">
+            <p>D-90347被命令假装腹痛。</p>
+            <p>SCP-912迅速上前蹲下，“手部”在弹挂中四处寻找，最终并未找到任何物品，随后站立起来抬“头”直视记录员，将目光转向D-90347片刻后回复，伸出手，推测在请求腹痛药物。</p>
+          </div>
+
+          <h3 class="sec-title"><span>附录912-3</span><span class="tail">ADDENDUM</span></h3>
+          <div class="prose">
+            <p>命令纸质档案管理员Howaito进入收容室。</p>
+            <p>SCP-912立即结束把玩弹挂状态，起身迅速走向纸质档案管理员Howaito，并在后者身前站定。</p>
+            <p>当纸质档案管理员Howaito离开时，SCP-912表现出不舍并通过拉扯前者衣物来试图挽留对方。当日晚，SCP-912“睡”在收容室门边，在8：09分醒来时立即转头检查门是否打开以及收容间内是否存在目标个体。推测目标个体为纸质档案管理员Howaito。</p>
+          </div>
+
+          <!-- 文档尾：标签 + 作者署名 -->
+          <div class="doc-foot">
+            <div class="doc-tags">
+              <span class="dtag" data-tag="非完全原创">[非完全原创]</span>
+              <span class="dtag" data-tag="scp">[scp]</span>
+              <span class="dtag" data-tag="改编">[改编]</span>
+              <span class="dtag" data-tag="故事:SCP912">[故事:SCP912]</span>
+              <span class="dtag" data-tag="912">[912]</span>
+              <span class="dtag" data-tag="Howaito">[Howaito]</span>
+            </div>
+
+            <div class="doc-credit">
+              <p>本文作者：HOSHINOAME</p>
+              <p>改编：<a class="ext" href="https://scp-wiki-cn.wikidot.com/scp-912">SCP-912</a></p>
+            </div>
+          </div>
+
+          <div style="margin-top:24px;padding-top:16px;border-top:1px dashed var(--line-soft);">
+            <a class="btn" href="archive.html">← 返回异常项目列表</a>
+          </div>
+        </div>
+
+        <!-- 右栏 -->
+        <aside class="rail">
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>元数据</div>
+            <div class="panel-b" style="padding:4px 14px 12px;">
+              <table class="meta-t">
+                <tr><td>项目编号</td><td>SCP-912</td></tr>
+                <tr><td>项目等级</td><td><span class="tag euclid">EUCLID</span></td></tr>
+                <tr><td>状态</td><td><del>收容中</del> 失踪</td></tr>
+                <tr><td>最后修订</td><td>5/10/2035</td></tr>
+                <tr><td>标签</td><td style="color:var(--fg-dim)">#改编 #912 #Howaito</td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>本文目录</div>
+            <div class="panel-b" style="padding:10px 14px;">
+              <ul class="toc">
+                <li class="active">特殊收容措施</li>
+                <li>描述</li>
+                <li class="sub">物品清单</li>
+                <li>附录</li>
+                <li class="sub">912-1</li>
+                <li class="sub">912-2</li>
+                <li class="sub">912-3</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>相关条目</div>
+            <div class="panel-b">
+              <ul class="list" style="font-size:12.5px;">
+                <li><span class="id">人员</span><a class="tt" href="howaito.html">纸质档案管理员Howaito</a></li>
+                <li><span class="id">索引</span><a class="tt" href="archive.html">全部异常项目</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：SCP-912</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 · 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

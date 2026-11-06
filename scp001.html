@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · SCP-001</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：档案详情
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <!-- 本页特型：禁阅档案的权限警告（其它页面没有这一块） -->
+    <nav class="nav-group">
+      <div class="ban" style="padding:12px 14px;">
+        <div class="t">禁止查阅</div>
+        <div class="m" style="margin-top:7px;font-size:11.5px;max-width:none;line-height:1.8;">
+          依据织机计划·上议会命令，本档案权限等级 −1，已永久禁止编辑与查阅。
+        </div>
+      </div>
+    </nav>
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关人员档案</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">安保设施</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">技术与协议</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="scp001">
+      <div class="crumbs">
+        <a class="back" href="archive.html">← 返回异常项目列表</a>
+        <span style="color:var(--fg-mute);margin:0 8px;">·</span>主页：foundation / <b>异常项目列表</b> / SCP-001
+      </div>
+
+      <!-- 特型版式：单栏居中，没有右栏 -->
+      <div class="doc-narrow">
+
+        <div class="ban">
+          <div class="mark">−1</div>
+          <div class="t">织机计划 · 上议会命令</div>
+          <div class="m">该档案依据织机计划上议会命令已被永久禁止编辑和查阅，权限等级设为 −1。</div>
+        </div>
+
+        <div class="addr"><span class="k">除非……</span></div>
+
+        <div class="addr">
+          <p class="call">读者，</p>
+          <p class="ask">现在说出你对“Rain”的认知。<span class="blink"></span></p>
+        </div>
+
+        <!-- 文档头：项目编号 / 等级都是"无资格" -->
+        <div class="dossier-h">
+          <div class="top">
+            <span class="scp-id">SCP-001</span>
+            <span class="tag" style="color:var(--c-keter)">−1 · 禁阅</span>
+            <span class="name">（“VesperHoshiNoAme 的提案-RAIN”）</span>
+          </div>
+          <div class="fields">
+            <div class="f"><span class="k">项目编号</span><span class="v deny">无资格</span></div>
+            <div class="f"><span class="k">项目等级</span><span class="v deny">无资格</span></div>
+            <div class="f"><span class="k">项目代号</span><span class="v">“虚无的新生，存在的终焉”</span></div>
+            <div class="f"><span class="k">权限要求</span><span class="v">该档案需要 −1 级权限查看</span></div>
+          </div>
+        </div>
+
+        <h3 class="sec-title"><span>特殊收容措施</span><span class="tail">不适用</span></h3>
+        <div class="prose">
+          <p>不适用。</p>
+        </div>
+
+        <h3 class="sec-title"><span>描述</span><span class="tail">DESCRIPTION</span></h3>
+        <div class="prose">
+          <p>Rain指代一种气象，即降雨。</p>
+          <p>此外，Rain乃是新生与终焉概念的具象化。</p>
+          <p>Rain存在于任何概念还存在的时间线以及维度中，具备时间线的最高权限。</p>
+          <p>“织机”现实逻辑改写机器的运作高度依赖Rain。Rain确信是所有时间线运作的底层逻辑和必须依赖项。Rain是毁灭与新生的媒介，</p>
+        </div>
+
+        <h3 class="sec-title"><span>附录1：对<a href="vh.html">VESPER_HOSHINOAME</a>的访谈</span><span class="tail">访谈记录</span></h3>
+        <div class="prose">
+          <p>采访人员已经在采访后接受最高级记忆清除，采访目标下称“对象”。</p>
+        </div>
+
+        <div class="panel" style="margin-top:14px;">
+          <div class="panel-h"><span class="dot"></span>访谈转录<span class="right">对象 · VESPER_HOSHINOAME</span></div>
+          <div class="panel-b">
+            <p class="sfx">记录开始</p>
+
+            <div class="quote"><span class="who">对象</span>看起来你们要讨论一些严肃的话题……我必须说明，你们不能向我询问任何涉及██之笼以及我过往的问题。</div>
+            <div class="quote"><span class="who">采访人员</span>明白。</div>
+
+            <p class="sfx">短暂的沉默</p>
+
+            <div class="quote"><span class="who">采访人员</span>请说出你对概念级实体“Rain”的认知。</div>
+            <div class="quote"><span class="who">对象</span><span class="dir">（明显的惊讶。）</span></div>
+            <div class="quote"><span class="who">对象</span><span class="dir">（试图进行回忆。）</span></div>
+            <div class="quote"><span class="who">对象</span><span class="dir">（昏迷，在2h后苏醒。）</span></div>
+            <div class="quote"><span class="who">对象</span><span class="dir">（人格解离）</span></div>
+            <div class="quote"><span class="who">对象</span>这不对。</div>
+            <div class="quote"><span class="who">对象</span>你们不该问这个。</div>
+            <div class="quote"><span class="who">采访人员</span>警告一次。</div>
+            <div class="quote"><span class="who">对象</span><span class="dir">（音色剧变）</span>哦？</div>
+            <div class="quote"><span class="who">对象</span>……</div>
+            <div class="quote"><span class="who">对象</span>她是源头和终结，除她之外的万物终焉。</div>
+            <div class="quote"><span class="who">对象</span>我的权柄拜她所赐。</div>
+            <div class="quote"><span class="who">采访人员</span>好了，可以结束了。</div>
+
+            <p class="sfx">记录结束</p>
+          </div>
+        </div>
+
+        <h3 class="sec-title"><span>附录2</span><span class="tail">疫苗后阅读</span></h3>
+
+        <div class="warn-banner danger">
+          <span class="ic">☣</span>
+          <span>以下内容需要接种模因疫苗“如我所愿”后方可阅读。未接种疫苗的情况下强制阅读将导致心智崩坏，死亡乃至一次局部 CK 级“现实终结”情景。</span>
+        </div>
+
+        <div class="litany">
+          <p>雨幕之下，万物终焉。</p>
+          <p>一路寒风，身躯如絮。</p>
+          <p>命运纠缠，明日沉浮。</p>
+          <p>群星陨落，日暮穷途。</p>
+          <p>现实破碎，过往云烟。</p>
+          <p>击坠神明，沧海微尘。</p>
+          <p>存在封霜，记忆缥缈。</p>
+          <p>烟雨茫茫，尘世归虚。</p>
+          <p>亡悼冥葬，众生终结。</p>
+        </div>
+
+        <div class="doc-foot">
+          <div class="doc-tags">
+            <span class="dtag" data-tag="scp">[scp]</span>
+            <span class="dtag" data-tag="原创">[原创]</span>
+            <span class="dtag" data-tag="001">[001]</span>
+            <span class="dtag" data-tag="神性">[神性]</span>
+            <span class="dtag" data-tag="暴雨">[暴雨]</span>
+          </div>
+
+          <div class="doc-credit">
+            <p>本文作者：HOSHINOAME</p>
+          </div>
+        </div>
+
+        <div style="margin-top:24px;padding-top:16px;border-top:1px dashed var(--line-soft);">
+          <a class="btn" href="archive.html">← 返回异常项目列表</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：SCP-001</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 · 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

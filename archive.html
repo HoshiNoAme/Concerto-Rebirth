@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · 异常项目列表</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：异常项目列表
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关人员档案</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">安保设施</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">技术与协议</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="archive">
+      <div class="crumbs">主页：foundation / <b>异常项目列表</b></div>
+
+      <div class="filters">
+        <div class="search">
+          <span style="color:var(--fg-mute)">⌕</span>
+          <input type="text" placeholder="检索编号 / 名称 / 标签…（版式占位，未接搜索）">
+        </div>
+        <div class="chips">
+          <button class="chip-btn on">全部</button>
+          <button class="chip-btn">Safe</button>
+          <button class="chip-btn">Euclid</button>
+          <button class="chip-btn">Keter</button>
+          <button class="chip-btn">Thaumiel</button>
+        </div>
+        <button class="btn">排序：编号 ↑</button>
+        <button class="btn">视图：卡片</button>
+      </div>
+
+      <div class="arch-grid">
+        <!-- 真实条目 -->
+        <a class="acard" href="scp9279.html">
+          <div class="h"><span class="no">SCP-9279</span><span class="tag keter" style="margin-left:auto">KETER</span></div>
+          <div class="nm">归潮</div>
+          <div class="ex">灰蓝色浓雾，搜寻一切具伤害能力的生物；现形时以海洋废物拼成人形，船锚命中即令物质分子层面解离为纯水。</div>
+          <div class="tags"><span class="tag">#原创</span><span class="tag">#9279</span><span class="tag">#Howaito</span></div>
+        </a>
+
+        <a class="acard" href="scp2490.html">
+          <div class="h"><span class="no">SCP-2490</span><span class="tag keter" style="margin-left:auto">KETER</span></div>
+          <div class="nm">混沌分裂者特别行动队Alpha-19</div>
+          <div class="ex">外貌不定的隐形异常人类，确信为混沌分裂者Alpha-19。长期跟踪基金会人员，令目标产生严重被害妄想后以锐器杀害。</div>
+          <div class="tags"><span class="tag">#改编</span><span class="tag">#混沌分裂者</span><span class="tag">#2490</span></div>
+        </a>
+
+        <a class="acard" href="scp181.html">
+          <div class="h"><span class="no">SCP-181</span><span class="tag keter" style="margin-left:auto">KETER</span></div>
+          <div class="nm">幸运儿</div>
+          <div class="ex">拥有绝对幸运，伤害与死亡会被转移至周边人员。现已突破收容，随混沌分裂者脱离基金会，确信担任Alpha-18队长。</div>
+          <div class="tags"><span class="tag">#改编</span><span class="tag">#混沌分裂者</span><span class="tag">#Karl</span></div>
+        </a>
+
+        <a class="acard" href="scp912.html">
+          <div class="h"><span class="no">SCP-912</span><span class="tag euclid" style="margin-left:auto">EUCLID</span></div>
+          <div class="nm">自主型SWAT盔甲</div>
+          <div class="ex">一套SWAT警用护甲、制服与警棍组成的低智能自主个体。对“正义”与“警察的职责”类指令服从，会因夸奖作出反应，并会对一名纸质档案管理员表现出特殊反应。</div>
+          <div class="tags"><span class="tag">#改编</span><span class="tag">#912</span><span class="tag">#Howaito</span></div>
+        </a>
+
+        <a class="acard" href="scp9098.html">
+          <div class="h"><span class="no">SCP-9098</span><span class="tag keter" style="margin-left:auto">KETER</span></div>
+          <div class="nm">晶骸，沉坠之林</div>
+          <div class="ex">从SCP-682与“生命解离”提案的融合中诞生的无机化异常生态聚合体。以“沉坠”同化一切活动物体，按十个种别分工演化。</div>
+          <div class="tags"><span class="tag">#感染</span><span class="tag">#寄生虫</span><span class="tag">#9098</span></div>
+        </a>
+
+        <a class="acard" href="scp9644b1.html">
+          <div class="h"><span class="no">SCP-9644-B-1</span><span class="tag keter" style="margin-left:auto">KETER</span></div>
+          <div class="nm">侵蚀体</div>
+          <div class="ex">高度武装、强烈敌意的人形个体，面部被内化信息流团覆盖，其内部经典逻辑的同一律失效。随SCP-9644-B出现或消失，无法单独收容。</div>
+          <div class="tags"><span class="tag">#苦难笼</span><span class="tag">#主线</span><span class="tag">#9644</span></div>
+        </a>
+
+        <!-- 新增条目：复制下面这一段，改编号 / 等级 / 名称 / 摘要 / 标签，
+             并把 href 指到新文档页即可。
+             等级标签可用：safe / euclid / keter / thaumiel / apollyon / info / neutral
+
+        <a class="acard" href="scpXXX.html">
+          <div class="h"><span class="no">SCP-XXX</span><span class="tag euclid" style="margin-left:auto">EUCLID</span></div>
+          <div class="nm">项目名称</div>
+          <div class="ex">摘要：两行以内最好，超出会自动省略号截断。</div>
+          <div class="tags"><span class="tag">#标签A</span><span class="tag">#标签B</span></div>
+        </a>
+
+        -->
+
+        <!-- SCP-001：整行贯通的特大卡片（grid-column:1/-1），永远排在最下面 -->
+        <a class="acard acard-feature" href="scp001.html">
+          <div class="mark" aria-hidden="true">−1</div>
+          <div class="h">
+            <span class="no">SCP-001</span>
+            <span class="tag" style="color:var(--c-keter)">−1 · 禁阅</span>
+            <span class="nm">虚无的新生，存在的终焉</span>
+          </div>
+          <div class="ex">
+            代号「VesperHoshiNoAme 的提案-RAIN」。该档案依据织机计划·上议会命令已被永久禁止编辑和查阅，权限等级设为 −1。
+            对本档案的查阅请求不会被处理；已经读过的人，请自行确认你还记得多少。
+          </div>
+          <div class="tags"><span class="tag">#原创</span><span class="tag">#001</span><span class="tag">#神性</span><span class="tag">#暴雨</span></div>
+        </a>
+      </div>
+
+      <div class="pager">
+        <span class="pg">‹</span>
+        <span class="pg on">1</span>
+        <span style="margin-left:12px;color:var(--fg-mute)">共 005 条</span>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：异常项目列表</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 · 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

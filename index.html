@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>新标签页</title>
+<!--
+  ============================================================
+  世界观站点 · 入口页（模拟浏览器 · 明亮版）
+  ------------------------------------------------------------
+  这里是「现实世界」的普通浏览器，刻意不用基金会的绿色终端风格，
+  也去掉了所有基金会元素（徽标 / 座右铭 / 显像管效果）。
+  点收藏才「进入」基金会那台阴暗的终端 —— 明暗对比就是这层叙事。
+  · 地址栏不可用（只做展示）
+  · 点「搜索」按钮 → 跳转 bing.com
+  · 收藏栏两个页面：
+      ① 基金会资料终端 → foundation.html
+      ② 待建页面       → 还没做，不可点
+  · 单文件、零依赖、离线可用
+  ============================================================
+-->
+<style>
+/* ============================================================
+   1. 浅色配色（浏览器自己的配色，与 foundation.html 无关）
+   ============================================================ */
+:root{
+  --page-bg:   #eef1f6;          /* 窗口外的桌面底 */
+  --win-bg:    #ffffff;          /* 窗口底 */
+  --chrome:    #f6f7f9;          /* 标签条 / 工具条 */
+  --chrome-2:  #eceff4;
+  --hover:     #e8edf5;
+  --line:      #e3e7ee;
+  --line-2:    #d6dbe4;
+  --text:      #1f2530;
+  --text-dim:  #5b6472;
+  --text-mute: #8d96a5;
+  --accent:    #2f6fed;
+  --accent-2:  #eaf1ff;
+  --shadow:    0 18px 48px rgba(31,42,66,.14), 0 2px 6px rgba(31,42,66,.06);
+}
+
+/* ============================================================
+   2. 基础排版（系统无衬线，不用等宽字体）
+   ============================================================ */
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(120% 80% at 50% 0%, #ffffff, transparent 60%),
+    var(--page-bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,"Microsoft YaHei","PingFang SC",sans-serif;
+  font-size:14px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--accent-2);color:var(--text);}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px;}
+
+/* ============================================================
+   3. 舞台 + 浏览器窗口
+   ============================================================ */
+.stage{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:28px 20px 36px;
+}
+.browser{
+  width:100%;max-width:1180px;
+  display:flex;flex-direction:column;
+  min-height:min(740px, calc(100vh - 100px));
+  border:1px solid var(--line-2);border-radius:12px;overflow:hidden;
+  background:var(--win-bg);
+  box-shadow:var(--shadow);
+}
+
+/* --- 标题栏 --- */
+.win-bar{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 14px;
+  background:linear-gradient(180deg, #fbfcfd, var(--chrome-2));
+  border-bottom:1px solid var(--line);
+}
+.lights{display:flex;gap:7px;flex:none;}
+.lights i{width:10px;height:10px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);}
+.lights i:nth-child(1){background:#f2a3a0;}
+.lights i:nth-child(2){background:#f5d08a;}
+.lights i:nth-child(3){background:#a9dcb4;}
+.win-title{
+  font-size:12px;color:var(--text-dim);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.win-ctrl{margin-left:auto;display:flex;gap:16px;color:var(--text-mute);font-size:12px;flex:none;}
+
+/* --- 标签页 --- */
+.tabstrip{
+  display:flex;align-items:center;gap:6px;
+  padding:6px 10px 0;
+  background:var(--chrome-2);
+  border-bottom:1px solid var(--line);
+}
+.tab{
+  display:flex;align-items:center;gap:8px;
+  padding:7px 12px;font-size:12.5px;color:var(--text);
+  background:var(--win-bg);
+  border:1px solid var(--line);border-bottom-color:transparent;
+  border-radius:8px 8px 0 0;position:relative;top:1px;
+  box-shadow:0 -1px 2px rgba(31,42,66,.03);
+}
+.tab .fav{
+  width:14px;height:14px;border-radius:4px;flex:none;
+  background:linear-gradient(135deg,#cfe0ff,#8fb6fb);
+  box-shadow:inset 0 0 0 1px rgba(47,111,237,.25);
+}
+.tab .x{color:var(--text-mute);font-size:11px;margin-left:2px;}
+.tab-new{
+  padding:4px 9px;color:var(--text-mute);font-size:15px;line-height:1;
+  border-radius:6px;
+}
+.tab-new:hover{background:var(--hover);}
+
+/* --- 工具条：装饰按钮 + 地址栏 + 搜索 --- */
+.toolbar{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 12px;
+  background:var(--chrome);
+}
+.tb-group{display:flex;gap:2px;flex:none;}
+.tb{
+  width:28px;height:28px;display:grid;place-items:center;
+  border-radius:6px;color:var(--text-mute);font-size:13px;user-select:none;
+}
+.urlbar{
+  flex:1;min-width:0;display:flex;align-items:center;gap:9px;
+  height:32px;padding:0 14px;
+  border:1px solid var(--line-2);border-radius:999px;
+  background:#fff;transition:.15s;
+}
+.urlbar .lead{color:var(--text-mute);font-size:13px;flex:none;}
+/* 地址栏：只做展示，不可输入 */
+.urlbar input{
+  flex:1;min-width:0;
+  background:transparent;border:0;outline:0;
+  color:var(--text-dim);font:inherit;font-size:13px;
+  cursor:default;
+}
+.search-btn{
+  flex:none;display:inline-flex;align-items:center;justify-content:center;
+  height:32px;padding:0 18px;border-radius:999px;
+  background:var(--accent);color:#fff;font-size:13px;font-weight:500;
+  text-decoration:none;
+  transition:.15s;
+  box-shadow:0 1px 2px rgba(47,111,237,.25);
+}
+.search-btn:hover{background:#2a62d4;box-shadow:0 3px 10px rgba(47,111,237,.3);}
+
+/* --- 收藏栏 --- */
+.bookmarks{
+  display:flex;align-items:center;gap:4px;
+  padding:5px 12px 7px;
+  background:var(--chrome);
+  border-bottom:1px solid var(--line);
+  font-size:12.5px;overflow-x:auto;
+}
+.bookmarks .lbl{
+  flex:none;color:var(--text-mute);font-size:11px;
+  margin-right:4px;padding-right:9px;border-right:1px solid var(--line);
+}
+.bm{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:4px 10px;border-radius:6px;white-space:nowrap;
+  color:var(--text-dim);text-decoration:none;transition:.14s;
+}
+.bm .star{color:#e0a33a;font-size:11px;}
+.bm:hover{background:var(--hover);color:var(--text);}
+.bm.disabled{color:var(--text-mute);cursor:not-allowed;}
+.bm.disabled .star{color:var(--text-mute);}
+.bm.disabled:hover{background:transparent;color:var(--text-mute);}
+.bm em{
+  font-style:normal;font-size:10px;color:var(--text-mute);
+  background:var(--chrome-2);border:1px solid var(--line);
+  padding:0 5px;border-radius:4px;
+}
+
+/* ============================================================
+   4. 视口（新标签页）
+   ============================================================ */
+.viewport{flex:1;min-height:0;overflow:auto;padding:44px 34px;display:flex;}
+.start{width:100%;max-width:760px;margin:auto;}
+.start h1{margin:0;font-size:26px;font-weight:600;letter-spacing:-.01em;color:var(--text);}
+.start .hint{margin:8px 0 0;font-size:13px;color:var(--text-mute);line-height:1.75;}
+.start .sec{
+  display:flex;align-items:center;gap:10px;
+  margin:32px 0 12px;font-size:12px;color:var(--text-mute);letter-spacing:.14em;
+}
+.start .sec::after{content:"";flex:1;height:1px;background:var(--line);}
+
+/* 收藏磁贴 */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;}
+.tile{
+  display:flex;gap:13px;
+  padding:15px 16px;border-radius:10px;
+  border:1px solid var(--line);background:#fff;
+  text-decoration:none;transition:.16s;
+}
+a.tile:hover{
+  border-color:#c7d6f7;background:#fbfcff;
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(31,42,66,.09);
+}
+.tile .ico{
+  width:38px;height:38px;border-radius:9px;flex:none;
+  display:grid;place-items:center;font-size:16px;
+  background:linear-gradient(135deg,#e6efff,#cfe0ff);
+  color:var(--accent);
+  box-shadow:inset 0 0 0 1px rgba(47,111,237,.16);
+}
+.tile .body{flex:1;min-width:0;display:flex;flex-direction:column;}
+.tile .t{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--text);}
+.tile .d{font-size:12px;color:var(--text-dim);margin-top:4px;line-height:1.65;}
+.tile .u{font-size:11px;color:var(--text-mute);margin-top:7px;}
+.tile.disabled{background:var(--chrome);border-style:dashed;cursor:not-allowed;}
+.tile.disabled .ico{
+  background:var(--chrome-2);color:var(--text-mute);
+  box-shadow:inset 0 0 0 1px var(--line);
+}
+.tile .tag-todo{
+  margin-left:auto;font-size:10px;color:var(--text-mute);font-weight:400;
+  background:var(--chrome-2);border:1px solid var(--line);
+  padding:0 5px;border-radius:4px;
+}
+
+/* ============================================================
+   5. 底部状态栏（悬停预览链接地址）
+   ============================================================ */
+.status-bar{
+  display:flex;align-items:center;gap:12px;
+  padding:6px 14px;
+  background:var(--chrome);
+  border-top:1px solid var(--line);
+  font-size:11.5px;color:var(--text-mute);
+}
+.status-bar .url{color:var(--text-dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.status-bar .right{margin-left:auto;white-space:nowrap;}
+
+/* ============================================================
+   6. 响应式
+   ============================================================ */
+@media (max-width:820px){
+  .stage{padding:14px 10px 20px;}
+  .browser{min-height:calc(100vh - 34px);border-radius:10px;}
+  .win-ctrl{display:none;}
+  .tb-group{display:none;}      /* 窄屏隐藏装饰性的前进/后退 */
+  .viewport{padding:30px 18px;}
+  .start h1{font-size:22px;}
+}
+@media (max-width:520px){
+  .win-title{display:none;}
+  .bookmarks{padding:5px 8px 7px;}
+  .tiles{grid-template-columns:1fr;}
+  .search-btn{padding:0 14px;}
+}
+</style>
+</head>
+<body>
+
+<main class="stage">
+  <!-- ================= 模拟浏览器窗口 ================= -->
+  <div class="browser">
+
+    <!-- 标题栏 -->
+    <div class="win-bar">
+      <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="win-title">浏览器</div>
+      <div class="win-ctrl" aria-hidden="true"><span>─</span><span>▢</span><span>✕</span></div>
+    </div>
+
+    <!-- 标签页 -->
+    <div class="tabstrip">
+      <div class="tab"><span class="fav" aria-hidden="true"></span>新标签页<span class="x" aria-hidden="true">✕</span></div>
+      <div class="tab-new" aria-hidden="true">+</div>
+    </div>
+
+    <!-- 工具条：地址栏不可用，搜索按钮跳 Bing -->
+    <div class="toolbar">
+      <div class="tb-group" aria-hidden="true">
+        <span class="tb">←</span>
+        <span class="tb">→</span>
+        <span class="tb">⟳</span>
+      </div>
+      <div class="urlbar">
+        <span class="lead" aria-hidden="true">⌕</span>
+        <input type="text" value="about:newtab" readonly aria-label="地址栏（仅供展示，不可输入）"
+               title="地址栏不可用 · 请使用下方的收藏">
+      </div>
+      <a class="search-btn" href="https://www.bing.com/" data-url="https://www.bing.com/">搜索</a>
+    </div>
+
+    <!-- 收藏栏：两个页面 -->
+    <div class="bookmarks">
+      <span class="lbl">收藏</span>
+      <a class="bm" href="foundation.html" data-url="foundation.html"><span class="star" aria-hidden="true">★</span>基金会资料终端</a>
+      <span class="bm disabled" title="这个页面还没做"><span class="star" aria-hidden="true">☆</span>待建页面<em>待建</em></span>
+    </div>
+
+    <!-- 视口：新标签页 -->
+    <div class="viewport">
+      <div class="start">
+        <h1>新标签页</h1>
+        <p class="hint">
+          地址栏不可用；要进站点请点上方的收藏，或下面的卡片。想搜东西就用工具栏的「搜索」。
+        </p>
+
+        <div class="sec">收藏</div>
+
+        <div class="tiles">
+          <a class="tile" href="foundation.html" data-url="foundation.html">
+            <span class="ico" aria-hidden="true">★</span>
+            <span class="body">
+              <span class="t">基金会资料终端</span>
+              <span class="d">主页、异常项目列表、原创机动特遣队、时间线。</span>
+              <span class="u">foundation.html</span>
+            </span>
+          </a>
+
+          <div class="tile disabled" title="这个页面还没做">
+            <span class="ico" aria-hidden="true">☆</span>
+            <span class="body">
+              <span class="t">待建页面<span class="tag-todo">待建</span></span>
+              <span class="d">第二个收藏，之后再补内容。做好后把这一块换成链接即可。</span>
+              <span class="u">——</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部状态栏 -->
+    <div class="status-bar">
+      <span class="url" id="hoverUrl">完成</span>
+      <span class="right">［模拟浏览器 · 地址栏不可用］</span>
+    </div>
+
+  </div>
+</main>
+
+<script>
+/* 悬停链接时，在底部状态栏显示目标地址（模仿真实浏览器） */
+(function(){
+  var out = document.getElementById('hoverUrl');
+  if (!out) return;
+  var IDLE = '完成';
+  document.querySelectorAll('[data-url]').forEach(function(el){
+    var show = function(){ out.textContent = el.dataset.url; };
+    var hide = function(){ out.textContent = IDLE; };
+    el.addEventListener('mouseenter', show);
+    el.addEventListener('mouseleave', hide);
+    el.addEventListener('focus', show);
+    el.addEventListener('blur', hide);
+  });
+})();
+</script>
+</body>
+</html>

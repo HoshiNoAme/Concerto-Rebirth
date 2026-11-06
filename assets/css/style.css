@@ -1,0 +1,952 @@
+/* ============================================================
+   1. 配色变量（只有一个绿色配色，全站改这里）
+   ============================================================ */
+:root{
+  --bg:        #040d07;
+  --bg-deep:   #010603;
+  --panel:     rgba(72,255,150,.045);
+  --panel-2:   rgba(72,255,150,.085);
+  --line:      rgba(72,255,150,.22);
+  --line-soft: rgba(72,255,150,.12);
+  --line-hot:  rgba(72,255,150,.5);
+  --fg:        #5cff9d;
+  --fg-dim:    #35a469;
+  --fg-mute:   #1e6b42;
+  --fg-bright: #d6ffe8;
+  --glow:      0 0 7px rgba(92,255,157,.45);
+  --glow-soft: 0 0 3px rgba(92,255,157,.3);
+  --scan:      rgba(0,0,0,.30);
+}
+/* 语义色（分级标签等，独立于主色，保证辨识度） */
+:root{
+  --c-safe:   #6ee7a8;
+  --c-euclid: #ffc857;
+  --c-keter:  #ff6b6b;
+  --c-thaum:  #a98bff;
+  --c-apolly: #ff5ee0;
+  --c-info:   #6bd5ff;
+  --c-mute:   #8a9aa5;
+}
+
+/* ============================================================
+   2. 基础排版
+   ============================================================ */
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(255,255,255,.035), transparent 60%),
+    radial-gradient(140% 120% at 50% 120%, var(--panel-2), transparent 55%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+  color:var(--fg);
+  font-family:"Sarasa Mono SC","Cascadia Mono",ui-monospace,SFMono-Regular,Consolas,"Microsoft YaHei",monospace;
+  font-size:14px;
+  line-height:1.75;
+  letter-spacing:.02em;
+  text-shadow:var(--glow-soft);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{margin:0;font-weight:600;letter-spacing:.06em;}
+p{margin:0 0 .9em;}
+a{color:var(--fg);text-decoration:none;}
+ul,ol{margin:0 0 .9em;padding-left:1.4em;}
+li{margin:.2em 0;}
+::selection{background:var(--fg);color:var(--bg-deep);}
+:focus-visible{outline:1px dashed var(--fg);outline-offset:2px;}
+
+/* ============================================================
+   3. CRT 显像管效果层（扫描线 / 辉光扫掠 / 暗角 / 闪烁）
+   ============================================================ */
+.crt-overlay{position:fixed;inset:0;pointer-events:none;z-index:9000;}
+.crt-overlay::before{                    /* 扫描线 */
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(180deg, var(--scan) 0 1px, transparent 1px 3px);
+  mix-blend-mode:multiply;
+}
+.crt-overlay::after{                     /* 暗角 */
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(115% 100% at 50% 50%, transparent 55%, rgba(0,0,0,.55) 100%);
+}
+.sweep{                                  /* 辉光扫掠条 */
+  position:fixed;left:0;right:0;height:150px;z-index:9001;pointer-events:none;
+  background:linear-gradient(180deg, transparent, rgba(255,255,255,.045), transparent);
+  animation:sweep 8s linear infinite;
+}
+@keyframes sweep{from{top:-160px;}to{top:100vh;}}
+html[data-crt="off"] .crt-overlay,
+html[data-crt="off"] .sweep{display:none;}
+html[data-crt="off"] body{text-shadow:none;}
+
+/* ============================================================
+   4. 顶栏
+   ============================================================ */
+.topbar{
+  position:sticky;top:0;z-index:8000;
+  display:flex;align-items:center;gap:14px;
+  padding:10px 18px;
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.25));
+  backdrop-filter:blur(6px);
+}
+.brand{display:flex;align-items:center;gap:10px;min-width:0;}
+.brand svg{width:30px;height:30px;flex:none;filter:drop-shadow(0 0 5px var(--fg));}
+/* 位图徽标：高度定 30px，宽度按比例（PNG 是 128x120，不能写死宽高否则会拉伸） */
+.brand img.brand-logo{height:30px;width:auto;flex:none;filter:drop-shadow(0 0 5px var(--fg));}
+.brand .b-name{font-size:15px;letter-spacing:.22em;color:var(--fg-bright);text-shadow:var(--glow);}
+.brand .b-sub{font-size:10.5px;letter-spacing:.3em;color:var(--fg-dim);}
+.topbar .spacer{flex:1;}
+.chip{
+  border:1px solid var(--line);border-radius:2px;
+  padding:2px 9px;font-size:11.5px;color:var(--fg-dim);
+  background:var(--panel);white-space:nowrap;
+}
+.chip b{color:var(--fg);font-weight:600;}
+.chip.hot{border-color:var(--line-hot);box-shadow:inset 0 0 14px rgba(255,255,255,.05);}
+.btn{
+  display:inline-block;
+  font:inherit;font-size:11.5px;letter-spacing:.1em;
+  color:var(--fg);background:var(--panel);
+  border:1px solid var(--line);border-radius:2px;
+  padding:4px 11px;cursor:pointer;transition:.15s;
+}
+.btn:hover{background:var(--panel-2);border-color:var(--line-hot);box-shadow:var(--glow-soft);}
+.btn:active{transform:translateY(1px);}
+
+/* ============================================================
+   5. 布局骨架：左导航 + 内容区
+   ============================================================ */
+.shell{
+  display:grid;
+  grid-template-columns:268px minmax(0,1fr);
+  gap:22px;
+  max-width:1460px;
+  margin:0 auto;
+  padding:22px 18px 76px;
+}
+/* --- 左侧导航 --- */
+.sidebar{
+  position:sticky;top:74px;align-self:start;
+  max-height:calc(100vh - 96px);overflow-y:auto;   /* 条目变多后，矮屏幕仍能滚到每一项 */
+  scrollbar-width:thin;scrollbar-color:var(--line) transparent;
+}
+.sidebar::-webkit-scrollbar{width:6px;}
+.sidebar::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px;}
+.sidebar::-webkit-scrollbar-track{background:transparent;}
+.nav-group{margin-bottom:18px;}
+.nav-group h4{
+  font-size:10.5px;letter-spacing:.26em;color:var(--fg-mute);
+  padding:0 0 7px;border-bottom:1px dashed var(--line-soft);margin-bottom:8px;
+}
+.nav-item{
+  display:flex;align-items:center;gap:8px;
+  padding:6px 9px;border-left:2px solid transparent;
+  color:var(--fg-dim);cursor:pointer;transition:.14s;
+  font-size:13px;
+}
+.nav-item:hover{color:var(--fg);background:var(--panel);border-left-color:var(--line-hot);}
+.nav-item.active{
+  color:var(--fg-bright);background:var(--panel-2);
+  border-left-color:var(--fg);box-shadow:inset 0 0 18px rgba(255,255,255,.04);
+}
+.nav-item .idx{font-size:10.5px;color:var(--fg-mute);}
+.nav-item.disabled{cursor:not-allowed;opacity:.45;}
+.nav-item .todo{margin-left:auto;font-size:9.5px;letter-spacing:.14em;color:var(--fg-mute);border:1px solid var(--line-soft);padding:0 4px;border-radius:2px;}
+
+/* --- 终端式页面树（左侧导航） --- */
+.nav-item .lb{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.nav-item .br{flex:none;min-width:3ch;color:var(--fg-dim);}   /* 固定 3 字符宽 → 所有标签对齐同一列 */
+.nav-tree .nav-item{padding:5px 9px 5px 8px;}   /* 8px + 2px 透明左边框 = 与根节点文字对齐 */
+.nav-tree .nav-item:hover .br{color:var(--fg);}
+.nav-tree .nav-item.active{
+  border-left-color:transparent;               /* 树里不用左侧竖线，避免像多出一根树干 */
+  box-shadow:inset 0 0 18px rgba(255,255,255,.04);
+}
+.nav-tree .nav-item.active .br{color:var(--fg);}
+.nav-tree .nav-item.active .lb{color:var(--fg-bright);}
+.nav-tree .nav-root{
+  border:1px solid var(--line);border-left:1px solid var(--line);
+  border-radius:2px;background:var(--panel-2);
+  color:var(--fg-bright);letter-spacing:.06em;
+  padding:7px 9px;margin-bottom:5px;
+}
+.nav-tree .nav-root::before{content:"▾";font-size:9px;color:var(--fg-dim);}
+.nav-tree .nav-root:hover{border-color:var(--line-hot);}
+.nav-tree .nav-root.active{border-color:var(--fg);box-shadow:inset 0 0 18px rgba(255,255,255,.06);}
+
+/* --- 页面容器 --- */
+.page{display:none;animation:fade .22s ease-out;}
+.page.active{display:block;}
+@keyframes fade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
+.page-grid{display:grid;grid-template-columns:minmax(0,1fr) 296px;gap:22px;align-items:start;}
+
+/* --- 通用面板 --- */
+.panel{
+  border:1px solid var(--line);
+  background:linear-gradient(180deg, var(--panel), transparent 70%);
+  border-radius:3px;
+  position:relative;
+}
+.panel + .panel{margin-top:18px;}
+.panel-h{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 13px;border-bottom:1px solid var(--line);
+  font-size:11.5px;letter-spacing:.18em;color:var(--fg-bright);
+  background:var(--panel-2);
+}
+.panel-h .dot{width:6px;height:6px;background:var(--fg);box-shadow:var(--glow);flex:none;}
+.panel-h .right{margin-left:auto;font-size:10.5px;letter-spacing:.1em;color:var(--fg-mute);}
+.panel-b{padding:15px 16px;}
+
+/* 面包屑 */
+.crumbs{font-size:11.5px;color:var(--fg-mute);letter-spacing:.1em;margin-bottom:12px;}
+.crumbs b{color:var(--fg-dim);font-weight:400;}
+.crumbs .back{
+  color:var(--fg);border-bottom:1px dashed var(--line-hot);
+  padding-bottom:1px;cursor:pointer;transition:.14s;
+}
+.crumbs .back:hover{color:var(--fg-bright);text-shadow:var(--glow);border-bottom-style:solid;}
+
+/* 章节标题（终端风格 [ ]） */
+.sec-title{
+  display:flex;align-items:center;gap:12px;
+  margin:22px 0 10px;font-size:13px;letter-spacing:.14em;color:var(--fg-bright);
+}
+.sec-title::before{content:"[";color:var(--fg-dim);}
+.sec-title::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent);order:3;}
+.sec-title span{order:2;}
+.sec-title .tail{order:4;color:var(--fg-dim);}
+.sec-title:first-child{margin-top:0;}
+
+/* ============================================================
+   6. 概览页：Hero / 统计 / 列表
+   ============================================================ */
+.hero{
+  border:1px solid var(--line);border-radius:3px;
+  padding:34px 30px;
+  background:
+    linear-gradient(180deg, var(--panel-2), transparent 80%),
+    repeating-linear-gradient(90deg, transparent 0 59px, var(--line-soft) 59px 60px);
+  position:relative;overflow:hidden;
+}
+.hero .eyebrow{font-size:11px;letter-spacing:.42em;color:var(--fg-dim);margin-bottom:14px;}
+.hero h1{
+  font-size:clamp(28px,4.4vw,50px);line-height:1.12;letter-spacing:.1em;
+  color:var(--fg-bright);text-shadow:var(--glow);
+}
+.hero h1 .cursor{
+  display:inline-block;width:.55em;height:1em;background:var(--fg);
+  vertical-align:-.12em;margin-left:.12em;animation:blink 1.05s steps(1) infinite;
+}
+@keyframes blink{50%{opacity:0;}}
+.hero .lede{max-width:62ch;margin-top:16px;color:var(--fg-dim);font-size:13.5px;}
+.hero .meta{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;}
+.hero .motto{
+  position:absolute;right:12px;bottom:-12px;
+  font-size:clamp(18px,2.9vw,34px);letter-spacing:.18em;
+  color:transparent;-webkit-text-stroke:1px var(--line);
+  pointer-events:none;user-select:none;white-space:nowrap;
+}
+.stat-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px;}
+.stat{border:1px solid var(--line);border-radius:3px;padding:12px 14px;background:var(--panel);}
+.stat .k{font-size:10.5px;letter-spacing:.2em;color:var(--fg-mute);}
+.stat .v{font-size:26px;color:var(--fg-bright);text-shadow:var(--glow);line-height:1.3;}
+.stat .d{font-size:11px;color:var(--fg-dim);}
+
+/* 列表行 */
+.list{list-style:none;margin:0;padding:0;}
+.list li{
+  display:flex;align-items:baseline;gap:12px;
+  padding:8px 2px;border-bottom:1px dotted var(--line-soft);
+}
+.list li:last-child{border-bottom:0;}
+.list .id{color:var(--fg-dim);font-size:12px;min-width:74px;}
+.list .tt{flex:1;min-width:0;color:var(--fg);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.list .tt:hover{color:var(--fg-bright);text-shadow:var(--glow);}
+.list .dt{font-size:11px;color:var(--fg-mute);}
+
+/* 快速导航卡 */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;}
+.qcard{
+  border:1px solid var(--line);border-radius:3px;padding:12px 13px;
+  background:var(--panel);cursor:pointer;transition:.16s;
+}
+.qcard:hover{background:var(--panel-2);border-color:var(--line-hot);transform:translateY(-2px);}
+.qcard .t{color:var(--fg-bright);font-size:13px;letter-spacing:.1em;}
+.qcard .s{font-size:11px;color:var(--fg-mute);margin-top:3px;}
+
+/* 终端命令行（占位交互槽） */
+.term{
+  border:1px solid var(--line);border-radius:3px;background:rgba(0,0,0,.35);
+  padding:10px 12px;font-size:12.5px;
+}
+.term .out{color:var(--fg-dim);min-height:1.6em;white-space:pre-wrap;}
+.term .line{display:flex;align-items:center;gap:8px;margin-top:6px;}
+.term .ps1{color:var(--fg-dim);}
+.term input{
+  flex:1;background:transparent;border:0;outline:0;
+  color:var(--fg);font:inherit;letter-spacing:.02em;
+}
+.term input::placeholder{color:var(--fg-mute);}
+
+/* ============================================================
+   7. 档案详情页：文档头 / 警告条 / 删节块 / 附录
+   ============================================================ */
+.dossier-h{
+  border:1px solid var(--line);border-left:3px solid var(--fg);
+  border-radius:3px;padding:16px 18px;
+  background:linear-gradient(90deg,var(--panel-2),transparent 80%);
+}
+.dossier-h .top{display:flex;flex-wrap:wrap;align-items:center;gap:12px;}
+.dossier-h .scp-id{
+  font-size:clamp(20px,2.6vw,30px);letter-spacing:.14em;
+  color:var(--fg-bright);text-shadow:var(--glow);
+}
+.dossier-h .name{font-size:13px;color:var(--fg-dim);letter-spacing:.1em;}
+/* 字段网格 */
+.fields{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:0;margin-top:14px;border-top:1px solid var(--line-soft);
+}
+.fields .f{display:flex;gap:9px;padding:7px 10px 7px 0;border-bottom:1px dotted var(--line-soft);}
+.fields .f .k{color:var(--fg-mute);font-size:11.5px;letter-spacing:.12em;min-width:78px;}
+.fields .f .v{color:var(--fg);font-size:12.5px;}
+
+/* --- ACS 异常分级条（纯文字版，无图标） -----------------------------------
+   结构：.acs > .acs-h + .acs-grid > .acs-cell ×4
+   每个 .acs-cell 加一个 .lv-* 类（决定颜色），格子上的色条 / 等级名 / 进度
+   方块都从 --lv 这个变量取色。
+   ------------------------------------------------------------------------ */
+.acs{
+  margin-top:16px;border:1px solid var(--line);border-radius:3px;overflow:hidden;
+  background:linear-gradient(180deg,var(--panel),transparent 70%);
+}
+.acs-h{
+  display:flex;align-items:center;gap:9px;padding:7px 13px;
+  border-bottom:1px solid var(--line);background:var(--panel-2);
+  font-size:11.5px;letter-spacing:.18em;color:var(--fg-bright);
+}
+.acs-h .dot{width:6px;height:6px;background:var(--fg);box-shadow:var(--glow);flex:none;}
+.acs-h .right{margin-left:auto;font-size:10.5px;letter-spacing:.1em;color:var(--fg-mute);}
+.acs-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));}
+.acs-cell{
+  --lv:var(--fg);
+  min-width:0;padding:11px 14px 13px;
+  border-left:1px solid var(--line-soft);
+  border-top:2px solid var(--lv);          /* 顶部色条 = 该维度的等级色 */
+}
+.acs-cell:nth-child(4n+1){border-left:0;}
+.acs-k{font-size:10.5px;letter-spacing:.18em;color:var(--fg-mute);white-space:nowrap;}
+.acs-v{
+  margin-top:4px;font-size:18px;letter-spacing:.1em;color:var(--lv);
+  text-shadow:0 0 7px var(--lv);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+/* 等级进度：方块数量 = 该维度总档数，点亮的数量 = 当前位置（替代图标） */
+.acs-meter{display:flex;gap:3px;margin-top:9px;}
+.acs-meter b{height:3px;flex:1;max-width:16px;background:var(--line-soft);border-radius:1px;}
+.acs-meter b.on{background:var(--lv);box-shadow:0 0 6px var(--lv);}
+
+/* 各维度等级的语义色（低 → 高，越往后越"响"） */
+.lv-safe{--lv:#6ee7a8;}        .lv-euclid{--lv:#ffc857;}   .lv-keter{--lv:#ff6b6b;}
+.lv-thaumiel{--lv:#a98bff;}    .lv-apollyon{--lv:#ff5ee0;}
+.lv-dark{--lv:#4a6c9e;}        .lv-vlam{--lv:#4f9fd8;}     .lv-keneq{--lv:#48c9d8;}
+.lv-ekhi{--lv:#7ee3e0;}        .lv-amida{--lv:#c9f7ff;}
+.lv-notice{--lv:#7fb069;}      .lv-caution{--lv:#d9c34a;}  .lv-warning{--lv:#e89a3c;}
+.lv-danger{--lv:#e2603c;}      .lv-critical{--lv:#ff4d4d;}
+.lv-open{--lv:#8a9aa5;}        .lv-restricted{--lv:#6bd5ff;} .lv-secret{--lv:#a98bff;}
+.lv-confidential{--lv:#ff7ad9;} .lv-topsecret{--lv:#ff5ee0;} .lv-cosmic{--lv:#ffe9a8;}
+
+/* ACS 在两列 / 单列时的换行处理 */
+@media (max-width:760px){
+  .acs-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .acs-cell:nth-child(4n+1){border-left:1px solid var(--line-soft);}
+  .acs-cell:nth-child(2n+1){border-left:0;}
+  .acs-v{font-size:16px;}
+}
+@media (max-width:420px){
+  .acs-grid{grid-template-columns:1fr;}
+  .acs-cell,.acs-cell:nth-child(2n+1){border-left:0;}
+}
+
+/* 分级标签 */
+.tag{
+  display:inline-block;font-size:10.5px;letter-spacing:.16em;
+  padding:1px 8px;border:1px solid currentColor;border-radius:2px;
+  background:rgba(255,255,255,.03);white-space:nowrap;
+}
+.tag.safe{color:var(--c-safe);} .tag.euclid{color:var(--c-euclid);}
+.tag.keter{color:var(--c-keter);} .tag.thaumiel{color:var(--c-thaum);}
+.tag.apollyon{color:var(--c-apolly);} .tag.neutral{color:var(--c-mute);}
+.tag.info{color:var(--c-info);}
+.tag.solid{background:currentColor;}
+.tag.solid span{color:var(--bg-deep);}
+
+/* 警告条 */
+.warn-banner{
+  display:flex;align-items:center;gap:12px;
+  border:1px solid var(--c-euclid);border-radius:3px;
+  color:var(--c-euclid);font-size:12px;letter-spacing:.1em;
+  padding:8px 13px;margin:16px 0;
+  background:repeating-linear-gradient(45deg, rgba(255,200,87,.13) 0 10px, transparent 10px 20px);
+}
+.warn-banner.danger{border-color:var(--c-keter);color:var(--c-keter);
+  background:repeating-linear-gradient(45deg, rgba(255,107,107,.14) 0 10px, transparent 10px 20px);}
+.warn-banner .ic{font-size:15px;}
+
+/* 正文 */
+.prose{max-width:76ch;}
+.prose .ph{color:var(--fg-dim);}
+.redact{
+  color:var(--fg);background:rgba(0,0,0,.55);
+  border:1px solid var(--line-soft);padding:0 3px;border-radius:2px;
+  position:relative;letter-spacing:-.05em;
+}
+/* 只有带 data-note 的黑条才有悬停提示；没有的话鼠标移上去什么都不弹 */
+.redact[data-note]{cursor:help;}
+.redact[data-note]:hover::after{
+  content:attr(data-note);position:absolute;left:50%;bottom:130%;transform:translateX(-50%);
+  background:var(--bg-deep);border:1px solid var(--c-keter);color:var(--c-keter);
+  font-size:10.5px;letter-spacing:.1em;padding:2px 7px;white-space:nowrap;z-index:50;
+}
+
+/* 正文语法：--删除线-- / //斜体// / ███ 黑条（黑条用上面的 .redact） */
+del, s{
+  color:var(--fg-mute);
+  text-decoration:line-through;
+  text-decoration-color:rgba(255,107,107,.7);   /* 红色删除线，像被划掉的旧记录 */
+  text-decoration-thickness:1px;
+}
+em, i{
+  font-style:italic;
+  color:var(--fg-bright);
+}
+
+/* 正文里的跳转链接：[显示文本/链接] → <a>；站外链接加 class="ext"（带 ↗ 标记） */
+.prose a{color:var(--fg);border-bottom:1px dotted var(--line-hot);text-decoration:none;transition:.14s;}
+.prose a:hover{color:var(--fg-bright);border-bottom-style:solid;text-shadow:var(--glow-soft);}
+a.ext::after{content:"↗";font-size:.82em;margin-left:2px;color:var(--fg-mute);}
+
+/* 文档尾：标签 + 作者署名 */
+.doc-foot{margin-top:28px;padding-top:16px;border-top:1px dashed var(--line-soft);}
+.doc-tags{display:flex;flex-wrap:wrap;gap:2px;margin-bottom:14px;}
+.dtag{
+  font-size:11.5px;letter-spacing:.04em;color:var(--fg-dim);
+  padding:1px 4px;border-radius:2px;cursor:default;transition:.14s;
+}
+.dtag:hover{color:var(--fg);background:var(--panel-2);}
+.doc-credit{font-size:12px;line-height:1.9;color:var(--fg-mute);}
+.doc-credit p{margin:0;}
+.doc-credit a{color:var(--fg-dim);border-bottom:1px dotted var(--line-soft);text-decoration:none;}
+.doc-credit a:hover{color:var(--fg);}
+/* 引用 / 采访记录 */
+.quote{
+  border-left:2px solid var(--line-hot);background:var(--panel);
+  padding:10px 14px;margin:0 0 14px;color:var(--fg);
+}
+.quote .who{color:var(--fg-dim);}
+.quote .who::after{content:"：";}
+/* 引文出处（放在 .quote 右下方）：——署名 */
+.quote-cite{
+  font-size:11.5px;color:var(--fg-mute);text-align:right;
+  margin:-8px 0 14px;letter-spacing:.04em;
+}
+/* 录音稿 / 记录稿里的音效与旁注：(开门声) —— 用暗色小字，跟说话内容区分开 */
+.sfx{color:var(--fg-mute);font-size:12.5px;letter-spacing:.02em;margin:6px 0;}
+
+/* 叙事型附录：诗句式短行。行距放宽，段内断行靠 <br>，空行分节 */
+.narrative{max-width:76ch;color:var(--fg);line-height:2.05;}
+.narrative p{margin:0 0 1.25em;}
+.narrative-punch{
+  font-size:16px;letter-spacing:.32em;color:var(--fg-bright);
+  text-shadow:var(--glow);
+}
+
+/* --- 叙事型附录「沉浸版」：照片背景 + 毛玻璃文字区 -------------------
+   结构： .narrative-hero > .nh-bg + .nh-inner > .nh-glass.narrative
+   · .nh-bg  照片铺满，压暗降饱和
+   · .nh-inner 的 padding 露出一圈清晰照片，像给文字加了相框
+   · .nh-glass 用 backdrop-filter 把"有字的地方"模糊掉
+   -------------------------------------------------------------------- */
+.narrative-hero{
+  position:relative;margin-top:18px;
+  border:1px solid var(--line);border-radius:4px;overflow:hidden;
+}
+.nh-bg{
+  position:absolute;inset:0;
+  background:url("../img/9279-sea.jpg") center/cover no-repeat;
+  filter:brightness(.85) saturate(.9) contrast(1.02);
+}
+.nh-bg::after{                 /* 轻压一层暗色：够看清海面，又不抢文字 */
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(180deg, rgba(2,8,5,.02), rgba(2,8,5,.34)),
+    radial-gradient(130% 100% at 50% 8%, transparent 45%, rgba(2,8,5,.40) 100%);
+}
+.nh-inner{position:relative;padding:28px;}
+.nh-glass{
+  padding:26px 26px 22px;border-radius:3px;
+  background:rgba(3,11,7,.28);
+  border:1px solid rgba(214,255,232,.09);
+  backdrop-filter:blur(10px) saturate(1.08);
+  -webkit-backdrop-filter:blur(10px) saturate(1.08);
+  box-shadow:inset 0 0 40px rgba(0,0,0,.32);
+}
+/* 沉浸版的正文换衬线字体，跟技术档案的等宽/无衬线拉开距离 */
+.nh-glass.narrative{
+  max-width:none;
+  font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC","SimSun",Georgia,serif;
+  font-size:16px;line-height:2.2;letter-spacing:.07em;color:#e4fff0;
+  text-shadow:none;                  /* 衬线字要清晰，关掉全站那层辉光 */
+}
+.nh-glass.narrative p{margin:0 0 1.2em;}
+.nh-glass .narrative-punch{
+  font-size:19px;letter-spacing:.36em;color:#eafff2;
+  text-shadow:0 0 12px rgba(92,255,157,.55), 0 0 26px rgba(92,255,157,.22);
+}
+@media (max-width:560px){
+  .nh-inner{padding:12px;}
+  .nh-glass{padding:18px 16px 14px;}
+  .nh-glass.narrative{font-size:14.5px;}
+}
+/* 图片 / 图表占位框 */
+.figure{
+  border:1px dashed var(--line);border-radius:3px;
+  background:
+    repeating-linear-gradient(45deg, var(--line-soft) 0 1px, transparent 1px 12px),
+    rgba(0,0,0,.25);
+  height:190px;display:flex;align-items:center;justify-content:center;
+  color:var(--fg-mute);font-size:11.5px;letter-spacing:.2em;margin:0 0 8px;
+}
+.figure-cap{font-size:11px;color:var(--fg-mute);margin-bottom:16px;}
+/* 表格 */
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;}
+th{background:var(--panel-2);color:var(--fg-bright);font-weight:600;letter-spacing:.1em;font-size:11.5px;}
+tbody tr:nth-child(even){background:rgba(255,255,255,.015);}
+tbody tr:hover{background:var(--panel);}
+/* 折叠附录 */
+details{border:1px solid var(--line);border-radius:3px;margin-bottom:10px;background:var(--panel);}
+details[open]{background:var(--panel-2);}
+summary{
+  cursor:pointer;padding:9px 13px;font-size:12.5px;letter-spacing:.12em;
+  color:var(--fg-bright);list-style:none;display:flex;align-items:center;gap:10px;
+}
+summary::-webkit-details-marker{display:none;}
+summary::before{content:"▸";color:var(--fg-dim);transition:.15s;}
+details[open] summary::before{transform:rotate(90deg);}
+summary .lv{margin-left:auto;font-size:10.5px;color:var(--fg-mute);}
+details .d-b{padding:2px 15px 15px;border-top:1px solid var(--line-soft);}
+
+/* ============================================================
+   8. 右侧栏：元数据 / 目录
+   ============================================================ */
+.rail{position:sticky;top:74px;}
+.meta-t{width:100%;border-collapse:collapse;font-size:12px;}
+.meta-t td{border:0;border-bottom:1px dotted var(--line-soft);padding:6px 2px;}
+.meta-t td:first-child{color:var(--fg-mute);font-size:11px;letter-spacing:.12em;width:44%;}
+.toc{list-style:none;margin:0;padding:0;font-size:12.5px;}
+.toc li{padding:5px 0 5px 14px;position:relative;color:var(--fg-dim);cursor:pointer;}
+.toc li::before{content:"›";position:absolute;left:0;color:var(--fg-mute);}
+.toc li:hover{color:var(--fg-bright);}
+.toc li.sub{padding-left:28px;}
+.toc li.active{color:var(--fg-bright);border-left:1px solid var(--fg);margin-left:-1px;}
+
+/* ============================================================
+   9. 异常项目列表页：筛选 + 卡片网格 + 分页
+   ============================================================ */
+.filters{
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  border:1px solid var(--line);border-radius:3px;padding:11px 13px;background:var(--panel);
+}
+.search{
+  flex:1;min-width:200px;display:flex;align-items:center;gap:8px;
+  border:1px solid var(--line);border-radius:2px;padding:4px 10px;background:rgba(0,0,0,.3);
+}
+.search input{flex:1;background:transparent;border:0;outline:0;color:var(--fg);font:inherit;}
+.search input::placeholder{color:var(--fg-mute);}
+.chips{display:flex;gap:6px;flex-wrap:wrap;}
+.chip-btn{
+  font:inherit;font-size:11.5px;letter-spacing:.1em;cursor:pointer;
+  border:1px solid var(--line);border-radius:2px;padding:3px 10px;
+  background:transparent;color:var(--fg-dim);transition:.14s;
+}
+.chip-btn:hover{color:var(--fg);border-color:var(--line-hot);}
+.chip-btn.on{background:var(--panel-2);color:var(--fg-bright);border-color:var(--fg);}
+.arch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:16px;}
+.acard{
+  border:1px solid var(--line);border-left:2px solid var(--line-hot);border-radius:3px;
+  padding:13px 14px;background:var(--panel);transition:.16s;cursor:pointer;
+  display:flex;flex-direction:column;gap:7px;
+}
+.acard:hover{background:var(--panel-2);transform:translateY(-2px);box-shadow:0 6px 22px rgba(0,0,0,.45);}
+.acard .h{display:flex;align-items:center;gap:9px;}
+.acard .no{font-size:12px;color:var(--fg-dim);letter-spacing:.08em;}
+.acard .nm{font-size:13.5px;color:var(--fg-bright);letter-spacing:.06em;}
+.acard .ex{font-size:12px;color:var(--fg-dim);line-height:1.65;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.acard .tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:auto;}
+.acard .tags .tag{font-size:10px;padding:0 6px;letter-spacing:.1em;color:var(--fg-mute);}
+.pager{display:flex;gap:6px;align-items:center;justify-content:center;margin-top:20px;font-size:12px;color:var(--fg-dim);}
+.pager .pg{border:1px solid var(--line);padding:2px 9px;border-radius:2px;cursor:pointer;}
+.pager .pg.on{background:var(--panel-2);color:var(--fg-bright);border-color:var(--fg);}
+
+/* ============================================================
+   10. 时间线页
+   ============================================================ */
+.tl{position:relative;list-style:none;margin:0;padding:4px 0 4px 22px;}
+.tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;
+  background:linear-gradient(180deg,transparent,var(--line-hot),var(--line-soft),transparent);}
+.tl li{position:relative;padding:0 0 20px 6px;}
+.tl li::before{
+  content:"";position:absolute;left:-21px;top:8px;width:9px;height:9px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--fg);box-shadow:var(--glow);
+}
+.tl li.dim::before{border-color:var(--fg-mute);box-shadow:none;}
+.tl .yr{font-size:12px;color:var(--fg-dim);letter-spacing:.16em;}
+.tl .tt{color:var(--fg-bright);font-size:13.5px;letter-spacing:.06em;}
+.tl .ds{color:var(--fg-dim);font-size:12.5px;max-width:70ch;}
+
+/* ============================================================
+   11. 底栏
+   ============================================================ */
+.statusbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:8000;
+  display:flex;align-items:center;gap:16px;
+  padding:6px 18px;font-size:11px;letter-spacing:.1em;
+  color:var(--fg-dim);border-top:1px solid var(--line);
+  background:linear-gradient(0deg, rgba(0,0,0,.7), rgba(0,0,0,.35));
+  backdrop-filter:blur(6px);
+}
+.statusbar .sb{display:flex;align-items:center;gap:7px;white-space:nowrap;}
+.statusbar .led{width:7px;height:7px;border-radius:50%;background:var(--fg);box-shadow:var(--glow);
+  animation:pulse 2.4s ease-in-out infinite;}
+@keyframes pulse{50%{opacity:.35;}}
+.statusbar .spacer{flex:1;}
+.statusbar .cursor{display:inline-block;width:8px;height:12px;background:var(--fg);animation:blink 1.05s steps(1) infinite;vertical-align:-2px;}
+
+/* ============================================================
+   12. 响应式
+   ============================================================ */
+@media (max-width:1180px){
+  .page-grid{grid-template-columns:minmax(0,1fr);}
+  .rail{position:static;}
+}
+@media (max-width:900px){
+  .shell{grid-template-columns:minmax(0,1fr);gap:14px;padding:14px 12px 70px;}
+  .sidebar{position:static;max-height:none;overflow:visible;}
+  .nav-group{display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
+  .nav-group h4{width:100%;margin-top:6px;}
+  /* 横排时：树分支线与 TODO 标签都藏掉，改成一个个标签块，避免挤成一长条 */
+  .nav-item .br{display:none;}   /* 横排时所有分支/项目符号都藏掉 */
+  .nav-item .todo{display:none;}
+  .nav-item,
+  .nav-tree .nav-item{
+    display:inline-flex;border:1px solid var(--line-soft);border-radius:2px;
+    padding:3px 9px;background:var(--panel);
+  }
+  .nav-item.active,
+  .nav-tree .nav-item.active{border-color:var(--fg);background:var(--panel-2);}
+  .nav-item.disabled{opacity:.5;}
+  .nav-tree .nav-root,
+  .nav-tree .nav-root.active{padding:3px 9px;margin-bottom:0;border-color:var(--line);}
+  .nav-tree .nav-root.active{border-color:var(--fg);}
+  .nav-tree .nav-root::before{content:none;}
+  .stat-row{grid-template-columns:1fr 1fr;}
+  .hero{padding:24px 18px;}
+  .topbar .chip.hide-sm{display:none;}
+}
+@media (max-width:560px){
+  .stat-row{grid-template-columns:1fr;}
+  .brand .b-sub{display:none;}
+}
+@media (prefers-reduced-motion:reduce){
+  .sweep, .hero h1 .cursor, .statusbar .cursor, .statusbar .led{animation:none;}
+  .page{animation:none;}
+}
+
+/* ============================================================
+   13. 多页面结构补充
+   ============================================================ */
+a.nav-item{text-decoration:none;}          /* 导航项改成真链接后去掉下划线 */
+a.acard, a.qcard{text-decoration:none;color:inherit;}
+
+/* ============================================================
+   14. SCP-001 特型版式（禁阅档案：单栏居中 / 戏剧留白 / 直呼读者）
+   ============================================================ */
+
+/* 单栏居中容器：这一页没有右栏，内容收窄成一份"文书" */
+.doc-narrow{max-width:820px;margin:0 auto;}
+
+/* --- 禁令横幅：红框 + 斜纹 + 背景大号 −1 --- */
+.ban{
+  position:relative;overflow:hidden;
+  border:1px solid var(--c-keter);border-radius:3px;
+  padding:18px 20px;
+  background:
+    repeating-linear-gradient(45deg, rgba(255,107,107,.08) 0 12px, transparent 12px 24px),
+    linear-gradient(180deg, rgba(255,107,107,.06), transparent);
+}
+.ban .mark{
+  position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  font-size:84px;line-height:1;letter-spacing:-.06em;
+  color:rgba(255,107,107,.13);pointer-events:none;user-select:none;
+}
+.ban .t{font-size:10.5px;letter-spacing:.34em;color:var(--c-keter);}
+.ban .m{margin-top:9px;font-size:13px;line-height:1.9;color:#ffdcdc;max-width:52ch;}
+
+/* --- 戏剧化留白 + 直呼读者 --- */
+.addr{margin:88px 0;text-align:center;}
+.addr .k{font-size:13px;letter-spacing:.5em;color:var(--fg-mute);}
+.addr .call{
+  margin:0;font-size:clamp(20px,2.4vw,28px);letter-spacing:.34em;
+  color:var(--fg-bright);text-shadow:var(--glow);
+}
+.addr .ask{
+  margin:14px 0 0;font-size:clamp(17px,2vw,23px);letter-spacing:.16em;
+  line-height:1.95;color:var(--fg);
+}
+.blink{
+  display:inline-block;width:.5em;height:1em;background:var(--fg);
+  vertical-align:-.12em;margin-left:.24em;
+  animation:blink 1.05s steps(1) infinite;
+}
+
+/* --- 无资格（红色标注） --- */
+.deny{color:var(--c-keter);letter-spacing:.1em;}
+
+/* --- 访谈里的舞台提示（对象：(明显的惊讶。)） --- */
+.quote .dir{color:var(--fg-mute);font-style:italic;}
+
+/* 章节标题里的链接（附录1：对 VESPER_HOSHINOAME 的访谈） */
+.sec-title a{color:var(--fg);text-decoration:none;border-bottom:1px dotted var(--line-hot);}
+.sec-title a:hover{color:var(--fg-bright);border-bottom-style:solid;}
+
+/* --- 九行祷文 --- */
+.litany{
+  margin-top:18px;padding:30px 22px;border-radius:3px;
+  border:1px solid rgba(255,107,107,.25);
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(255,107,107,.09), transparent 60%),
+    rgba(0,0,0,.45);
+  text-align:center;
+}
+.litany p{
+  margin:0 0 .75em;font-size:clamp(15px,1.9vw,20px);
+  letter-spacing:.3em;line-height:2;color:#ffe6e6;
+  font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC","SimSun",Georgia,serif;
+  text-shadow:none;
+}
+.litany p:last-child{
+  margin-bottom:0;color:#fff;
+  text-shadow:0 0 16px rgba(255,107,107,.65);
+}
+
+/* --- 档案正文里的几种"非正文"小块 ------------------------------------- */
+/* 记录小标签，如「- 未被证实的记录」 */
+.rec-label{
+  margin:1.3em 0 .5em;font-size:12px;letter-spacing:.16em;color:var(--fg-mute);
+}
+/* 页边批注：//斜体// 成段出现时用（谁在档案里加了句话） */
+.margin-note{
+  margin:16px 0;padding:10px 14px;
+  border-left:2px dashed var(--line-hot);
+  font-style:italic;font-size:12.5px;line-height:1.9;color:var(--fg-dim);
+}
+.margin-note .by{
+  display:block;margin-top:7px;font-style:normal;text-align:right;
+  font-size:11px;letter-spacing:.06em;color:var(--fg-mute);
+}
+/* 结尾的一句话（居中、斜体、拉开字距） */
+.closing-line{
+  margin:30px 0 0;text-align:center;font-style:italic;
+  font-size:14px;letter-spacing:.3em;color:var(--fg-bright);
+  text-shadow:var(--glow);
+}
+/* 手册/附录里那种单独一行的警告，如「*警告：未在数据库中检索到该文档」 */
+.doc-warn{color:var(--c-euclid);font-size:12.5px;letter-spacing:.02em;margin:0 0 1em;}
+
+/* --- 「下一篇」卡片：指向另一套视觉世界的档案（如 SCP-9644-B 的 O5 文件）
+   整张卡就是链接；右边的箭头在悬停时会轻微右移。 --- */
+.next-card{
+  display:block;margin-top:30px;padding:16px 18px;
+  border:1px solid var(--line);border-radius:4px;
+  background:linear-gradient(180deg,var(--panel),transparent 70%);
+  text-decoration:none;color:inherit;transition:.16s;
+}
+.next-card:hover{
+  border-color:var(--line-hot);background:var(--panel-2);
+  box-shadow:0 8px 26px rgba(0,0,0,.45);
+}
+.next-card .nc-k{font-size:10.5px;letter-spacing:.3em;color:var(--fg-mute);}
+.next-card .nc-main{display:flex;align-items:baseline;gap:12px;margin-top:9px;}
+.next-card .nc-no{font-size:15px;letter-spacing:.1em;color:var(--fg-bright);}
+.next-card .nc-t{font-size:13px;color:var(--fg-dim);}
+.next-card .nc-a{margin-left:auto;color:var(--fg-mute);transition:.16s;}
+.next-card:hover .nc-a{color:var(--fg);transform:translateX(3px);}
+.next-card .nc-n{margin-top:10px;font-size:11.5px;line-height:1.7;color:var(--fg-mute);}
+
+/* --- 通往「编目外卷宗」的入口：站内唯一一处白色链接 ---
+   用白字 + 白描边，在绿色页面里显得"不属于这里"。
+   点进去会离开这套显像管视觉，进入 assets/css/overlord.css 的纸白世界。 */
+.entry-void{
+  margin:22px 0 4px;padding:16px 18px;border-radius:3px;
+  border:1px solid rgba(255,255,255,.16);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.055), transparent),
+    rgba(0,0,0,.35);
+}
+.entry-void .ev-k{
+  font-size:10.5px;letter-spacing:.3em;color:rgba(255,255,255,.45);
+}
+.entry-void .ev-link{
+  display:inline-block;margin-top:9px;
+  font-size:15px;letter-spacing:.08em;color:#fff;
+  text-decoration:none;border-bottom:1px solid rgba(255,255,255,.45);
+  text-shadow:0 0 10px rgba(255,255,255,.35);
+}
+.entry-void .ev-link:hover{
+  color:#fff;border-bottom-color:#fff;
+  text-shadow:0 0 16px rgba(255,255,255,.8);
+}
+.entry-void .ev-n{
+  margin-top:10px;font-size:11.5px;line-height:1.75;
+  color:rgba(255,255,255,.42);
+}
+
+/* --- 归档列表里的"整行"特大卡片 --- */.acard-feature{
+  grid-column:1 / -1;               /* 贯通整行 */
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:center;
+  min-height:168px;
+  padding:30px 32px;
+  border-left-width:3px;
+  border-left-color:var(--c-keter);
+  background:
+    linear-gradient(110deg, rgba(255,107,107,.07), transparent 55%),
+    var(--panel);
+}
+.acard-feature .no{font-size:12.5px;letter-spacing:.18em;color:var(--c-keter);}
+.acard-feature .nm{font-size:26px;letter-spacing:.12em;margin-top:12px;color:var(--fg-bright);}
+.acard-feature .ex{margin-top:12px;font-size:13px;max-width:62ch;-webkit-line-clamp:2;}
+.acard-feature .tags{margin-top:14px;}
+.acard-feature .mark{
+  position:absolute;right:26px;top:50%;transform:translateY(-50%);
+  font-size:132px;letter-spacing:-.07em;line-height:1;
+  color:rgba(255,107,107,.15);pointer-events:none;user-select:none;
+}
+@media (max-width:560px){
+  .addr{margin:56px 0;}
+  .acard-feature{min-height:0;padding:22px 18px;}
+  .acard-feature .nm{font-size:19px;}
+  .acard-feature .mark{font-size:80px;right:10px;}
+}
+
+/* ============================================================
+   15. 正文内容型组件（按内容的"形状"给版式，而不是一律排成项目符号）
+   ============================================================ */
+
+/* --- 部件 / 材质清单：左标签 + 右描述，像一张解剖表 --- */
+.parts{
+  margin:20px 0;border:1px solid var(--line);border-radius:4px;overflow:hidden;
+}
+.parts .p{
+  display:grid;grid-template-columns:108px 1fr;
+  border-bottom:1px solid var(--line-soft);
+}
+.parts .p:last-child{border-bottom:0;}
+.parts .p .n{
+  padding:11px 12px;font-size:12.5px;letter-spacing:.06em;
+  color:var(--fg-bright);background:rgba(0,0,0,.32);
+  border-right:1px solid var(--line-soft);
+}
+.parts .p .d{padding:11px 14px;font-size:12.5px;line-height:1.85;color:var(--fg-dim);}
+
+/* --- 种别表：十个种，两列小卡 --- */
+.castes{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;margin:20px 0;
+}
+.caste{
+  padding:10px 12px;border:1px solid var(--line);border-left:2px solid var(--line-hot);
+  border-radius:3px;background:rgba(0,0,0,.26);transition:.14s;
+}
+.caste:hover{background:var(--panel-2);border-left-color:var(--fg);}
+.caste .n{font-size:13px;letter-spacing:.06em;color:var(--fg-bright);}
+.caste .d{margin-top:5px;font-size:12px;line-height:1.75;color:var(--fg-dim);}
+
+/* --- 阶段阶梯：编号 + 一句 + 逐渐变长的红色进度条 --- */
+.stages{margin:20px 0;counter-reset:st;}
+.stage{
+  position:relative;padding:9px 0 13px;
+  border-bottom:1px dashed var(--line-soft);
+  display:flex;gap:14px;align-items:baseline;
+}
+.stage .k{
+  flex:none;width:6.6em;font-size:11.5px;letter-spacing:.08em;color:var(--fg-mute);
+}
+.stage .k b{color:var(--c-keter);font-weight:600;}
+.stage .t{font-size:12.5px;line-height:1.8;color:var(--fg-dim);}
+/* 轨道 + 红色填充：一眼看出"推到第几阶段了" */
+.stage::before{
+  content:"";position:absolute;left:0;right:0;bottom:5px;height:2px;
+  background:var(--line-soft);
+}
+.stage::after{
+  content:"";position:absolute;left:0;bottom:5px;height:2px;
+  width:calc(var(--i) * 12.5%);                 /* 1→8 格，越往后越长 */
+  background:var(--c-keter);opacity:.72;
+}
+.stage:last-child{border-bottom:0;}
+
+/* 省略号 / "还有更多" */
+.more{margin:12px 0 0;color:var(--fg-mute);letter-spacing:.5em;}
+
+@media (max-width:560px){
+  .parts .p{grid-template-columns:1fr;}
+  .parts .p .n{border-right:0;border-bottom:1px solid var(--line-soft);}
+  .castes{grid-template-columns:1fr;}
+  .stage{flex-direction:column;gap:4px;}
+  .stage .k{width:auto;}
+}
+
+/* ============================================================
+   16. 现场记录（幸存者日志）—— 给 scp9098a.html 那种"人写的东西"
+   ------------------------------------------------------------
+   规则只有一条：**版式不要抢戏**。
+   原文里的空行是呼吸，短句间的无空行是憋着气一口气说完，
+   这些都在排版里保留下来，别合并成一段。
+   ============================================================ */
+
+/* 比正文窄一些：中文一行 40 字上下最好读 */
+.doc-narrow.tight{max-width:680px;}
+
+.log-h{margin:0 0 38px;padding-bottom:18px;border-bottom:1px solid var(--line);}
+.log-h .k{font-size:10.5px;letter-spacing:.34em;color:var(--fg-mute);}
+.log-h h1{
+  margin:14px 0 0;font-size:clamp(21px,3.2vw,30px);
+  line-height:1.5;letter-spacing:.06em;color:var(--fg-bright);font-weight:600;
+}
+.log-h .m{margin-top:14px;font-size:11.5px;letter-spacing:.06em;color:var(--fg-mute);}
+.log-h .m i{font-style:normal;margin:0 10px;opacity:.45;}
+
+.log{font-size:14.5px;line-height:2.15;color:var(--fg);}
+.log p{margin:0 0 1.45em;}
+
+/* 连着几句、中间没有空行的地方：压紧，读起来是一口气 */
+.log .run{margin:0 0 1.45em;}
+.log .run p{margin:0 0 .3em;}
+.log .run p:last-child{margin-bottom:0;}
+
+/* 原文里的大空行 */
+.log .void{height:96px;}
+.log .void.lg{height:280px;}
+
+/* 最后一句：整个文档唯一的高亮 */
+.log .last{color:#fff;text-shadow:var(--glow);letter-spacing:.04em;}
+
+@media (max-width:560px){
+  .log{font-size:14px;line-height:2.05;}
+  .log .void{height:64px;}
+  .log .void.lg{height:180px;}
+}

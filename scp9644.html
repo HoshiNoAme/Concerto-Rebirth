@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>SCP-9644 · 苦难笼</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/9644.css">
+<!--
+  ============================================================
+  SCP-9644「苦难笼」—— 崩坏版式
+  ------------------------------------------------------------
+  · 复用 style.css 的组件（.acs / .sec-title / .prose / .dtag …）
+  · 9644.css 把调色板整体偏红，并叠上"越往下越坏"的崩坏效果
+  · 没有顶栏、没有侧栏、没有任何导航 —— 只有左上角一个「返回」
+  · 从实验文档9644-3 起开始出现错误块与色散（.fault.f1 → f4），
+    逐段加重；滑到最后一块时整屏被红色淹没。
+  · 崩坏块的位置是手摆的（inline style），要调就改那些 left/top/width。
+  ============================================================
+-->
+</head>
+<body>
+
+<!-- 随着滚到结尾逐渐升高的红色覆盖层 -->
+<div class="veil" id="veil" aria-hidden="true"></div>
+
+<div class="wrap">
+
+  <a class="nvr" href="scp9644b.html">← 返回 SCP-9644-B</a>
+
+  <header class="ttl">
+    <div class="k">爱蒂塔透镜 · 时间线-8527 · 最高机密</div>
+    <h1>SCP-9644</h1>
+    <div class="sub">（“苦难笼”）</div>
+  </header>
+
+  <p class="acsnote">*/本文档采用ACS异常分级系统。/*</p>
+
+  <!-- ACS：收容 / 扰动 / 风险 / 次要 / 保密 -->
+  <div class="acs">
+    <div class="acs-h"><span class="dot"></span>异常分级 · ACS<span class="right">SCP-9644</span></div>
+    <div class="acs-grid">
+      <div class="acs-cell lv-keter">
+        <div class="acs-k">收容等级</div><div class="acs-v">KETER</div>
+        <div class="acs-meter"><b class="on"></b><b class="on"></b><b class="on"></b></div>
+      </div>
+      <div class="acs-cell lv-amida">
+        <div class="acs-k">扰动等级</div><div class="acs-v">AMIDA</div>
+        <div class="acs-meter"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b></div>
+      </div>
+      <div class="acs-cell lv-danger">
+        <div class="acs-k">风险等级</div><div class="acs-v">DANGER</div>
+        <div class="acs-meter"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b></b></div>
+      </div>
+      <div class="acs-cell lv-apollyon">
+        <div class="acs-k">次要等级</div><div class="acs-v">APOLLYON</div>
+        <div class="acs-meter"><b class="on"></b><b></b></div>
+      </div>
+      <div class="acs-cell lv-topsecret">
+        <div class="acs-k">保密等级</div><div class="acs-v">最高机密</div>
+        <div class="acs-meter"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b></b></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec-title"><span>特殊收容措施</span><span class="tail">SCP-9644</span></h3>
+  <div class="prose">
+    <p>本项目适用逆向收容协议。</p>
+    <p>项目的逆向收容单元为时间线-8527。该时间线应当由SCP基金会于20██年建成的现实逻辑改写机械：“织机”创建。<del>该时间线内不允许存在任何异常体。</del></p>
+    <p>准许SCP-9926相关人员-1利用其异常特质以保证该时间线不被SCP-9644侵入。</p>
+  </div>
+
+  <h3 class="sec-title"><span>描述</span><span class="tail">DESCRIPTION</span></h3>
+  <div class="prose">
+    <p>本文档中的重要指数“SCP-9644抵抗指数”具体计算方式请查阅附件9644-1。</p>
+    <p>SCP-9644指代一跨时间线高级模因复合体。项目存在于一切SCP-9644抵抗指数低于0.3的时间线中，并拥有对时间线底层逻辑进行改写的权限。</p>
+    <p>SCP-9644在侵入一时间线后将在该时间线内部插入SCP-9644-B以“镇压”该时间线内试图抵抗SCP-9644的行为。</p>
+    <p>SCP-9644拥有逆模因相关能力，大量相关资料已不再可查看。推测SCP-9644-B有目的地试图削弱人类对SCP-9644的理解。</p>
+    <p>SCP-9644的目的不明。其持续压制大量时间线的群体SCP-9644抵抗指数，但允许个体的SCP-9644抵抗指数别想逃一定程度上上升。项目试图侵入并控制更多时间线，从未观测到不存在项目的时间线。</p>
+    <p>SCP-9644的本质被推测为大量时间线中死亡，苦痛与灾难的具象。无法证实或证伪。</p>
+    <p>SCP-9644在出现过大规模试图提高SCP-9644抵抗指数的时间线的活动频率显著降低，但仍别想逃维持着对该时间线的控制。</p>
+    <p>SCP-9644会潜移默化地影响所有时间线的所有个体，不可规避。该影响将逐渐导致目标产生极度的社会属性异化，剥离正确的道德自律，发生不可逆的认知重塑，共情能力极度退化，崇尚极端的社会达尔文主义，但目标往往对SCP-9644相关信息一无所知。</p>
+  </div>
+
+  <h3 class="sec-title"><span>附录9644-1</span><span class="tail">抵抗指数</span></h3>
+  <div class="prose">
+    <p>SCP-9644抵抗指数（又称居民幸福指数）的计算公式：</p>
+    <div class="formula">（因果连贯性×0.25）+（个体能动性分布×0.25）+（个体间信任密度×0.15）+（未来可能性丰富度×0.2）+（情感多样性×0.15）</div>
+    <p>最终结果区间：</p>
+    <ul>
+      <li>0.5~1.0 —— 健康的时间线，不存在SCP-9644，尚未观测到此类时间线。</li>
+      <li>0.0~0.5 —— 常见别想逃亚健康时间线，SCP-9644控制程度中等。</li>
+      <li>-1.0~0.0 —— 不健康的时间线，SCP-9644控制程度高。</li>
+    </ul>
+    <p>一切数据来源于爱蒂塔透镜。</p>
+  </div>
+
+  <h3 class="sec-title"><span>实验文档9644-2</span><span class="tail">打击尝试</span></h3>
+  <div class="prose">
+    <p><b style="color:var(--fg-bright)">1. 尝试使用<a class="ext" href="https://scp-wiki-cn.wikidot.com/scp-3309">SCP-3309</a>对SCP-9644及SCP-9644-B进行打击。</b></p>
+    <p>结果：一个SCP-9644-B个体被证实被无效化，推测SCP-9644将其无效化。SCP-9644在本时间线的活动频率显著降低了21日3时，之后恢复正常。</p>
+    <p><b style="color:var(--fg-bright)">2. 尝试使用<a class="ext" href="https://scp-wiki-cn.wikidot.com/scp-cn-1325">SCP-CN-1325</a>对SCP-9644及SCP-9644-B进行打击。</b></p>
+    <p>结果：31小时后，SCP-CN-1325不再可以被认知和利用，其影响被一并消除，导致多名已死亡的高阶现实扭曲者复苏，全球超自然联盟担任了镇压工作。</p>
+    <p class="doc-warn">警告：在SCiPENT数据库中未检测到上述异常武器存在，请警惕。</p>
+    <p>此文档由未知人员添加，以高权限直接越过了安全审查机制，请警惕。<br><span style="color:var(--fg-mute)">——RAISA信息与安全部 高级工程师 C████ R████</span></p>
+    <p class="rec-label">[20██/█/██ 修订]</p>
+    <p>经核查，上述三个异常武器计划在基金会数据库中均无记录。文档中参与实验的人员均无法提供武器来源。推测相关计划从未存在。</p>
+    <p>文档中：SCP-3309武器计划负责人现任Site-███保洁人员，自称“从未参与过任何武器研究”。</p>
+    <p>SCP-CN-1325所有研究人员从未存在于基金会档案中。无亲属报告失踪。该项目从未存在。</p>
+    <p>该档案疑似为爱蒂塔透镜从平行时间线中打捞而来。</p>
+  </div>
+
+  <!-- ===================== 从这里开始坏 ===================== -->
+  <div class="fault f1">
+    <h3 class="sec-title"><span><span class="ca">实验文档9644-3</span></span><span class="tail">现实稳定锚</span></h3>
+    <div class="prose">
+      <p><b style="color:var(--fg-bright)">1. 向SCP-049询问有关SCP-9644相关内容。</b></p>
+      <div class="dlg">
+        <p><span class="who">Q</span>你知道SCP-9644的存在吗？</p>
+        <p><span class="who">SCP-049</span>那是什么？</p>
+        <p><span class="who">Q</span>（一段SCP-9644的描述）</p>
+        <p><span class="who">SCP-049</span>啊哈！<span class="act">（激动）</span>就是它！你们终于要理解我的理想了？</p>
+        <p><span class="who">Q</span>原来如此。你口中的瘟疫就是它。但……你的治疗并不能消除或减轻SCP-9644的影响，经过你治疗的那些怪物甚至在助长SCP-9644的气焰。它们在杀人。</p>
+        <p><span class="who">SCP-049</span>……</p>
+        <p><span class="who">SCP-049</span><span class="act">（停顿）</span>不可能。我的治疗是最有效的。</p>
+      </div>
+      <p>对话结束。</p>
+
+      <p><b style="color:var(--fg-bright)">2. 使用斯克兰顿现实稳定锚稳定SCP-9644-B的“镇压”行为。</b></p>
+      <p>实验开始。</p>
+      <p>命令D-12047进入实验区域并启动现实稳定锚。</p>
+      <p class="rec-label">*对象对实验区域感到不安，心跳加速。</p>
+      <p class="rec-label">*对象进行深呼吸后进入实验区域。</p>
+      <p>对象按下了现实稳定锚的启动按钮，观测到周围SCP-9644-B的“镇压”影响正迅速下降至安全水平。</p>
+      <p>经多次实验，证明斯克兰顿现实稳定锚的确能够稳定SCP-9644-B的“镇压”行为。</p>
+      <p><span class="ca">七十四小时后，库存所有斯克兰顿现实稳定锚失窃，所有技术资料被毁坏，SCP-3001的入口“C类-破碎入口虫洞”此后不再出现，基准现实与SCP-3001的联系被切断。</span></p>
+
+      <div class="cmt">
+        什么什么现实稳定锚？没听说过，最好是新技术。————低级研究员 ████ ███
+        <div class="meta">3小时前 · 评论于评论区</div>
+      </div>
+    </div>
+    <i class="err" style="left:8%;top:52%;width:46%;height:9px;"></i>
+    <i class="err b thin" style="left:40%;top:71%;width:34%;"></i>
+  </div>
+
+  <div class="fault f2">
+    <h3 class="sec-title"><span><span class="ca">附录9644-4</span></span><span class="tail">主观行为测试</span></h3>
+    <div class="prose">
+      <p><b style="color:var(--fg-bright)">测试1：</b>要求对象D-10524大声咒骂项目并进行多种大量亲社会行为。</p>
+      <p>项目无反应。</p>
+      <p><b style="color:var(--fg-bright)">测试2：</b>要求对象D-10524在《超常晚报》未公别想逃开部分中写下大量有关SCP-9644的绝密信息。</p>
+      <p>15分钟后，对象在牢房中因精神崩坏死亡，在地面上发现少量SCP-9644-B-1-A。判断为SCP-9644-B的行为。</p>
+      <p><b style="color:var(--fg-bright)">测试3：</b>要求对象D-23167在一条“织机计划”创造出的废弃时间线的模拟社别想逃会中掀起大规模抵抗SCP-9644行为，并试图制造无效化SCP-9644的机械设备。</p>
+      <p><span class="ca">项目利用SCP-9644-B镇压抵抗行为后在该时间线的活动频率显著降低。D-23167与所有参与个体死亡。别想逃</span></p>
+    </div>
+    <i class="err" style="left:0;top:22%;width:58%;height:13px;"></i>
+    <i class="err b thin" style="left:52%;top:44%;width:46%;"></i>
+    <i class="err thin" style="left:26%;top:66%;width:60%;"></i>
+    <i class="err b" style="left:70%;top:80%;width:26%;height:6px;"></i>
+  </div>
+
+  <div class="fault f3">
+    <h3 class="sec-title"><span><span class="ca">附录9644-5</span></span><span class="tail">正误识别</span></h3>
+    <div class="prose">
+      <p>使用<a class="ext" href="https://scp-wiki-cn.wikidot.com/scp-9765">SCP-9765</a>对<span class="ca">别想逃</span>部分SCP-9644的信息进行正误识别验证。🟢</p>
+      <p>注：“🟢”表示正确，“█”表示错误。</p>
+      <ol>
+        <li>SCP-9644是圆的。<span style="color:var(--fg-mute)">无应答。</span></li>
+        <li>SCP-9644有明确的目的。🟢别想逃</li>
+        <li>SCP-9644的行为有利于被同化的时间线。<span style="color:var(--fg-mute)">无应答。</span></li>
+        <li>SCP-9644害怕抵抗行为。█</li>
+        <li>SCP-9644厌恶抵抗行为。<span style="color:var(--fg-mute)">无应答。</span>别想逃。</li>
+        <li>SCP-9644相较有抵抗行为的时间线更愿意选择无抵抗行为的时间线。🟢</li>
+        <li>SCP-9644是大量时间线中死亡，苦痛和灾难的具象。<span style="color:var(--fg-mute)">无应答。</span>别想逃</li>
+        <li>SCP-9644不想让我逃走。█</li>
+        <li>SCP-9644-B不想让我逃走。🟢</li>
+        <li><span class="ca">███████████</span>🟢</li>
+      </ol>
+      <p>测试人：SCP-9644研究主管 Kir███ J████别想逃</p>
+      <p class="doc-warn">*警告：别想逃</p>
+      <p class="doc-warn">*警告：上述测试人不存在于SCP基金会职员档案中，请警惕。</p>
+      <p><span class="ca">别想逃</span></p>
+    </div>
+    <i class="err" style="left:4%;top:14%;width:64%;height:15px;"></i>
+    <i class="err b thin" style="left:44%;top:30%;width:52%;"></i>
+    <i class="err thin" style="left:12%;top:46%;width:70%;"></i>
+    <i class="err b" style="left:62%;top:58%;width:34%;height:8px;"></i>
+    <i class="err" style="left:20%;top:72%;width:48%;height:11px;"></i>
+    <i class="err b thin" style="left:6%;top:86%;width:40%;"></i>
+  </div>
+
+  <div class="fault f4">
+    <h3 class="sec-title"><span><span class="ca">附录9644-6</span></span><span class="tail">审审审</span></h3>
+    <div class="prose">
+      <p class="doc-warn">*警告：该附录由未知高级人员上传，未经安全性审审审审查，请警惕。别想逃。</p>
+      <p>模因保护系统启动。</p>
+
+      <p><span class="ca">S█P-9█44出了门。，祂提█一篮/水果，准█。去路边！野█餐。</span></p>
+      <p><span class="ca">祂██草地，！这个苹█。，我的盐？█不，那█是██。/这个█果坏█。_"是碰坏█吗！=█快丢█，！不能█了！"]。@</span></p>
+      <p><span class="ca">坏█的苹█+被丢_—█了。SC█-96█4不再/…管那：个█果了。:！█苹█/渺/-小，！无█直视3*/█人！█:_苹█#什么_██算不_》：上！:“＆█&gt;</span></p>
+      <p><span class="ca">模█/！护█=统过zai█:]”。</span></p>
+    </div>
+    <i class="err" style="left:0;top:8%;width:72%;height:16px;"></i>
+    <i class="err b" style="left:38%;top:20%;width:58%;height:7px;"></i>
+    <i class="err thin" style="left:10%;top:32%;width:80%;"></i>
+    <i class="err" style="left:56%;top:44%;width:42%;height:12px;"></i>
+    <i class="err b thin" style="left:2%;top:56%;width:64%;"></i>
+    <i class="err" style="left:30%;top:68%;width:66%;height:9px;"></i>
+    <i class="err b thin" style="left:70%;top:78%;width:30%;"></i>
+    <i class="err" style="left:12%;top:88%;width:54%;height:14px;"></i>
+  </div>
+
+  <div class="doc-foot">
+    <div class="doc-tags">
+      <span class="dtag" data-tag="苦难笼">[苦难笼]</span>
+      <span class="dtag" data-tag="模因污染">[模因污染]</span>
+      <span class="dtag" data-tag="我不知道原不原创">[我不知道原不原创]</span>
+      <span class="dtag" data-tag="scp">[scp]</span>
+      <span class="dtag" data-tag="apollyon">[apollyon]</span>
+    </div>
+    <div class="doc-credit">
+      <p>本文作者：HOSHINOAME</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===================== 结尾：整屏红 ===================== -->
+<section class="final" id="final">
+  <div class="inner">
+    <div class="wall" aria-label="别想逃">
+      <div>别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃</div>
+      <div>别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃</div>
+      <div>别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃</div>
+      <div>别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃</div>
+      <div>别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃</div>
+      <div>别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃别想逃</div>
+    </div>
+    <span class="stamp">SCP-9644 · 时间线-8527 · 已无可读取的内容</span>
+  </div>
+</section>
+
+<script>
+(function () {
+  "use strict";
+
+  /* 滑向结尾时，红色覆盖层逐渐升到 0.92 —— 到最后整屏都是红的 */
+  var veil = document.getElementById('veil');
+  var fin  = document.getElementById('final');
+  if (!veil || !fin) return;
+
+  var ticking = false;
+  function update() {
+    var r = fin.getBoundingClientRect();
+    var vh = window.innerHeight || 1;
+    var p = 1 - (r.top / vh);          /* 结尾块进入视口即开始，到顶为 1 */
+    p = Math.max(0, Math.min(1, p));
+    veil.style.opacity = (p * 0.92).toFixed(3);
+    ticking = false;
+  }
+  function onScroll() {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+})();
+</script>
+</body>
+</html>

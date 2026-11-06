@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · SCP-9644-B-1</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：档案详情
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关人员档案</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">安保设施</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">技术与协议</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="s9644b1">
+      <div class="crumbs">
+        <a class="back" href="archive.html">← 返回异常项目列表</a>
+        <span style="color:var(--fg-mute);margin:0 8px;">·</span>主页：foundation / <b>异常项目列表</b> / SCP-9644-B-1
+      </div>
+
+      <div class="page-grid">
+        <div>
+          <!-- 文档头（非 ACS 型：普通字段表） -->
+          <div class="dossier-h">
+            <div class="top">
+              <span class="scp-id">SCP-9644-B-1</span>
+              <span class="tag keter">KETER</span>
+              <span class="name">（“侵蚀体”）</span>
+            </div>
+            <div class="fields">
+              <div class="f"><span class="k">项目编号</span><span class="v">SCP-9644-B-1</span></div>
+              <div class="f"><span class="k">项目等级</span><span class="v">Keter</span></div>
+              <div class="f"><span class="k">收容区域</span><span class="v">无</span></div>
+              <div class="f"><span class="k">权限要求</span><span class="v">Level 5</span></div>
+              <div class="f"><span class="k">建档日期</span><span class="v">[数据删除]</span></div>
+              <div class="f"><span class="k">最后修订</span><span class="v">[数据删除]</span></div>
+              <div class="f"><span class="k">负责研究员</span><span class="v">织机计划 议会</span></div>
+              <div class="f"><span class="k">状态</span><span class="v">未收容</span></div>
+            </div>
+          </div>
+
+          <h3 class="sec-title"><span>特殊收容措施</span><span class="tail">SCP-9644-B-1</span></h3>
+          <div class="prose">
+            <p>项目随SCP-9644-B出现或消失，因此无法实现对项目的单独收容，应直接收容SCP-9644-B。</p>
+            <p>在项目活动的区域内人员应严格遵守附录9644-B-1-1的内容。</p>
+          </div>
+
+          <h3 class="sec-title"><span>描述</span><span class="tail">DESCRIPTION</span></h3>
+          <div class="prose">
+            <p>SCP-9644-B-1为一类人形异常个体，高度武装，强烈敌意。</p>
+            <p>部分个体身着包含MTF-Alpha-1（“红右手”），MTF-Beta-1（“灼烧器”）在内的各种机动特遣队及武装组织制服，配备的武器被认定为各种异常组织的制式武器，其中包含基金会在2001年开始列装的███-E██型突击步枪。</p>
+            <p>也有部分个体服装与普通人类无异，这类个体通常通过传播SCP-9644-B-1-A来攻击目标。</p>
+            <p>SCP-9644-B-1的面部被一种不可名状的内化信息流团组织覆盖。在该组织内部，经典逻辑的同一律（A=A）失效。实验观测到1=0、0=2、2=3、3=0.2等结果，且每次实验结果不同。由于该特性对现实结构的不可逆损伤，有关该特性的实验已被无限期禁止。</p>
+            <p>SCP-9644-B-1具有有限主观行为，推测为其受SCP-9644-B直接驱动。项目对于制造死亡、痛苦及灾难表现出强烈倾向，在遭遇非SCP-9644附属体的个体时会不断尝试杀死对方。</p>
+            <p>大部分SCP-9644-B-1个体能够熟练操作各种机械设备、电子设备和热武器。</p>
+            <p>SCP-9644-B-1在杀死一名目标后会试图接触并取出目标的大脑，此时项目四周5米的范围内将开始出现SCP-9644-B-1-A，该物质实为一种惰性模因残留的具象化物，反编译后发现该模因若活性化将导致方圆5米至5千米不等的同一律失效现象，若接触到智慧生物的大脑则该生物将转化为SCP-9644-B-1。</p>
+            <p>取出目标的大脑后，SCP-9644-B-1会将大脑放入其五官的信息流团中，大脑结构将迅速溶解，之后检测到信息流团的模因密度略微增加，通过捕捉部分溢出的模因残留发现其中包含被杀死目标的部分记忆以及生物学特征。</p>
+          </div>
+
+          <h3 class="sec-title"><span>附录9644-B-1-1</span><span class="tail">行动守则</span></h3>
+          <div class="prose">
+            <p>在有着SCP-9644-B-1的区域内行动的单位禁止单独行动，禁止信任对讲机和电话信息，队员间必须有安全绳连接，离开视线超过五分钟的队员被视为失联，无论安全绳是否完好都应切断安全绳并放弃寻找该队员，再次接触时应立即开火。</p>
+            <p>在队员失联当天应联系最近的站点并前往该站点休整，补员和进行医疗检查。</p>
+          </div>
+
+          <!-- 「下一篇」独立卡片：通往 SCP-9644-B（O5 直阅，另一套视觉世界） -->
+          <a class="next-card" href="scp9644b.html">
+            <div class="nc-k">下 一 篇</div>
+            <div class="nc-main">
+              <span class="nc-no">SCP-9644-B</span>
+              <span class="nc-a" aria-hidden="true">→</span>
+            </div>
+          </a>
+
+          <div class="doc-foot">
+            <div class="doc-tags">
+              <span class="dtag" data-tag="苦难笼">[苦难笼]</span>
+              <span class="dtag" data-tag="故事:主线">[故事:主线]</span>
+              <span class="dtag" data-tag="scp">[scp]</span>
+              <span class="dtag" data-tag="非完全原创">[非完全原创]</span>
+              <span class="dtag" data-tag="借鉴">[借鉴]</span>
+            </div>
+
+            <div class="doc-credit">
+              <p>本文作者：HOSHINOAME</p>
+              <p>借鉴：<a class="ext" href="https://baike.baidu.com/item/%E9%82%AA%E9%AD%94/62037033">邪魔</a></p>
+            </div>
+          </div>
+
+          <div style="margin-top:24px;padding-top:16px;border-top:1px dashed var(--line-soft);">
+            <a class="btn" href="archive.html">← 返回异常项目列表</a>
+          </div>
+        </div>
+
+        <aside class="rail">
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>元数据</div>
+            <div class="panel-b" style="padding:4px 14px 12px;">
+              <table class="meta-t">
+                <tr><td>项目编号</td><td>SCP-9644-B-1</td></tr>
+                <tr><td>项目等级</td><td><span class="tag keter">KETER</span></td></tr>
+                <tr><td>状态</td><td>未收容</td></tr>
+                <tr><td>收容区域</td><td>无</td></tr>
+                <tr><td>负责机关</td><td>织机计划 议会</td></tr>
+                <tr><td>标签</td><td style="color:var(--fg-dim)">#苦难笼 #主线</td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>本文目录</div>
+            <div class="panel-b" style="padding:10px 14px;">
+              <ul class="toc">
+                <li class="active">特殊收容措施</li>
+                <li>描述</li>
+                <li class="sub">信息流团</li>
+                <li>附录 9644-B-1-1</li>
+                <li>下一篇 · SCP-9644-B</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>相关条目</div>
+            <div class="panel-b">
+              <ul class="list" style="font-size:12.5px;">
+                <li><span class="id">下一篇</span><a class="tt" href="scp9644b.html">SCP-9644-B</a></li>
+                <li><span class="id">索引</span><a class="tt" href="archive.html">全部异常项目</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：SCP-9644-B-1</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 · 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

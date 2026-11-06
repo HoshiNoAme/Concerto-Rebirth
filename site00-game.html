@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SITE-00 · 值班终端</title>
+<!--
+  ============================================================
+  SITE-00 · 值班终端　（小彩蛋：终端文字游戏）
+  ------------------------------------------------------------
+  · 单文件、零依赖、离线可玩
+  · 目标：拿到门禁卡和收容规程，去收容间收容异常体
+  · 输入「帮助」看指令；每行动一次警报等级上升，到 20 就收容失效
+  ============================================================
+-->
+<style>
+:root{
+  --bg:#040d07; --bg-deep:#010603;
+  --panel:rgba(72,255,150,.045); --panel-2:rgba(72,255,150,.085);
+  --line:rgba(72,255,150,.22); --line-soft:rgba(72,255,150,.12);
+  --fg:#5cff9d; --fg-dim:#35a469; --fg-mute:#1e6b42; --fg-bright:#d6ffe8;
+  --glow:0 0 7px rgba(92,255,157,.45); --glow-soft:0 0 3px rgba(92,255,157,.3);
+  --warn:#ffc857; --danger:#ff6b6b; --info:#6bd5ff;
+  --scan:rgba(0,0,0,.30);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;height:100%;}
+body{
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(255,255,255,.035), transparent 60%),
+    linear-gradient(180deg, var(--bg), var(--bg-deep));
+  color:var(--fg);
+  font-family:"Sarasa Mono SC","Cascadia Mono",ui-monospace,SFMono-Regular,Consolas,"Microsoft YaHei",monospace;
+  font-size:14px;line-height:1.75;letter-spacing:.02em;
+  text-shadow:var(--glow-soft);
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+}
+::selection{background:var(--fg);color:var(--bg-deep);}
+
+/* CRT */
+.crt{position:fixed;inset:0;pointer-events:none;z-index:9;}
+.crt::before{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(180deg, var(--scan) 0 1px, transparent 1px 3px);
+  mix-blend-mode:multiply;}
+.crt::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(115% 100% at 50% 50%, transparent 55%, rgba(0,0,0,.55) 100%);}
+
+/* 终端外壳 */
+.term{
+  width:100%;max-width:860px;height:min(680px, 100%);
+  display:flex;flex-direction:column;
+  border:1px solid var(--line);border-radius:4px;overflow:hidden;
+  background:rgba(0,0,0,.42);
+  box-shadow:0 20px 60px rgba(0,0,0,.6), inset 0 0 70px rgba(72,255,150,.03);
+}
+.term-h{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 13px;border-bottom:1px solid var(--line);
+  background:var(--panel-2);
+  font-size:11.5px;letter-spacing:.16em;color:var(--fg-bright);
+}
+.term-h .dot{width:6px;height:6px;background:var(--fg);box-shadow:var(--glow);flex:none;}
+.term-h .right{margin-left:auto;font-size:10.5px;letter-spacing:.1em;color:var(--fg-mute);}
+
+/* 状态条 */
+.status{
+  display:flex;gap:18px;flex-wrap:wrap;align-items:center;
+  padding:6px 13px;border-bottom:1px solid var(--line-soft);
+  font-size:11.5px;color:var(--fg-dim);background:rgba(0,0,0,.25);
+}
+.status b{color:var(--fg);font-weight:400;}
+.status .alert b{color:var(--warn);}
+.status .alert.hot b{color:var(--danger);}
+
+/* 输出区 */
+.out{
+  flex:1;min-height:0;overflow-y:auto;
+  padding:14px 16px;
+  font-size:13.5px;white-space:pre-wrap;word-break:break-word;
+  scrollbar-width:thin;scrollbar-color:var(--line) transparent;
+}
+.out::-webkit-scrollbar{width:7px;}
+.out::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px;}
+.line{margin:0 0 .55em;}
+.sys{color:var(--fg-mute);}
+.hint{color:var(--fg-dim);}
+.ok{color:var(--fg-bright);}
+.warn{color:var(--warn);}
+.bad{color:var(--danger);}
+.info{color:var(--info);}
+.echo{color:var(--fg-dim);}
+.echo::before{content:"> ";color:var(--fg-mute);}
+hr.sep{border:0;border-top:1px dashed var(--line-soft);margin:12px 0;}
+
+/* 输入行 */
+.in{
+  display:flex;align-items:center;gap:9px;
+  padding:10px 14px;border-top:1px solid var(--line);
+  background:rgba(0,0,0,.35);
+}
+.in .ps1{color:var(--fg);flex:none;text-shadow:var(--glow);}
+.in input{
+  flex:1;min-width:0;background:transparent;border:0;outline:0;
+  color:var(--fg);font:inherit;font-size:13.5px;letter-spacing:.02em;
+}
+.in input::placeholder{color:var(--fg-mute);}
+.in input:disabled{color:var(--fg-mute);}
+
+@media (max-width:560px){
+  body{padding:8px;font-size:13px;}
+  .term{height:calc(100vh - 16px);}
+  .out{font-size:12.5px;padding:12px;}
+}
+@media (prefers-reduced-motion:reduce){ *{animation:none!important;} }
+</style>
+</head>
+<body>
+<div class="crt" aria-hidden="true"></div>
+
+<div class="term">
+  <div class="term-h">
+    <span class="dot"></span>SITE-00 · 值班终端
+    <span class="right">安全网络 / 本地</span>
+  </div>
+
+  <div class="status">
+    <span>位置 <b id="stRoom">值班室</b></span>
+    <span class="alert">警报 <b id="stAlert">0</b> / 20</span>
+    <span>携带 <b id="stInv">（空）</b></span>
+    <span>行动 <b id="stMoves">0</b> 次</span>
+  </div>
+
+  <div class="out" id="out" aria-live="polite"></div>
+
+  <div class="in">
+    <span class="ps1">&gt;</span>
+    <input id="cmd" type="text" placeholder="输入指令，回车执行（试试：帮助）" autocomplete="off" spellcheck="false" autofocus>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============ 场景数据 ============ */
+  var ROOMS = {
+    duty: {
+      name: '值班室',
+      desc: '值班室。荧光灯管嗡嗡作响，桌上摊着没写完的交接记录。墙边的储物柜半开着。',
+      exits: { '走廊': 'corridor' },
+      item: { id: 'card', name: '门禁卡', label: '门禁卡', look: '储物柜里躺着一张门禁卡。' }
+    },
+    corridor: {
+      name: '走廊',
+      desc: '走廊。日光灯每三盏坏一盏，尽头的收容间门上贴着黄色警示带。楼梯通往观察室。',
+      exits: { '值班室': 'duty', '收容间': 'cell', '观察室': 'obs' }
+    },
+    obs: {
+      name: '观察室',
+      desc: '观察室。单向玻璃后面就是收容间，暗处能看见那东西的轮廓，正随着你的呼吸起伏。',
+      exits: { '走廊': 'corridor' },
+      item: { id: 'manual', name: '收容规程', label: '收容规程', look: '操作台上压着一本《异常体临时收容规程》。' }
+    },
+    cell: {
+      name: '收容间',
+      desc: '收容间。异常体缩在角落，表面像湿掉的布一样缓慢起伏。它注意到你了。',
+      exits: { '走廊': 'corridor' }
+    }
+  };
+
+  var MAX_ALERT = 20;
+  var ALERT_MOVE = 2;      /* 移动一次涨 2 */
+  var ALERT_ACT = 1;       /* 其它行动涨 1 */
+  var ALERT_WASTE = 3;     /* 无效行动涨 3 */
+
+  /* ============ 状态 ============ */
+  var S = { room:'duty', inv:[], alert:0, moves:0, over:false };
+
+  /* ============ DOM ============ */
+  var out   = document.getElementById('out');
+  var input = document.getElementById('cmd');
+  var stRoom = document.getElementById('stRoom');
+  var stAlert = document.getElementById('stAlert');
+  var stInv = document.getElementById('stInv');
+  var stMoves = document.getElementById('stMoves');
+
+  function has(id){ return S.inv.indexOf(id) >= 0; }
+
+  function log(text, cls){
+    var p = document.createElement('p');
+    p.className = 'line ' + (cls || '');
+    p.textContent = text;
+    out.appendChild(p);
+    out.scrollTop = out.scrollHeight;
+  }
+  function sep(){
+    var h = document.createElement('hr');
+    h.className = 'sep';
+    out.appendChild(h);
+    out.scrollTop = out.scrollHeight;
+  }
+  function sync(){
+    stRoom.textContent = ROOMS[S.room].name;
+    stAlert.textContent = S.alert;
+    stMoves.textContent = S.moves;
+    stInv.textContent = S.inv.length
+      ? S.inv.map(function(id){
+          var lbl = id;
+          for (var k in ROOMS){
+            var it = ROOMS[k].item;
+            if (it && it.id === id) lbl = it.label;
+          }
+          return lbl;
+        }).join('、')
+      : '（空）';
+    var wrap = stAlert.closest('.alert');
+    if (wrap) wrap.classList.toggle('hot', S.alert >= MAX_ALERT - 6);
+  }
+
+  function look(){
+    var r = ROOMS[S.room];
+    var t = r.desc;
+    if (r.item && !has(r.item.id)) t += '\n' + r.item.look;
+    if (S.room === 'cell' && !has('manual')) t += '\n你完全不知道该怎么处理它。';
+    if (S.room === 'corridor' && !has('card')) t += '\n收容间的门锁着，需要门禁卡。';
+    t += '\n出口：' + Object.keys(r.exits).join('　');
+    log(t);
+  }
+
+  /* 警报推进；返回 true 表示还没触发失效 */
+  function tick(n){
+    S.alert += n;
+    S.moves += 1;
+    if (S.alert >= MAX_ALERT){
+      S.over = true;
+      sep();
+      log('警报等级 ' + S.alert + ' —— 超过阈值。', 'bad');
+      log('收容失效。全站封锁程序启动，你听见身后的门一扇接一扇落下。', 'bad');
+      log('【结局：收容失效】　输入「重启」再试一次。', 'warn');
+      input.disabled = true;
+      input.placeholder = '—— 终端已锁定 ——';
+      sync();
+      return false;
+    }
+    sync();
+    return true;
+  }
+
+  /* ============ 指令处理 ============ */
+  function run(raw){
+    if (S.over){ return; }
+    var text = String(raw || '').trim();
+    if (!text) return;
+
+    log(text, 'echo');
+    var parts = text.split(/\s+/);
+    var cmd = parts[0].toLowerCase();
+    var arg = parts.slice(1).join('');
+
+    /* --- 帮助 --- */
+    if (cmd === '帮助' || cmd === 'help' || cmd === '?'){
+      log(
+        '可用指令：\n' +
+        '  查看            看看当前环境\n' +
+        '  走 <去处>       移动到某处（去处见「出口」）\n' +
+        '  拿 <物品>       捡起东西\n' +
+        '  收容            在收容间对异常体执行收容\n' +
+        '  等待            原地等一轮（警报也会涨）\n' +
+        '  状态            显示当前位置与携带物\n' +
+        '  重启            重开一局', 'hint');
+      log('提示：门禁卡和收容规程是通关必需品。警报到 ' + MAX_ALERT + ' 就完了。', 'sys');
+      return;
+    }
+
+    /* --- 状态 --- */
+    if (cmd === '状态' || cmd === 'status'){
+      log('位置：' + ROOMS[S.room].name + '　警报：' + S.alert + '/' + MAX_ALERT +
+          '　携带：' + (S.inv.length ? S.inv.join('、') : '（空）'), 'info');
+      return;
+    }
+
+    /* --- 重启 --- */
+    if (cmd === '重启' || cmd === 'reset'){
+      S = { room:'duty', inv:[], alert:0, moves:0, over:false };
+      out.innerHTML = '';
+      input.disabled = false;
+      input.placeholder = '输入指令，回车执行（试试：帮助）';
+      boot();
+      sync();
+      return;
+    }
+
+    /* --- 查看 --- */
+    if (cmd === '查看' || cmd === 'look' || cmd === 'l'){
+      if (!tick(ALERT_ACT)) return;
+      look();
+      return;
+    }
+
+    /* --- 走 --- */
+    if (cmd === '走' || cmd === 'go' || cmd === '前进'){
+      var r = ROOMS[S.room];
+      if (!arg){
+        log('要去哪儿？（出口：' + Object.keys(r.exits).join('　') + '）', 'hint');
+        if (!tick(ALERT_WASTE)) return;
+        return;
+      }
+      if (!r.exits[arg]){
+        log('这儿没有通往「' + arg + '」的路。', 'hint');
+        if (!tick(ALERT_WASTE)) return;
+        return;
+      }
+      if (arg === '收容间' && !has('card')){
+        log('收容间的电子锁亮着红灯。需要门禁卡。', 'warn');
+        if (!tick(ALERT_WASTE)) return;
+        return;
+      }
+      if (!tick(ALERT_MOVE)) return;
+      S.room = r.exits[arg];
+      log('—— 你来到' + ROOMS[S.room].name + '。', 'sys');
+      look();
+      return;
+    }
+
+    /* --- 拿 --- */
+    if (cmd === '拿' || cmd === 'take' || cmd === '捡'){
+      var room = ROOMS[S.room];
+      if (!room.item){
+        log('这里没有能拿走的东西。', 'hint');
+        if (!tick(ALERT_WASTE)) return;
+        return;
+      }
+      if (has(room.item.id)){
+        log('已经拿过了。', 'hint');
+        if (!tick(ALERT_WASTE)) return;
+        return;
+      }
+      if (arg && room.item.name.indexOf(arg) < 0 && arg.indexOf(room.item.name) < 0){
+        log('这里没有「' + arg + '」。', 'hint');
+        if (!tick(ALERT_WASTE)) return;
+        return;
+      }
+      if (!tick(ALERT_ACT)) return;
+      S.inv.push(room.item.id);
+      log('你拿起了' + room.item.label + '。', 'ok');
+      return;
+    }
+
+    /* --- 收容 --- */
+    if (cmd === '收容' || cmd === 'contain' || cmd === '用'){
+      if (S.room !== 'cell'){
+        log('这里没有需要收容的东西。', 'hint');
+        if (!tick(ALERT_WASTE)) return;
+        return;
+      }
+      if (!has('manual')){
+        log('你面对它，却不知道该先做哪一步。', 'warn');
+        log('（缺少：收容规程）', 'sys');
+        if (!tick(ALERT_WASTE)) return;
+        return;
+      }
+      S.over = true;
+      sep();
+      log('你按规程逐条执行：断电、约束、封存。', 'ok');
+      log('异常体的起伏慢慢停了下来。警报灯由红转绿。', 'ok');
+      log('【结局：收容成功】　SITE-00 恢复常规运作。', 'ok');
+      log('用时 ' + S.moves + ' 次行动，最终警报等级 ' + S.alert + '。', 'sys');
+      input.disabled = true;
+      input.placeholder = '—— 终端已锁定 ——';
+      sync();
+      return;
+    }
+
+    /* --- 等待 --- */
+    if (cmd === '等待' || cmd === 'wait'){
+      log('你原地等了一会儿。远处传来金属摩擦的声音。', 'info');
+      tick(ALERT_ACT);
+      return;
+    }
+
+    /* --- 不认识的指令 --- */
+    log('无法识别的指令：「' + text + '」。输入「帮助」查看可用指令。', 'hint');
+    tick(ALERT_WASTE);
+  }
+
+  /* ============ 开场 ============ */
+  function boot(){
+    log('SITE-00 值班终端 v1.0', 'sys');
+    log('连接建立。当前值守：你。', 'sys');
+    log('03:41　收容区发生异常：E-07 已离开收容间。', 'warn');
+    log('值班室现在是安全的。走廊方向传来规律性的撞击声。', '');
+    log('输入「帮助」查看指令。', 'hint');
+    sep();
+    look();
+  }
+
+  /* ============ 输入绑定 ============ */
+  var history = [], hIdx = -1;
+
+  input.addEventListener('keydown', function(e){
+    if (e.key === 'Enter'){
+      var v = input.value;
+      input.value = '';
+      if (v.trim()){ history.push(v.trim()); hIdx = history.length; }
+      run(v);
+      return;
+    }
+    if (e.key === 'ArrowUp' && history.length){
+      hIdx = Math.max(0, hIdx - 1);
+      input.value = history[hIdx] || '';
+      e.preventDefault();
+    }
+    if (e.key === 'ArrowDown' && history.length){
+      hIdx = Math.min(history.length, hIdx + 1);
+      input.value = history[hIdx] || '';
+      e.preventDefault();
+    }
+  });
+
+  document.addEventListener('click', function(e){
+    if (e.target.tagName !== 'INPUT' && !S.over) input.focus();
+  });
+
+  boot();
+  sync();
+
+  /* 供外部 / 自动化测试调用 */
+  window.gameCmd = run;
+  window.gameState = function(){ return JSON.parse(JSON.stringify(S)); };
+})();
+</script>
+</body>
+</html>

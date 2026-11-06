@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · SCP-9279</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：档案详情
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关人员档案</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">安保设施</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">技术与协议</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="scp9279">
+      <div class="crumbs">
+        <a class="back" href="archive.html">← 返回异常项目列表</a>
+        <span style="color:var(--fg-mute);margin:0 8px;">·</span>主页：foundation / <b>异常项目列表</b> / SCP-9279
+      </div>
+
+      <div class="page-grid">
+        <div>
+          <!-- 文档头（非 ACS 型：普通字段表） -->
+          <div class="dossier-h">
+            <div class="top">
+              <span class="scp-id">SCP-9279</span>
+              <span class="tag keter">KETER</span>
+              <span class="name">（“归潮”）</span>
+            </div>
+            <div class="fields">
+              <div class="f"><span class="k">项目编号</span><span class="v">SCP-9279</span></div>
+              <div class="f"><span class="k">项目等级</span><span class="v">Keter</span></div>
+              <div class="f"><span class="k">收容区域</span><span class="v">待建</span></div>
+              <div class="f"><span class="k">权限要求</span><span class="v">Level 2</span></div>
+              <div class="f"><span class="k">建档日期</span><span class="v">6/8/2022</span></div>
+              <div class="f"><span class="k">最后修订</span><span class="v">10/8/2022</span></div>
+              <div class="f"><span class="k">负责研究员</span><span class="v">N/A</span></div>
+              <div class="f"><span class="k">状态</span><span class="v">未收容</span></div>
+            </div>
+          </div>
+
+          <h3 class="sec-title"><span>特殊收容措施</span><span class="tail">SCP-9279</span></h3>
+          <div class="prose">
+            <p>SCP-9279应当被收容在一个300x150x300m的巨型收容单元内，大门应该具备A级气密性，任何进入收容单元的人员不得携带武器或可伤人的器具，收容单元内禁止任何智慧生物攻击其它智慧生物。</p>
+            <p>根据O5议会于2000年1月1日发布的《SCP基金会21世纪预算法案》，SCP-9279与其余一系列异常的收容工作因资金不足被无限期延缓。</p>
+          </div>
+
+          <h3 class="sec-title"><span>描述</span><span class="tail">DESCRIPTION</span></h3>
+          <div class="prose">
+            <p>SCP-9279曾是Site-17纸质档案管理员Howaito █████。</p>
+            <p>项目拥有强烈的现实扭曲能力。</p>
+            <p>SCP-9279在非战斗状态下表现为一片灰蓝色的浓雾，半径约200m。该浓雾会在低空以极高速度移动，搜寻任何具有“物理或异常伤害能力”的生物（包括但不限于持有武器的士兵、具有攻击性的异常实体、甚至具有杀伤性模组的机械）。</p>
+            <p>当发现目标时，对象进入应战状态。</p>
+            <p>项目将具象化为一个由各种海洋废物拼凑而成的人形实体，这些海洋废物包括但不限于腐烂的甲板、断裂的桅杆、生锈的小型船锚，以及流动受限的水。其躯体呈现出一种违背重力的状态，如同真空中漂浮的水团。时刻有水珠从躯体上滴落，产生强烈的视觉暂留，让观测者产生“它的身体正在不可逆地溶解”的认知错觉。</p>
+            <p>当其现形时，项目周围200m范围内的现实将从基准现实被强行“剥离”，形成一个封闭的独立异常时空。该时空无法进出，直到时空内所有被项目指定为目标的生物死亡，该区域回归基准现实，但范围内的建筑物可能携带部分陆地悬浮在空中。原理未解明。详细的研究因预算不足无法进行。</p>
+            <p>项目使用其躯体上的小型船锚进行近战或抛出船锚远程攻击目标。被船锚直接命中的任何除气体外的物质，都会在瞬间发生分子层面的解离，转化为纯水。</p>
+            <p>没有被项目选为目标后存活并成功离开独立异常时空的记录。</p>
+          </div>
+
+          <h3 class="sec-title"><span>附录9279-1</span><span class="tail">归潮</span></h3>
+
+          <!-- 叙事型附录：照片作背景，文字区用毛玻璃（有字的地方才模糊，四周露出清晰照片） -->
+          <div class="narrative-hero">
+            <div class="nh-bg" aria-hidden="true"></div>
+            <div class="nh-inner">
+              <div class="nh-glass narrative">
+
+                <p>归潮，终究归潮。<br>海浪一波接着一波往岸上涌，又是一天的涨潮。<br>天空飘着细雨，天和水都是灰蓝灰蓝的，远方的天际线已经逐渐和大海融合在一起。</p>
+
+                <p>一个大浪拍在少女身上。</p>
+
+                <p>“滴答，滴答。”水滴从发尖往下滴落。</p>
+
+                <p>她祈祷。<br>她的意识正在被风化，记忆的碎屑如同柳絮漫天飞舞。<br>如果可以留下一些最珍贵的记忆……<br>她会选那个午后。<br>她感受到了一丝目光的注视，那是……<br>除我之外的万物终焉。<br>这个结局……它在这里，降下的暴雨就是它的神谕。</p>
+
+                <p>祈祷毕，小雨不知何时已经变成了倾盆大雨，每一滴雨都像针深深扎入她的皮肤，几只海鸥从她的身体里穿过。<br>心灰意冷，视线模糊，就此告别。<br>虚无，只余虚无。<br>当一切都走向终焉的时候，她还是会记得那天的炮火，弹片，还有最不能被遗忘的，███逐渐冰冷的体温。</p>
+
+                <p>在最后的最后，她只剩下了一个本能的念头：</p>
+
+                <p class="narrative-punch">复仇。</p>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- 文档尾：原创文章只有作者，没有"改编"行 -->
+          <div class="doc-foot">
+            <div class="doc-tags">
+              <span class="dtag" data-tag="scp">[scp]</span>
+              <span class="dtag" data-tag="原创">[原创]</span>
+              <span class="dtag" data-tag="Howaito">[Howaito]</span>
+              <span class="dtag" data-tag="9279">[9279]</span>
+              <span class="dtag" data-tag="912">[912]</span>
+              <span class="dtag" data-tag="故事:SCP912">[故事:SCP912]</span>
+            </div>
+
+            <div class="doc-credit">
+              <p>本文作者：HOSHINOAME</p>
+            </div>
+          </div>
+
+          <div style="margin-top:24px;padding-top:16px;border-top:1px dashed var(--line-soft);">
+            <a class="btn" href="archive.html">← 返回异常项目列表</a>
+          </div>
+        </div>
+
+        <!-- 右栏 -->
+        <aside class="rail">
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>元数据</div>
+            <div class="panel-b" style="padding:4px 14px 12px;">
+              <table class="meta-t">
+                <tr><td>项目编号</td><td>SCP-9279</td></tr>
+                <tr><td>项目等级</td><td><span class="tag keter">KETER</span></td></tr>
+                <tr><td>状态</td><td>未收容</td></tr>
+                <tr><td>收容区域</td><td>待建</td></tr>
+                <tr><td>最后修订</td><td>10/8/2022</td></tr>
+                <tr><td>标签</td><td style="color:var(--fg-dim)">#原创 #9279 #Howaito</td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>本文目录</div>
+            <div class="panel-b" style="padding:10px 14px;">
+              <ul class="toc">
+                <li class="active">特殊收容措施</li>
+                <li>描述</li>
+                <li>附录 9279-1</li>
+                <li class="sub">归潮</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>相关条目</div>
+            <div class="panel-b">
+              <ul class="list" style="font-size:12.5px;">
+                <li><span class="id">人员</span><a class="tt" href="howaito.html">纸质档案管理员Howaito</a></li>
+                <li><span class="id">项目</span><a class="tt" href="scp912.html">SCP-912 自主型SWAT盔甲</a></li>
+                <li><span class="id">索引</span><a class="tt" href="archive.html">全部异常项目</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：SCP-9279</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 · 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

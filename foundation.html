@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · 主页</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：主页
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root active" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关人员档案</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">安保设施</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">技术与协议</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="overview">
+      <div class="hero">
+        <div class="eyebrow">FOUNDATION INTRANET · ARCHIVE TERMINAL</div>
+        <h1>协奏曲：重生<span class="cursor"></span></h1>
+        <p class="lede">
+          一个普通的世界，人类在牢笼里一无所知地度过一天又一天……<br>
+          我们会击碎自己的命运。
+        </p>
+        <div class="meta">
+          <span class="chip">条目总数 <b>000</b></span>
+          <span class="chip">最后同步 <b>31/10/2036</b></span>
+          <span class="chip">状态 <b>NOMINAL</b></span>
+        </div>
+        <div class="motto">SECURE · CONTAIN · PROTECT</div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat"><div class="k">收录条目</div><div class="v">000</div><div class="d">占位数字</div></div>
+        <div class="stat"><div class="k">已分级项目</div><div class="v">000</div><div class="d">占位数字</div></div>
+        <div class="stat"><div class="k">待整理草稿</div><div class="v">000</div><div class="d">占位数字</div></div>
+      </div>
+
+      <div class="page-grid" style="margin-top:18px;">
+        <div>
+          <!-- 近期更新 -->
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>近期更新<span class="right">RSS / 手动维护</span></div>
+            <div class="panel-b">
+              <ul class="list">
+                <li><span class="id">条目 001</span><a class="tt" href="dossier.html">【占位标题】最近修改的条目名称</a><span class="tag euclid">EUCLID</span><span class="dt">--/--</span></li>
+                <li><span class="id">条目 002</span><a class="tt" href="dossier.html">【占位标题】另一条更新记录</a><span class="tag safe">SAFE</span><span class="dt">--/--</span></li>
+                <li><span class="id">条目 003</span><a class="tt" href="dossier.html">【占位标题】较长的标题会以省略号截断</a><span class="tag keter">KETER</span><span class="dt">--/--</span></li>
+                <li><span class="id">条目 004</span><a class="tt" href="dossier.html">【占位标题】可以是人物或组织条目</a><span class="tag neutral">未分级</span><span class="dt">--/--</span></li>
+                <li><span class="id">条目 005</span><a class="tt" href="dossier.html">【占位标题】也可以是一条世界线记录</a><span class="tag info">INFO</span><span class="dt">--/--</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 快速导航 -->
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>快速导航</div>
+            <div class="panel-b">
+              <div class="card-grid">
+                <a class="qcard" href="dossier.html"><div class="t">档案详情</div><div class="s">SCP 文档式长文版式</div></a>
+                <a class="qcard" href="archive.html"><div class="t">异常项目列表</div><div class="s">筛选 + 卡片网格 + 分页</div></a>
+                <a class="qcard" href="timeline.html"><div class="t">时间线</div><div class="s">纵向时间轴</div></a>
+                <a class="qcard" href="foundation.html"><div class="t">主页</div><div class="s">当前页面</div></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右栏：通告 + 命令行 -->
+        <aside class="rail">
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>通告栏</div>
+            <div class="panel-b">
+              <div class="warn-banner" style="margin:0 0 12px;">
+                <span class="ic">⚠</span><span>[RAISA公告]近期部分条目出现模因污染，注意防护。</span>
+              </div>
+              <div class="prose" style="font-size:12.5px;color:var(--fg-dim);">
+                新数据库已经开始使用，若有提议请上报至你所在站点的 RAISA 管理员。
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>终端检索<span class="right">占位交互</span></div>
+            <div class="panel-b">
+              <div class="term">
+                <div class="out" id="termOut">基金会内部检索终端 v0.1
+输入任意文字体验回显效果（版式占位，未接搜索）。</div>
+                <div class="line">
+                  <span class="ps1">&gt;</span>
+                  <input id="termIn" type="text" placeholder="输入指令或关键词，回车执行…" autocomplete="off">
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    
+    </section>
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：主页</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 · 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

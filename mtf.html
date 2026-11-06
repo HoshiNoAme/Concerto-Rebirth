@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · 原创机动特遣队</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：原创机动特遣队
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关人员档案</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">安保设施</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">技术与协议</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="mtf">
+      <div class="crumbs">主页：foundation / <b>原创机动特遣队</b></div>
+
+      <!-- 单位档案头：编号 + 标签 + 通称，下面接字段表 -->
+      <div class="dossier-h">
+        <div class="top">
+          <span class="scp-id">MTF-00</span>
+          <span class="tag info">机动特遣队</span>
+          <span class="name">【占位】单位代号 / 通称</span>
+        </div>
+        <div class="fields">
+          <div class="f"><span class="k">单位编号</span><span class="v">MTF-00</span></div>
+          <div class="f"><span class="k">单位代号</span><span class="v">【占位】</span></div>
+          <div class="f"><span class="k">绰号</span><span class="v">【占位】</span></div>
+          <div class="f"><span class="k">隶属站点</span><span class="v">Site-00</span></div>
+          <div class="f"><span class="k">成立日期</span><span class="v">--/--/----</span></div>
+          <div class="f"><span class="k">编制人数</span><span class="v">██ 人</span></div>
+          <div class="f"><span class="k">专长方向</span><span class="v">【占位】</span></div>
+          <div class="f"><span class="k">当前状态</span><span class="v">待命</span></div>
+        </div>
+      </div>
+
+      <!-- 简介正文：想加「编制与装备」「行动记录」等小节时，复制下面这一组即可 -->
+      <h3 class="sec-title"><span>简介</span><span class="tail">MTF-00</span></h3>
+      <div class="prose">
+        <p class="ph">【占位正文】这里写这支机动特遣队的来历与定位：成立背景、直属指挥关系、主要任务类型（例如收容失效响应、外围封锁、侦查渗透）。用两三句话讲清它是干什么的就行。</p>
+        <p class="ph">【占位正文】这一段可以写它的行动风格、装备偏好、人员构成，或外界对它的评价。要再加小节时，照上面的 <code style="color:var(--fg)">&lt;h3 class="sec-title"&gt;</code> 加 <code style="color:var(--fg)">&lt;div class="prose"&gt;</code> 复制一组就好。</p>
+      </div>
+    
+    </section>
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：原创机动特遣队</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 · 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

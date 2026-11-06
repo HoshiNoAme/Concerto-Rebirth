@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · SCP-2490</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：档案详情
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关人员档案</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">安保设施</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">技术与协议</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="scp2490">
+      <div class="crumbs">
+        <a class="back" href="archive.html">← 返回异常项目列表</a>
+        <span style="color:var(--fg-mute);margin:0 8px;">·</span>主页：foundation / <b>异常项目列表</b> / SCP-2490
+      </div>
+
+      <div class="page-grid">
+        <div>
+          <!-- 文档头（非 ACS 型：普通字段表） -->
+          <div class="dossier-h">
+            <div class="top">
+              <span class="scp-id">SCP-2490</span>
+              <span class="tag keter">KETER</span>
+              <span class="name">（“混沌分裂者特别行动队Alpha-19”）</span>
+            </div>
+            <div class="fields">
+              <div class="f"><span class="k">项目编号</span><span class="v">SCP-2490</span></div>
+              <div class="f"><span class="k">项目等级</span><span class="v">Keter</span></div>
+              <div class="f"><span class="k">收容区域</span><span class="v">Site19-24</span></div>
+              <div class="f"><span class="k">权限要求</span><span class="v">Level 5</span></div>
+              <div class="f"><span class="k">建档日期</span><span class="v">█/██/████</span></div>
+              <div class="f"><span class="k">最后修订</span><span class="v">23/7/2004</span></div>
+              <div class="f"><span class="k">负责研究员</span><span class="v">MTF-Alpha-5</span></div>
+              <div class="f"><span class="k">状态</span><span class="v">未收容</span></div>
+            </div>
+          </div>
+
+          <h3 class="sec-title"><span>特殊收容措施</span><span class="tail">SCP-2490</span></h3>
+          <div class="prose">
+            <p>SCP-2490应被收容于Site-19的附属站点-24，其收容室的大门应该在任何时刻完全紧闭，不允许进行任何可能导致SCP-2490突破收容的实验。应当时刻有两名MTF-Alpha-5（“仪仗队”）的特工在收容室的两侧监控SCP-2490。</p>
+          </div>
+
+          <h3 class="sec-title"><span>描述</span><span class="tail">DESCRIPTION</span></h3>
+          <div class="prose">
+            <p>SCP-2490指代一种（或一名）异常人类，确信为<a href="ci.html">混沌分裂者</a>特别行动队Alpha-19，自19██年以来已经跟踪并袭击至少██名基金会人员。</p>
+            <p>SCP-2490的物理外貌不定，这似乎随被袭击者而变，无已知规律。</p>
+            <p>在其不进行跟踪与袭击时，SCP-2490推测是隐形的，无法被各种生物器官和先进仪器检测到，这一特征高度近似佩戴SCP-268的人员，但其被证实可以自由控制是否隐形。</p>
+            <p>以下是记录到的部分SCP-2490外观：</p>
+            <ul>
+              <li>头部是一整块米黄色胶囊，上面有两个眼睛，其身体有多个白色胶囊拼接而成。</li>
+              <li>约40岁的成年男性。</li>
+              <li>约5岁的女性儿童。</li>
+              <li>年龄不明的成年男性，身着混沌分裂者制服，面部被防毒面罩覆盖，头部带有一顶针织帽，并非SCP-268。</li>
+            </ul>
+            <p>当SCP-2490确定目标后，其将跟踪目标1天至5个月不等的时间，并通过推测为操纵分身或呼叫其余SCP-2490个体的方式在不同地方出现，这期间目标将感到极度心理压力并表现出严重的被害妄想。目标可能因此患上精神疾病或死亡。</p>
+            <p>若目标没有死亡，SCP-2490将出手杀死目标，凶器多数为锐器，伤口一般位于咽喉。</p>
+            <p>少数残留的凶器上没有发现任何DNA。</p>
+            <p>任何确信遭SCP-2490影响的人员应该立即被转移至备用机密站点接受精神治疗，MTF-Alpha-5（“仪仗队”）应至少有一支小队驻守在该备用机密站点。被影响人员的安保权限被暂时撤销，原职责暂时转移至其它人员，任何与被影响人员相关的密钥，权限，身份以及异常项目等应当立即被修改。</p>
+            <p>对象属于危险人员以及待收容个体，在不得不进行武装接触时可以击毙。</p>
+            <p>若有任何目击报告请上报MTF-Alpha-5（“仪仗队”），若有任何异常物品确信被SCP-2490窃取请上报MTF-Psi-7（“家居装饰”）。</p>
+          </div>
+
+          <h3 class="sec-title"><span>附录2490-1</span><span class="tail">间谍录音</span></h3>
+
+          <!-- 录音稿：用面板包一层，音效/旁注用 .sfx -->
+          <div class="panel" style="margin-top:14px;">
+            <div class="panel-h"><span class="dot"></span>录音记录<span class="right">编号 0942 · 基金会间谍</span></div>
+            <div class="panel-b">
+              <p class="sfx">记录开始。</p>
+
+              <div class="quote"><span class="who">0942</span>我……我是基金会间谍，编号0942，现在正在乘车逃离混沌分裂者的基地——卧槽，那地方简直是地狱。</div>
+              <div class="quote"><span class="who">0942</span>额，要……要回家了，这感觉真他妈好，兄弟。</div>
+              <div class="quote"><span class="who">0942</span>先说正事，SCP-2490，是一个个体，他（he）……它（it）控制那些分身，或者根本就没有分身，那只是它的幻象，它……一直都是它在杀人。就……你懂吧，把人搞疯或者直接杀掉。</div>
+              <div class="quote"><span class="who">0942</span>它的……那个胶囊头和大眼睛，好像是认……认知滤镜，我没搞明白，我作为一个“文职”只能搞到这些情报了。</div>
+              <div class="quote"><span class="who">0942</span>卧槽，2490真他妈吓人，每次我都睡不着一直在害怕半夜……2…2490突然出现，就那么看着我，太他妈恐——</div>
+              <div class="quote"><span class="who">0942</span>车怎么停了？司机？卧——</div>
+
+              <p class="sfx">（锐器刺穿肌肉组织的短促声音）</p>
+              <p class="sfx">（粘稠液体流出）</p>
+              <p class="sfx">（车门打开）</p>
+              <p class="sfx">（无声音）</p>
+              <p class="sfx" style="margin-top:14px;">记录结束。</p>
+            </div>
+          </div>
+
+          <h3 class="sec-title"><span>附录2490-2</span><span class="tail">情报文件</span></h3>
+          <div class="prose">
+            <p class="ph">（以下档案由情报部门根据截获的混沌分裂者内部文件整理得出，不保证真实，可能为虚假信息。）</p>
+            <p>SCP-2490是混沌分裂者中的激进派代表，主张颠覆世界。</p>
+            <p>SCP-2490是<a class="ext" href="https://scp-wiki-cn.wikidot.com/scp-268">SCP-268（“疏忽帽”）</a>的创造者。在已经能完全掌控SCP-268的力量，并且自身已经被SCP-268完全同化，不再需要SCP-268本体时，他将SCP-268赠予了蛇之手的领袖。</p>
+            <p>SCP-2490曾经服务于一个二战时期的反纳粹超自然社团，并因其功劳在世界反法西斯联盟中声明远扬。</p>
+            <p>在该社团被纳粹德国攻陷后，社团首领选择处决SCP-2490及一切与它有关的人员（包括但不限于与SCP-2490有血缘，业缘以及地缘关系的人员）以换取自己存活。SCP-2490逃脱，但其所有处于纳粹控制区的有关人员遭到处决。</p>
+            <p>SCP-2490事后试图加入盟国的正规军队，因“超自然因素”被否决。同时，盟军不承认SCP-2490是反法西斯人士，并要求UIU、GRU-P将其加入“潜在威胁名单”。</p>
+          </div>
+
+          <h3 class="sec-title"><span>附录2490-3</span><span class="tail">相关记录</span></h3>
+          <div class="prose">
+            <p><b style="color:var(--fg-bright);letter-spacing:.04em;">对<a href="engineer.html">O5-7</a>的暗杀记录</b></p>
+            <p class="ph">（注：所有暗杀记录均发生在<a href="scp181.html">SCP-181</a>被发现并收容前。）</p>
+            <ol>
+              <li>尝试引爆事先埋藏在其餐厅的炸药，因炸药被人为破坏失败。</li>
+              <li>尝试在目标开会期间在会议室中排放毒气，因毒气罐失踪失败。</li>
+              <li>尝试使用SCP-009（“红冰”）杀死目标，因SCP-009在目标来到预定暗杀地点前莫名突破其容器，操作人员死亡，Site-██的重型收容区被SCP-009部分同化，MTF-Beta-7（“疯帽商”）的入场告终。尝试失败。</li>
+              <li>O5-█邀请目标乘坐自然公园的游船，并尝试在游船上杀死目标。前者在游船上死亡，并非目标所为。在湖底发现前者的手枪。</li>
+            </ol>
+            <p>疑似有未知个体时刻保护O5-7，该未知个体无法被声呐、红外线、监控、窃听器在内的各种仪器检测到，可能佩戴SCP-268。</p>
+            <p>根据O5-█的尸检报告，该个体使用匕首杀死了O5-█。</p>
+            <p>在匕首上发现了一根短棉线，这一种类的棉线同样在SCP-268和20世纪的盟军制服上使用。</p>
+          </div>
+
+          <!-- 文档尾：标签 + 作者署名 -->
+          <div class="doc-foot">
+            <div class="doc-tags">
+              <span class="dtag" data-tag="非完全原创">[非完全原创]</span>
+              <span class="dtag" data-tag="scp">[scp]</span>
+              <span class="dtag" data-tag="混沌分裂者">[混沌分裂者]</span>
+              <span class="dtag" data-tag="工程师">[工程师]</span>
+              <span class="dtag" data-tag="2490">[2490]</span>
+              <span class="dtag" data-tag="故事:混沌分裂者">[故事:混沌分裂者]</span>
+              <span class="dtag" data-tag="改编">[改编]</span>
+            </div>
+
+            <div class="doc-credit">
+              <p>本文作者：HOSHINOAME</p>
+              <p>改编：<a class="ext" href="https://scp-wiki-cn.wikidot.com/scp-2490">SCP-2490</a></p>
+            </div>
+          </div>
+
+          <div style="margin-top:24px;padding-top:16px;border-top:1px dashed var(--line-soft);">
+            <a class="btn" href="archive.html">← 返回异常项目列表</a>
+          </div>
+        </div>
+
+        <!-- 右栏 -->
+        <aside class="rail">
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>元数据</div>
+            <div class="panel-b" style="padding:4px 14px 12px;">
+              <table class="meta-t">
+                <tr><td>项目编号</td><td>SCP-2490</td></tr>
+                <tr><td>项目等级</td><td><span class="tag keter">KETER</span></td></tr>
+                <tr><td>状态</td><td>未收容</td></tr>
+                <tr><td>最后修订</td><td>23/7/2004</td></tr>
+                <tr><td>标签</td><td style="color:var(--fg-dim)">#scp #混沌分裂者 #2490</td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>本文目录</div>
+            <div class="panel-b" style="padding:10px 14px;">
+              <ul class="toc">
+                <li class="active">特殊收容措施</li>
+                <li>描述</li>
+                <li class="sub">外观记录</li>
+                <li>附录 2490-1</li>
+                <li class="sub">间谍录音</li>
+                <li>附录 2490-2</li>
+                <li class="sub">情报文件</li>
+                <li>附录 2490-3</li>
+                <li class="sub">暗杀记录</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>相关条目</div>
+            <div class="panel-b">
+              <ul class="list" style="font-size:12.5px;">
+                <li><span class="id">组织</span><a class="tt" href="ci.html">混沌分裂者</a></li>
+                <li><span class="id">人员</span><a class="tt" href="engineer.html">O5-7（工程师）</a></li>
+                <li><span class="id">项目</span><a class="tt" href="scp181.html">SCP-181 幸运儿</a></li>
+                <li><span class="id">索引</span><a class="tt" href="archive.html">全部异常项目</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：SCP-2490</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 · 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

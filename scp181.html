@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · SCP-181</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：档案详情
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关人员档案</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">安保设施</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">技术与协议</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="scp181">
+      <div class="crumbs">
+        <a class="back" href="archive.html">← 返回异常项目列表</a>
+        <span style="color:var(--fg-mute);margin:0 8px;">·</span>主页：foundation / <b>异常项目列表</b> / SCP-181
+      </div>
+
+      <div class="page-grid">
+        <div>
+          <!-- 文档头（非 ACS 型：普通字段表） -->
+          <div class="dossier-h">
+            <div class="top">
+              <span class="scp-id">SCP-181</span>
+              <span class="tag keter">KETER</span>
+              <span class="name">（“幸运儿”）</span>
+            </div>
+            <div class="fields">
+              <div class="f"><span class="k">项目编号</span><span class="v">SCP-181</span></div>
+              <div class="f"><span class="k">项目等级</span><span class="v">Keter</span></div>
+              <div class="f"><span class="k">收容区域</span><span class="v">Site-13-18</span></div>
+              <div class="f"><span class="k">权限要求</span><span class="v">Level 4</span></div>
+              <div class="f"><span class="k">建档日期</span><span class="v">██/██/████</span></div>
+              <div class="f"><span class="k">最后修订</span><span class="v">1/4/2016</span></div>
+              <div class="f"><span class="k">负责研究员</span><span class="v"><del>O5-7</del> N/A</span></div>
+              <div class="f"><span class="k">状态</span><span class="v">未收容</span></div>
+            </div>
+          </div>
+
+          <h3 class="sec-title"><span>特殊收容措施</span><span class="tail">SCP-181</span></h3>
+          <div class="prose">
+            <p>SCP-181应被单独收容在Site-13-18中，该设施属于Site-13的附属设施。其收容间应该以Keter级标准建造，不允许任何未经授权的人员进入Site-13-18的收容区域。不允许SCP-181遭到暗杀或重火力打击。</p>
+            <p>SCP-181已经突破收容，接触时不应开火，不应试图伤害项目，应当将其控制，解除武装并押入收容室。</p>
+          </div>
+
+          <h3 class="sec-title"><span>描述</span><span class="tail">DESCRIPTION</span></h3>
+          <div class="prose">
+            <p>SCP-181指代D-████，姓名Karl Kronos，一亚裔青年，最后一次测量为身高161cm，体重49.4kg。因杀人被捕进入SCP基金会，随后因其异常幸运特质被判定为异常。</p>
+            <p>SCP-181拥有一定程度上的异常幸运，保证其不被外力伤害和杀死，但当幸运特质开始运作时，厄运往往将转移至其周边的人员，并导致后者受伤或死亡。</p>
+            <p>SCP-181出生于████的██村落。</p>
+            <p>在其7周岁生日时，SCP-181本应前往集市售卖玉米，却因腹痛呆在家中，由其父亲前往。在其父亲到达集市后，恐怖分子埋藏的炸药爆炸，其父亲死亡。</p>
+            <p>9年后，其母亲患上肺炎，SCP-181不得不将母亲托付给他人，自己前往██市赚取治疗费用。来到██市后，他本打算找一份工作，当天所有招聘业务却全部没有营业，于是他选择购买了一份最廉价的██████博彩彩票，三天后中头等奖三亿元，将其母亲送入医院治疗后正式搬往██市。</p>
+            <p>3年后，SCP-181与知名政客████同时经过前者住宅楼下。一枚硬币在楼顶被意外抛下，本应正中SCP-181，但因SCP-181的家养鹦鹉逃出笼子，在空中与硬币发生擦碰导致硬币落点发生变化，击中知名政客████并使其身亡。随后，SCP-181被处以终身监禁并在后来进入SCP基金会成为一名D级人员。</p>
+            <p>SCP-181表现出改变当今世界秩序的倾向。</p>
+            <p>SCP-181在Site-02事变中追随<a href="engineer.html">O5-7</a>带领的<a href="ci.html">混沌分裂者</a>脱离基金会，当前确信担任混沌分裂者特别行动队Alpha-18队长。</p>
+          </div>
+
+          <h3 class="sec-title"><span>附录181-1</span><span class="tail">ADDENDUM</span></h3>
+          <div class="prose">
+            <p>该文档选自缴获的混沌分裂者档案。</p>
+          </div>
+
+          <!-- 缴获档案：用面板单独包一层，视觉上像"贴进来的一份敌方文件" -->
+          <div class="panel" style="margin-top:14px;">
+            <div class="panel-h"><span class="dot"></span>缴获档案 · 混沌分裂者<span class="right">ALPHA-18</span></div>
+            <div class="panel-b">
+              <div class="prose">
+                <p><b style="color:var(--fg-bright);letter-spacing:.06em;">KarlKronos-“死魂灵”</b></p>
+                <p>“死魂灵”Karl是混沌分裂者特别行动队Alpha-18队长，同时是该队伍唯一成员。</p>
+                <p>Karl是SCP-181（“幸运儿”），拥有绝对幸运。</p>
+                <p>禁止任何人员与Karl一同行动。</p>
+                <p>Karl配备有一巨型盾牌，盾牌上带有闪光灯。</p>
+                <p>Karl被允许担任“大举进攻”和“Delta突袭”中的执旗手与冲锋手，但仅能担任吸引注意或攻坚工作，禁止任何人员处于其周边50m内，禁止任何人员的视线中存在Karl，禁止Karl的视线中存在任何友方人员，禁止敌方人员的视线中同时存在Karl和其它友方单位。</p>
+                <p>Karl在战斗时应当进入敌方阵线内以让敌方自相残杀或死于意外。</p>
+              </div>
+
+              <div class="quote" style="margin-top:18px;margin-bottom:0;">我们只需要在没有枪声的时候跟上去，然后给敌人收尸就行了。</div>
+              <div class="quote-cite">——Δ突袭部队<del>士兵</del>战士 P███ T██</div>
+            </div>
+          </div>
+
+          <!-- 文档尾：标签 + 作者署名 -->
+          <div class="doc-foot">
+            <div class="doc-tags">
+              <span class="dtag" data-tag="非完全原创">[非完全原创]</span>
+              <span class="dtag" data-tag="scp">[scp]</span>
+              <span class="dtag" data-tag="混沌分裂者">[混沌分裂者]</span>
+              <span class="dtag" data-tag="工程师">[工程师]</span>
+              <span class="dtag" data-tag="Karl">[Karl]</span>
+              <span class="dtag" data-tag="故事:混沌分裂者">[故事:混沌分裂者]</span>
+              <span class="dtag" data-tag="改编">[改编]</span>
+            </div>
+
+            <div class="doc-credit">
+              <p>本文作者：HOSHINOAME</p>
+              <p>改编：<a class="ext" href="https://scp-wiki-cn.wikidot.com/scp-181">SCP-181</a></p>
+            </div>
+          </div>
+
+          <div style="margin-top:24px;padding-top:16px;border-top:1px dashed var(--line-soft);">
+            <a class="btn" href="archive.html">← 返回异常项目列表</a>
+          </div>
+        </div>
+
+        <!-- 右栏 -->
+        <aside class="rail">
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>元数据</div>
+            <div class="panel-b" style="padding:4px 14px 12px;">
+              <table class="meta-t">
+                <tr><td>项目编号</td><td>SCP-181</td></tr>
+                <tr><td>项目等级</td><td><span class="tag keter">KETER</span></td></tr>
+                <tr><td>状态</td><td>未收容</td></tr>
+                <tr><td>最后修订</td><td>1/4/2016</td></tr>
+                <tr><td>标签</td><td style="color:var(--fg-dim)">#scp #混沌分裂者 #Karl</td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>本文目录</div>
+            <div class="panel-b" style="padding:10px 14px;">
+              <ul class="toc">
+                <li class="active">特殊收容措施</li>
+                <li>描述</li>
+                <li class="sub">经历</li>
+                <li>附录</li>
+                <li class="sub">181-1 缴获档案</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>相关条目</div>
+            <div class="panel-b">
+              <ul class="list" style="font-size:12.5px;">
+                <li><span class="id">人员</span><a class="tt" href="engineer.html">O5-7（工程师）</a></li>
+                <li><span class="id">组织</span><a class="tt" href="ci.html">混沌分裂者</a></li>
+                <li><span class="id">索引</span><a class="tt" href="archive.html">全部异常项目</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：SCP-181</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 · 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

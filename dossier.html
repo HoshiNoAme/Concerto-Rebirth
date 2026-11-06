@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · 档案详情</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：档案详情
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关人员档案</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">安保设施</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">技术与协议</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="dossier">
+      <div class="crumbs">
+        <a class="back" href="archive.html">← 返回异常项目列表</a>
+        <span style="color:var(--fg-mute);margin:0 8px;">·</span>主页：foundation / <b>异常项目列表</b> / SCP-000
+      </div>
+
+      <div class="page-grid">
+        <div>
+          <!-- 文档头 -->
+          <div class="dossier-h">
+            <div class="top">
+              <span class="scp-id">SCP-000</span>
+              <span class="tag euclid">EUCLID</span>
+              <span class="name">【占位】项目代号 / 通称</span>
+            </div>
+            <!-- 默认形态：普通字段表（8 格）。
+                 少数要用 ACS 分级条的文档 → 把下面这块 .fields 整块删掉，
+                 再把再下面那段「ACS」的注释去掉即可（见 README §11）。 -->
+            <div class="fields">
+              <div class="f"><span class="k">项目编号</span><span class="v">SCP-000</span></div>
+              <div class="f"><span class="k">项目等级</span><span class="v">Euclid</span></div>
+              <div class="f"><span class="k">收容区域</span><span class="v">Site-00 / 东翼</span></div>
+              <div class="f"><span class="k">权限要求</span><span class="v">Level 3</span></div>
+              <div class="f"><span class="k">建档日期</span><span class="v">--/--/----</span></div>
+              <div class="f"><span class="k">最后修订</span><span class="v">--/--/----</span></div>
+              <div class="f"><span class="k">负责研究员</span><span class="v">Dr. ██████</span></div>
+              <div class="f"><span class="k">状态</span><span class="v">收容中</span></div>
+            </div>
+          </div>
+
+          <!-- ══════════════════════════════════════════════════════════════
+               ACS 异常分级条（纯文字版，无图标）—— 默认注释掉，需要时启用
+               ────────────────────────────────────────────────────────────
+               启用方法：① 删掉上面那块 .fields 字段表
+                        ② 把这一整段注释删掉（从段首的注释开始符，到段末的结束符）
+               注意：ACS 只有「收容 / 扰动 / 风险 / 权限」四格，
+                     字段表里的 收容区域 / 建档日期 / 最后修订 /
+                     负责研究员 / 状态 这 5 项会没有位置。
+               配色：每个格子加 .lv-* 类；进度方块数量 = 该维度档数。
+               详细说明见 README §11。
+
+          <div class="acs">
+            <div class="acs-h"><span class="dot"></span>异常分级 · ACS<span class="right">SCP-000</span></div>
+            <div class="acs-grid">
+              <div class="acs-cell lv-euclid">
+                <div class="acs-k">收容等级</div>
+                <div class="acs-v">EUCLID</div>
+                <div class="acs-meter"><b class="on"></b><b class="on"></b><b></b></div>
+              </div>
+              <div class="acs-cell lv-keneq">
+                <div class="acs-k">扰动等级</div>
+                <div class="acs-v">KENEQ</div>
+                <div class="acs-meter"><b class="on"></b><b class="on"></b><b class="on"></b><b></b><b></b></div>
+              </div>
+              <div class="acs-cell lv-warning">
+                <div class="acs-k">风险等级</div>
+                <div class="acs-v">WARNING</div>
+                <div class="acs-meter"><b class="on"></b><b class="on"></b><b class="on"></b><b></b><b></b></div>
+              </div>
+              <div class="acs-cell lv-restricted">
+                <div class="acs-k">权限等级</div>
+                <div class="acs-v">受限</div>
+                <div class="acs-meter"><b class="on"></b><b class="on"></b><b></b><b></b><b></b><b></b></div>
+              </div>
+            </div>
+          </div>
+          ══════════════════════════════════════════════════════════════ -->
+
+          <div class="warn-banner danger">
+            <span class="ic">☣</span>
+            <span>【占位】高危警告条：含危险等级项目时可启用红色斜纹样式。</span>
+          </div>
+
+          <!-- 正文：特殊收容措施 -->
+          <h3 class="sec-title"><span>特殊收容措施</span><span class="tail">SCP-000</span></h3>
+          <div class="prose">
+            <p class="ph">【占位正文】这里是「特殊收容措施」段落。它展示的是标准单栏长文的阅读排版：行高 1.75、段距 0.9em、最大宽度 76 字符，保证长段落不疲劳。把这段文字换成你自己的收容措施即可。</p>
+            <p class="ph">【占位正文】段落里可以混排<b style="color:var(--fg-bright)">强调文本</b>、<span class="redact" data-note="权限不足 · ACCESS DENIED">████████████</span> 这类删节块（鼠标悬停可见提示）、以及内部编号 <span style="color:var(--c-info)">SCP-000-1</span> 之类的引用标记。</p>
+            <p class="ph">【占位正文】正文支持三种标记：<del>被划掉的旧说法</del>（删除线）、<em>斜体强调</em>（斜体）、<span class="redact">██████</span>（黑条）。填真实内容时这一整段可以直接删掉。</p>
+            <ul>
+              <li>【占位】列表项一：适合写收容流程、检查项目等条目化内容。</li>
+              <li>【占位】列表项二：嵌套层级已设置好缩进与间距。</li>
+              <li>【占位】列表项三：可以放很长的说明文字，换行会自动对齐。</li>
+            </ul>
+          </div>
+
+          <h3 class="sec-title"><span>描述</span><span class="tail">DESCRIPTION</span></h3>
+          <div class="prose">
+            <p class="ph">【占位正文】描述段落。下面依次演示图片占位框、表格、采访记录引用块与折叠附录——这四种元素基本覆盖了 SCP 档案里会出现的内容形态。</p>
+            <p class="ph">【占位正文】正文里可以插跳转链接：站内 <a href="archive.html">异常项目列表</a>、站外 <a class="ext" href="https://scp-wiki-cn.wikidot.com/">SCP 基金会中文分部</a>。填真实内容时这一段可以删掉。</p>
+          </div>
+
+          <div class="figure">［ 图片 / 地图 / 现场照片 占位区 ］</div>
+          <div class="figure-cap">图 1：【占位】图片说明文字，用于标注来源与拍摄信息。</div>
+
+          <table>
+            <thead>
+              <tr><th style="width:22%">记录编号</th><th style="width:20%">日期</th><th>摘要（占位）</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>EXP-000-01</td><td>--/--/----</td><td>【占位】实验记录摘要文本，可写较长内容。</td></tr>
+              <tr><td>EXP-000-02</td><td>--/--/----</td><td>【占位】实验结果与结论。</td></tr>
+              <tr><td>EXP-000-03</td><td>--/--/----</td><td>【占位】备注：表格支持悬停高亮与斑马纹。</td></tr>
+            </tbody>
+          </table>
+
+          <h3 class="sec-title"><span>附录</span><span class="tail">ADDENDA</span></h3>
+
+          <details open>
+            <summary>附录 A：采访记录　<span class="lv">LEVEL 2</span></summary>
+            <div class="d-b">
+              <div class="quote"><span class="who">受访者</span>【占位】对话内容第一句，用于展示采访记录的缩进与左侧亮线样式。</div>
+              <div class="quote"><span class="who">Dr. ████</span>【占位】提问或追问的内容。</div>
+              <div class="quote"><span class="who">受访者</span>【占位】回答，可以比较长，换行后仍然对齐在亮线右侧。</div>
+            </div>
+          </details>
+
+          <details>
+            <summary>附录 B：事故报告　<span class="lv">LEVEL 4</span></summary>
+            <div class="d-b">
+              <p class="ph">【占位正文】折叠面板收起时只占一行高度，适合放低权限或次要内容。权限标签（LEVEL 2 / LEVEL 4）在右侧，也可以改成日期或状态。</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>附录 C：附件与外部引用　<span class="lv">待补充</span></summary>
+            <div class="d-b">
+              <p class="ph">【占位正文】这里可以放下载链接、相关条目跳转、修订历史等。</p>
+            </div>
+          </details>
+
+          <!-- 文档尾：标签 + 作者署名（标签是为以后的标签搜索铺路，
+               以后要能点的话把 <span class="dtag"> 换成
+               <a class="dtag" href="search.html?tag=xxx"> 即可） -->
+          <div class="doc-foot">
+            <div class="doc-tags">
+              <span class="dtag" data-tag="scp">[scp]</span>
+              <span class="dtag" data-tag="goc">[goc]</span>
+              <span class="dtag" data-tag="基金会制造">[基金会制造]</span>
+              <span class="dtag" data-tag="食物">[食物]</span>
+              <span class="dtag" data-tag="非完全原创">[非完全原创]</span>
+            </div>
+
+            <div class="doc-credit">
+              <p>本文作者：Dr. ████</p>
+              <p>借鉴：<a class="ext" href="https://scp-wiki-cn.wikidot.com/scp-181">SCP-181</a></p>
+            </div>
+          </div>
+
+          <!-- 长文读到底后的返回入口 -->
+          <div style="margin-top:24px;padding-top:16px;border-top:1px dashed var(--line-soft);">
+            <a class="btn" href="archive.html">← 返回异常项目列表</a>
+          </div>
+        </div>
+
+        <!-- 右栏：元数据 + 目录 -->
+        <aside class="rail">
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>元数据</div>
+            <div class="panel-b" style="padding:4px 14px 12px;">
+              <table class="meta-t">
+                <tr><td>项目等级</td><td><span class="tag euclid">EUCLID</span></td></tr>
+                <tr><td>扰动等级</td><td>--</td></tr>
+                <tr><td>风险等级</td><td>--</td></tr>
+                <tr><td>收容等级</td><td>标准</td></tr>
+                <tr><td>标签</td><td style="color:var(--fg-dim)">#占位 #标签</td></tr>
+                <tr><td>字数</td><td>0000</td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>本文目录</div>
+            <div class="panel-b" style="padding:10px 14px;">
+              <ul class="toc">
+                <li class="active">特殊收容措施</li>
+                <li>描述</li>
+                <li class="sub">实验记录表</li>
+                <li>附录</li>
+                <li class="sub">A · 采访记录</li>
+                <li class="sub">B · 事故报告</li>
+                <li class="sub">C · 附件</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>相关条目</div>
+            <div class="panel-b">
+              <ul class="list" style="font-size:12.5px;">
+                <li><span class="id">SCP-000</span><a class="tt" href="dossier.html">【占位】关联条目一</a></li>
+                <li><span class="id">SCP-000</span><a class="tt" href="dossier.html">【占位】关联条目二</a></li>
+                <li><span class="id">GOI-000</span><a class="tt" href="dossier.html">【占位】相关组织</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    
+    </section>
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：档案详情</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 · 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
