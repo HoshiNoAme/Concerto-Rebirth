@@ -1,0 +1,350 @@
+/* ============================================================
+   GOC 档案版式  —— assets/css/goc.css
+   ------------------------------------------------------------
+   全球超自然联盟 · 物理部门。深蓝 + 白 + 冷灰，国际机构内参的质感。
+
+   文档结构照 GOC 的格式来（不是 SCP 那种字段表）：
+       编号与代号
+       威胁实体数据条目
+       威胁ID：…
+       授权应对等级：…（红色）
+       描述 / 交战规则
+
+   与 style.css / o5.css / 9644.css 都无关，不要互相 import。
+
+   文内标记：
+       ^^小字^^   → .sml
+       @@大字@@   → .big
+   ============================================================ */
+
+:root{
+  --goc-blue:   #1b4c96;
+  --goc-blue-2: #2e6fc0;
+  --goc-blue-3: #5b92e4;
+  --goc-pale:   #eaf1fb;
+  --goc-paper:  #ffffff;
+  --goc-desk:   #e9edf4;
+  --goc-ink:    #161b26;
+  --goc-ink-2:  #3d4657;
+  --goc-ink-3:  #7c8698;
+  --goc-line:   #d9e0ea;
+  --goc-line-2: #b7c2d3;
+  --goc-red:    #b02a22;
+  --goc-mono:   "Cascadia Mono",ui-monospace,Consolas,"Courier New",monospace;
+  --goc-sans:   "Segoe UI",system-ui,-apple-system,"Microsoft YaHei","PingFang SC",sans-serif;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--goc-desk);
+  color:var(--goc-ink);
+  font-family:var(--goc-sans);
+  font-size:14.5px;line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:70px;
+}
+::selection{background:var(--goc-blue);color:#fff;}
+
+/* ---------------- 深蓝顶栏 ---------------- */
+.top{
+  background:linear-gradient(180deg, #1b4c96, #163f7c);
+  color:#fff;
+  border-bottom:3px solid var(--goc-blue-3);
+}
+.top .in{
+  max-width:980px;margin:0 auto;padding:18px 26px;
+  display:flex;align-items:center;gap:16px;
+}
+.emblem{
+  width:58px;height:58px;border-radius:50%;flex:none;
+  background:#fff;
+  box-shadow:0 0 0 1px rgba(255,255,255,.35), 0 4px 14px rgba(0,0,0,.25);
+}
+.top .org{font-size:16px;letter-spacing:.16em;font-weight:600;}
+.top .sub{
+  font-family:var(--goc-mono);font-size:10px;letter-spacing:.18em;
+  color:#b9cdea;margin-top:6px;
+  display:flex;flex-wrap:wrap;gap:6px 18px;
+}
+
+/* ---------------- 五重使命 ---------------- */
+.five{background:var(--goc-pale);border-bottom:1px solid var(--goc-line);}
+.five .in{
+  max-width:980px;margin:0 auto;padding:0 26px;
+  display:grid;grid-template-columns:repeat(5,1fr);
+}
+.five .it{padding:14px 6px 14px 18px;border-left:1px solid var(--goc-line-2);}
+.five .it:first-child{border-left:0;padding-left:0;}
+.five .zh{font-size:15px;letter-spacing:.28em;color:var(--goc-blue);font-weight:600;}
+.five .en{
+  font-family:var(--goc-mono);font-size:9px;letter-spacing:.2em;
+  color:var(--goc-ink-3);margin-top:3px;
+}
+
+/* ---------------- 纸张 ---------------- */
+.sheet{
+  max-width:980px;margin:0 auto;background:var(--goc-paper);
+  padding:42px 54px 46px;
+  box-shadow:0 1px 2px rgba(21,27,38,.06), 0 12px 34px rgba(21,27,38,.10);
+}
+
+/* ---------------- 报头：编号与代号 ---------------- */
+.doc-h{padding-bottom:18px;border-bottom:2px solid var(--goc-blue);}
+.doc-h h1{
+  margin:0;font-size:clamp(22px,3.4vw,32px);line-height:1.4;
+  letter-spacing:.02em;font-weight:650;color:var(--goc-ink);
+  word-break:break-word;
+}
+.doc-h h1 .q{color:var(--goc-blue);}
+.doc-h .kind{
+  margin-top:14px;
+  font-family:var(--goc-mono);font-size:11px;letter-spacing:.34em;
+  color:var(--goc-blue-2);
+}
+
+/* ---------------- 数据条目：威胁ID / 授权应对等级 ---------------- */
+.pair{padding:20px 0;border-bottom:1px solid var(--goc-line);}
+.pair .k{
+  font-family:var(--goc-mono);font-size:10px;letter-spacing:.24em;
+  color:var(--goc-ink-3);
+}
+.pair .v{margin-top:9px;font-size:15px;letter-spacing:.02em;color:var(--goc-ink);}
+
+/* 授权应对等级那一行整行红 */
+.pair.auth{padding:22px 0;}
+.pair.auth .k{color:#c2655d;}
+.pair.auth .v{color:var(--goc-red);}
+
+/* 文内大小字 */
+.big{
+  font-size:1.7em;font-weight:700;letter-spacing:0;
+  vertical-align:-.06em;
+}
+.sml{font-size:.72em;letter-spacing:.06em;opacity:.78;}
+
+/* ---------------- 章节 ---------------- */
+.sec{margin-top:34px;}
+.sec h2{
+  font-size:15px;letter-spacing:.14em;font-weight:650;
+  margin:0 0 12px;padding-bottom:8px;
+  border-bottom:1px solid var(--goc-line);
+  color:var(--goc-blue);
+}
+.sec p{margin:0 0 1em;color:var(--goc-ink-2);}
+.sec p:last-child{margin-bottom:0;}
+
+/* 威胁ID 下面的分类串：已知威胁个体-9347-半神 自我再生者-… */
+.alias{
+  margin-top:10px;
+  font-family:var(--goc-mono);font-size:11.5px;line-height:1.9;
+  letter-spacing:.04em;color:var(--goc-ink-3);
+}
+
+/* 手册引文：//...// —— 斜体 + 左侧浅蓝竖线 + 出处 */
+.quote{
+  margin:20px 0;padding:10px 0 10px 16px;
+  border-left:2px solid var(--goc-blue-3);
+  font-style:italic;font-size:13.5px;line-height:1.9;color:var(--goc-ink-2);
+}
+.quote .src{
+  display:block;margin-top:7px;
+  font-style:normal;font-size:11.5px;letter-spacing:.04em;color:var(--goc-ink-3);
+}
+
+/* 引出下面整段引用材料的过渡句 */
+.lead-in{
+  margin:24px 0 12px;
+  font-size:12.5px;letter-spacing:.06em;color:var(--goc-blue-2);
+}
+
+/* 交战规则：一条一句，写得像命令 */
+.order{
+  margin:0 0 .55em;font-size:15px;line-height:1.9;
+  letter-spacing:.02em;color:var(--goc-ink);
+}
+.order:last-child{margin-bottom:0;}
+
+/* 重分类批注：旧的划掉，新的等于宣判 */
+.reclass{
+  margin-top:28px;padding:14px 16px;
+  border:1px solid var(--goc-line);border-radius:2px;
+  background:var(--goc-pale);
+}
+.reclass del{
+  display:block;margin-bottom:7px;
+  color:var(--goc-ink-3);font-size:13px;
+  text-decoration:line-through;
+  text-decoration-color:#c0554d;
+  text-decoration-thickness:1px;
+}
+.reclass .now{margin:0;font-size:13.5px;color:var(--goc-ink);}
+
+/* ---------------- 照片 + 毛玻璃：被替换进来的那段文本 ----------------
+   白纸中间挖出一块暗的，照片当底，文字压在磨砂玻璃上。
+   只有有字的地方模糊，四周 26px 露出清晰照片（跟 SCP-9279 是同一套手法）。 */
+.hero{
+  position:relative;margin:26px 0 0;border-radius:3px;overflow:hidden;
+  background:url("../img/9348-reeds.jpg") center 42%/cover no-repeat;
+  box-shadow:0 10px 30px rgba(21,27,38,.20);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(8,12,20,.18), rgba(8,12,20,.60));
+}
+.hero .framed{position:relative;z-index:2;padding:26px;}
+.hero .glass{
+  padding:30px 34px 34px;border-radius:3px;
+  background:rgba(7,10,18,.34);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:inset 0 0 40px rgba(0,0,0,.35);
+  backdrop-filter:blur(9px) saturate(1.05);
+  -webkit-backdrop-filter:blur(9px) saturate(1.05);
+  color:#f2f6ff;
+}
+
+/* 诗：衬线、宽字距，跟正文的无衬线拉开 */
+.verse{
+  font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC","SimSun",Georgia,serif;
+  font-size:15.5px;line-height:2.1;letter-spacing:.12em;
+}
+/* 关键：.sec p 把正文设成了深色，这里必须抢回来，否则诗在暗底上看不见 */
+.verse p{color:inherit;margin:0 0 .6em;}
+.verse p:last-child{margin-bottom:0;}
+.verse .dots{
+  margin:1.7em 0;text-align:center;
+  letter-spacing:.7em;color:rgba(238,243,251,.55);
+}
+.verse .stanza{margin:0 0 1.5em;}
+.verse .stanza p{margin:0 0 .3em;}
+.verse .close{
+  margin-top:2.4em;text-align:center;
+  letter-spacing:.34em;color:#fff;
+  text-shadow:0 0 18px rgba(150,190,255,.55);
+}
+
+@media (max-width:820px){
+  .hero .framed{padding:16px;}
+  .hero .glass{padding:22px 20px 26px;}
+  .verse{font-size:14.5px;letter-spacing:.08em;}
+}
+
+/* ============================================================
+   受污染文件节选（UTE-9349 那段祷词）
+   ------------------------------------------------------------
+   白纸中间裂开一道黑的：暗底 + 等宽字 + 红色错误块 + 红/青色散。
+   跟 SCP-9644 的崩坏是同一个手法，但这里是"文件被污染"，
+   所以只有这一块坏，页面别处还是干净的 GOC 报告。
+   ============================================================ */
+.corrupt{
+  position:relative;isolation:isolate;overflow:hidden;
+  margin:24px 0 0;padding:26px 28px;
+  background:linear-gradient(180deg, #0a0d14, #04060a);
+  border:1px solid #232a38;border-radius:3px;
+  color:#c9d3e4;
+  font-family:var(--goc-mono);
+  font-size:13px;line-height:1.95;
+}
+.corrupt p{margin:0 0 .8em;color:#c9d3e4;}
+.corrupt p:last-child{margin-bottom:0;}
+.corrupt a{
+  color:#9cc0f0;text-decoration:none;
+  border-bottom:1px dotted rgba(156,192,240,.45);
+}
+.corrupt a:hover{color:#dce9ff;border-bottom-style:solid;}
+
+/* 观测设备 / 状态那几行 */
+.corrupt .obs{margin:0 0 .45em;font-size:12px;color:#8fa0ba;letter-spacing:.04em;}
+.corrupt .obs b{color:#e6ecf6;font-weight:600;}
+
+/* 警告条 */
+.corrupt .warn{
+  margin:16px 0;padding:12px 14px;border-radius:2px;
+  border:1px solid rgba(255,60,60,.42);
+  background:rgba(255,40,40,.07);
+  color:#ffb3b3;font-size:12.5px;line-height:1.9;
+}
+
+/* 「为神明唱响挽歌」：暗底里唯一一句衬线白光 */
+.lament{
+  margin:26px 0;text-align:center;
+  font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC","SimSun",Georgia,serif;
+  font-style:italic;font-size:20px;letter-spacing:.22em;
+  color:#fff;text-shadow:0 0 20px rgba(255,90,90,.6);
+}
+.corrupt .go{margin:18px 0;font-style:italic;color:#7f8fa8;font-size:12.5px;}
+
+/* ---- 祷词：色散 + 错误块 ---- */
+.prayer{
+  position:relative;margin:18px 0;
+  padding:18px 0 20px;
+  border-top:1px solid rgba(255,60,60,.28);
+  border-bottom:1px solid rgba(255,60,60,.28);
+}
+.prayer p{margin:0;font-size:13.5px;line-height:2.05;color:#e8eef8;}
+
+/* 色散：红/青双向偏移，两档 */
+.ca{text-shadow:1px 0 rgba(255,0,60,.45), -1px 0 rgba(0,220,255,.35);}
+.ca.hard{text-shadow:2.2px 0 rgba(255,0,60,.8), -2.2px 0 rgba(0,220,255,.6);}
+
+/* 错误块：绝对定位的横条，像屏幕撕裂 */
+.err{
+  position:absolute;display:block;pointer-events:none;
+  background:#ff0033;opacity:.8;mix-blend-mode:screen;
+  border-radius:1px;z-index:3;
+}
+.err.b{background:#00e5ff;opacity:.45;}
+.err.thin{height:2px;}
+
+@media (max-width:820px){
+  .corrupt{padding:18px 16px;font-size:12.5px;}
+  .prayer p{font-size:12.5px;}
+  .lament{font-size:17px;letter-spacing:.16em;}
+}
+
+/* 占位：模板里一眼看得出该填哪 */
+.ph{
+  background:#fdf3d6;border-bottom:1px solid #e6c874;color:#7a5a12;
+  padding:0 3px;border-radius:2px;font-style:normal;
+}
+
+/* ---------------- 文末标签与署名 ---------------- */
+.doc-foot{
+  margin-top:44px;padding-top:18px;border-top:1px solid var(--goc-line);
+}
+.doc-tags{display:flex;flex-wrap:wrap;gap:10px;}
+.doc-tags span{
+  font-family:var(--goc-mono);font-size:11px;letter-spacing:.08em;
+  color:var(--goc-blue);background:var(--goc-pale);
+  border-radius:2px;padding:2px 8px;
+}
+.by{
+  margin-top:16px;font-family:var(--goc-mono);
+  font-size:11px;letter-spacing:.1em;color:var(--goc-ink-3);
+}
+
+/* ---------------- 页脚 ---------------- */
+.foot{
+  max-width:980px;margin:0 auto;padding:14px 54px 0;
+  display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  font-family:var(--goc-mono);font-size:10px;letter-spacing:.12em;color:#9aa4b4;
+}
+
+/* 返回站内 */
+.back{
+  max-width:980px;margin:0 auto;padding:16px 54px 0;
+  font-family:var(--goc-mono);font-size:10.5px;letter-spacing:.14em;
+}
+.back a{color:#7c8698;text-decoration:none;border-bottom:1px dotted #b7c2d3;}
+.back a:hover{color:var(--goc-blue);border-bottom-color:var(--goc-blue);}
+
+/* ---------------- 响应式 ---------------- */
+@media (max-width:820px){
+  .top .in{padding:14px 16px;gap:12px;}
+  .five .in{grid-template-columns:repeat(2,1fr);padding:0 16px;}
+  .five .it{border-left:0;padding:12px 0;border-bottom:1px solid var(--goc-line);}
+  .five .it:nth-child(2n){padding-left:14px;border-left:1px solid var(--goc-line-2);}
+  .sheet{padding:26px 18px 34px;}
+  .doc-h h1{font-size:20px;}
+  .foot,.back{padding-left:18px;padding-right:18px;}
+}

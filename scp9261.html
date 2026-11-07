@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · SCP-9261</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：档案详情
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关人员档案</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">安保设施</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">技术与协议</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="s9261">
+      <div class="crumbs">
+        <a class="back" href="archive.html">← 返回异常项目列表</a>
+        <span style="margin:0 8px;"></span>主页：foundation / <b>异常项目列表</b> / SCP-9261
+      </div>
+
+      <div class="page-grid">
+        <div>
+          <div class="dossier-h">
+            <div class="top">
+              <span class="scp-id">SCP-9261</span>
+              <span class="tag safe">SAFE</span>
+              <span class="name">（“幻境”）</span>
+            </div>
+            <div class="fields">
+              <div class="f"><span class="k">项目编号</span><span class="v">9261</span></div>
+              <div class="f"><span class="k">项目等级</span><span class="v">Safe</span></div>
+              <div class="f"><span class="k">入口区域</span><span class="v">Area-11</span></div>
+              <div class="f"><span class="k">权限要求</span><span class="v">Level 4</span></div>
+              <div class="f"><span class="k">建档日期</span><span class="v">█/██/████</span></div>
+              <div class="f"><span class="k">最后修订</span><span class="v">█/██/████</span></div>
+              <div class="f"><span class="k">负责机构</span><span class="v">织机计划议会</span></div>
+              <div class="f"><span class="k">状态</span><span class="v">收容中</span></div>
+            </div>
+          </div>
+
+          <h3 class="sec-title"><span>特殊收容措施</span><span class="tail">SCP-9261</span></h3>
+          <div class="prose">
+            <p>SCP-9261的唯一出入口位于<a href="area11.html">Area-11</a>的仓储与物流区域的尽头。Area-11内应该至少时刻有十名安保人员轮班守护入口，这些安保人员各自配有相当于一名MTF指挥官的装备，遇袭时应立即拉响警报，MTF-Nu-7的肃杀营将赶到SCP-9261侧的入口处支援。入口大门应由Q1280共相合金铸造，大门开关在Site-01的监督者会议室和SCP-9261的织机演算室内各有一个。无O5议会或织机计划上议会命令，禁止打开大门乃至放行任何物体。</p>
+          </div>
+
+          <h3 class="sec-title"><span>描述</span><span class="tail">DESCRIPTION</span></h3>
+          <div class="prose">
+            <p>SCP-9261是一处异常空间。本质是所有概念和记忆的存放之处和归处，记录有大量违反经典物理和数学规律的现象。但在大部分浅层地区（叙事坐标＜（0，0，0））基本保持欧几里得空间的特征并且为线性。这些稳定的区域一般没有威胁。</p>
+            <p>项目在模因学意义上极度混乱而且不适宜人类生存，但事实上在稳定区域的长期乃至永久生存是可行的。</p>
+            <p>对更深层次区域的探索已经被永久暂停。</p>
+
+            <div class="subspaces">
+            <div class="subspace">
+              <div class="subspace-h">
+                <span class="idx">一</span>
+                <span class="code">SCP-9261-0001</span>
+                <span class="nm">根据地</span>
+              </div>
+              <div class="subspace-c">
+                <div><b>叙事坐标</b>（-501，H，-124）</div>
+                <div><b>超形而上学坐标</b>↓符号的上方（1px，3.124px）处</div>
+              </div>
+              <div class="subspace-b">
+                <p>该空间即为上述的稳定区域。天空盒类似现实，陆地形态为不可摧毁，不可采样的透明物质，可以通过该物质透视到底层天空盒，摩擦力系数等物理指数类似于大理石。光照和天空盒随时间变化，光照源头为一物理学意义上不存在的物体，无法进一步探究。</p>
+                <p>确信为低威胁名词的总和之处。</p>
+                <p>9926相关人员-1以及9261相关人员-1长期位于此处，SCP基金会的9261基地同样位于此处。</p>
+              </div>
+            </div>
+            <div class="subspace">
+              <div class="subspace-h">
+                <span class="idx">二</span>
+                <span class="code">SCP-9261-0002</span>
+                <span class="nm">意识</span>
+              </div>
+              <div class="subspace-c">
+                <div><b>叙事坐标</b>（1E10，P，3）</div>
+                <div><b>超形而上学坐标</b>※符号的左上方（31px，5px）处</div>
+              </div>
+              <div class="subspace-b">
+                <p>该空间表现为一非欧几里得空间，无天空盒和陆地概念，具体遵循罗氏非欧几何，概念遭到混淆，休谟指数无法测量，一般不推荐进入。</p>
+                <p>该空间确信为所有生物“意识”的总和之处，所有念头乃至未成形的想法都有可能具象化并对确实存在的物体进行实质性的精神和物理影响。</p>
+                <div class="margin-note">去他妈的全90度角的五边形。<span class="by">——中级研究员 L████</span></div>
+              </div>
+            </div>
+            <div class="subspace">
+              <div class="subspace-h">
+                <span class="idx">三</span>
+                <span class="code">SCP-9261-0003</span>
+                <span class="nm">大陆架</span>
+                <span class="nest">⊂ 0001</span>
+              </div>
+              <div class="subspace-c">
+                <div><b>叙事坐标</b>（-1↑100，-O，-2＾30000）</div>
+                <div><b>超形而上学坐标</b>'符号的（100px，300px）处</div>
+              </div>
+              <div class="subspace-b">
+                <p>该区域被概括在子空间0001之内。天空盒不随时间变化，主体颜色为蓝，粉，光照强度固定，光照来源未知，陆地形态为约13cm厚的液体物质（确定为纯水），水底的物质无法观测，模因学意义上不存在。没有明显威胁，确信为平静的正向形容词和副词的总和之处。</p>
+                <p>依据织机计划上议会命令，<a href="loom.html">织机</a>被建设在此处。</p>
+              </div>
+            </div>
+            <div class="subspace">
+              <div class="subspace-h">
+                <span class="idx">四</span>
+                <span class="code">SCP-9261-0004</span>
+                <span class="nm">死亡</span>
+              </div>
+              <div class="subspace-c">
+                <div><b>叙事坐标</b>（-0.5，0.5，-0.5）</div>
+                <div><b>超形而上学坐标</b>0符号的（0.5px，0.5px）处</div>
+              </div>
+              <div class="subspace-b">
+                <p>光照和天空盒固定，天空盒为阴天多云天气，光照来源未知，陆地形态为类似现实的土地，有一条河流。土地下方的物质无法观测，河流的组成物质为纯水，河床无法观测。存在一个由无机盐构成的维多利亚时代风格钟楼，高度无法测量，可以通过进入钟楼的大门抵达顶层，钟楼内部无法观测。顶层即为<a href="goc9348.html">UTE-9348（“调度员，礻”）</a>的位置。</p>
+                <p>该子空间确信为“死亡”概念和记忆的总和之处。</p>
+              </div>
+            </div>
+            <div class="subspace">
+              <div class="subspace-h">
+                <span class="idx">五</span>
+                <span class="code">SCP-9261-9123</span>
+                <span class="nm">边陲</span>
+              </div>
+              <div class="subspace-c">
+                <div><b>可能的叙事坐标</b>（2147483647，2147483647，2147483647）</div>
+                <div><b>超形而上学坐标</b>无法测量</div>
+              </div>
+              <div class="subspace-b">
+                <p>该空间的详细信息不存在。</p>
+                <p>该空间的本质无法测量。</p>
+                <p>据未证实情报，<a href="goc9349.html">UTE-9349（“杀戮与守望之神”）</a>可能在此分裂。</p>
+                <p><del>你看到了吗，祂的血染红了整轮红月。</del></p>
+                <p><del>清算的时候就要到了。</del></p>
+                <p><del>我必归来。</del></p>
+              </div>
+            </div>
+            </div>
+          </div>
+
+          <div class="doc-foot">
+            <div class="doc-tags">
+              <span class="dtag" data-tag="scp">[scp]</span>
+              <span class="dtag" data-tag="空间">[空间]</span>
+              <span class="dtag" data-tag="概念">[概念]</span>
+              <span class="dtag" data-tag="模因">[模因]</span>
+              <span class="dtag" data-tag="非完全原创">[非完全原创]</span>
+              <span class="dtag" data-tag="非欧">[非欧]</span>
+            </div>
+
+            <div class="doc-credit">
+              <p>本文作者：HOSHINOAME</p>
+              <p>借鉴/改编：<a class="ext" href="https://store.steampowered.com/app/2873080?snr=5000_5100__">CHECK HERE</a></p>
+            </div>
+          </div>
+
+          <div style="margin-top:24px;padding-top:16px;border-top:1px dashed var(--line-soft);">
+            <a class="btn" href="archive.html">← 返回异常项目列表</a>
+          </div>
+        </div>
+
+        <aside class="rail">
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>元数据</div>
+            <div class="panel-b" style="padding:4px 14px 12px;">
+              <table class="meta-t">
+                <tr><td>项目编号</td><td>SCP-9261</td></tr>
+                <tr><td>项目等级</td><td><span class="tag safe">SAFE</span></td></tr>
+                <tr><td>状态</td><td>收容中</td></tr>
+                <tr><td>入口区域</td><td>Area-11</td></tr>
+                <tr><td>负责机构</td><td>织机计划议会</td></tr>
+                <tr><td>标签</td><td style="color:var(--fg-dim)">#空间 #概念 #非欧</td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>子空间索引</div>
+            <div class="panel-b" style="padding:10px 14px;">
+              <ul class="toc">
+                <li class="active">特殊收容措施</li>
+                <li>描述</li>
+                <li class="sub">0001 根据地</li>
+                <li class="sub">0002 意识</li>
+                <li class="sub">0003 大陆架</li>
+                <li class="sub">0004 死亡</li>
+                <li class="sub">9123 边陲</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>相关条目</div>
+            <div class="panel-b">
+              <ul class="list" style="font-size:12.5px;">
+                <li><span class="id">设施</span><a class="tt" href="area11.html">Area-11</a></li>
+                <li><span class="id">设施</span><a class="tt" href="loom.html">织机</a></li>
+                <li><span class="id">实体</span><a class="tt" href="goc9348.html">UTE-9348 调度员，礻</a></li>
+                <li><span class="id">实体</span><a class="tt" href="goc9349.html">UTE-9349 杀戮与守望之神</a></li>
+                <li><span class="id">索引</span><a class="tt" href="archive.html">全部异常项目</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：SCP-9261</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

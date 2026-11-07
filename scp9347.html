@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · SCP-9347</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：档案详情
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关人员档案</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">安保设施</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">技术与协议</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="s9347">
+      <div class="crumbs">
+        <a class="back" href="archive.html">← 返回异常项目列表</a>
+        <span style="margin:0 8px;"></span>主页：foundation / <b>异常项目列表</b> / SCP-9347
+      </div>
+
+      <div class="page-grid">
+        <div>
+          <div class="dossier-h">
+            <div class="top">
+              <span class="scp-id">SCP-9347</span>
+              <span class="tag safe">SAFE</span>
+              <span class="name">（“无常烬砂”）</span>
+            </div>
+            <div class="fields">
+              <div class="f"><span class="k">项目编号</span><span class="v">9347</span></div>
+              <div class="f"><span class="k">项目等级</span><span class="v">Safe</span></div>
+              <div class="f"><span class="k">收容区域</span><span class="v">Site-13轻型收容区仓库LCZ#142四号柜</span></div>
+              <div class="f"><span class="k">权限要求</span><span class="v">Level 2</span></div>
+              <div class="f"><span class="k">建档日期</span><span class="v">█/██/████</span></div>
+              <div class="f"><span class="k">最后修订</span><span class="v">█/██/████</span></div>
+              <div class="f"><span class="k">负责研究员</span><span class="v">Dr. C████ T██</span></div>
+              <div class="f"><span class="k">状态</span><span class="v">未收容</span></div>
+            </div>
+          </div>
+
+          <h3 class="sec-title"><span>特殊收容措施</span><span class="tail">SCP-9347</span></h3>
+          <div class="prose">
+            <p>由于项目当前已不在基准现实中，对其的物理收容程序已宣告作废。原收容于Site-13轻型收容区仓库LCZ#142四号柜的项目实体现已遗失。依据《SCP基金会21世纪预算法案》，对其的收容暂缓。</p>
+          </div>
+
+          <h3 class="sec-title"><span>描述</span><span class="tail">DESCRIPTION</span></h3>
+          <div class="prose">
+            <p>SCP-9347是一架严重损坏的小型四轴民用无人机，但保持了基本的飞行功能。</p>
+            <p>项目的四个旋翼中有两个已发生严重形变，外壳由大量黑色的绝缘胶布和铁丝强行固定，电池仓表面有被高浓度酸液腐蚀的痕迹。其摄像模组完全碎裂，无法进行任何图像记录或环境探测。</p>
+            <p>在无外部能源输入的情况下，项目仍然可以运作。</p>
+            <p>此外，项目的起落架部分表现出一种违背物理结构特性，它能以极小的机械力量（约2.5N）夹住某些特定物体（如轻质植物的根茎）。</p>
+            <p>项目可能拥有自我意识。</p>
+            <p>项目不具有敌意。</p>
+            <p>允许项目与<a href="goc9347.html">KTE-9347</a>接触以稳定KTE-9347的精神状态。</p>
+          </div>
+
+          <div class="doc-foot">
+            <div class="doc-tags">
+              <span class="dtag" data-tag="scp">[scp]</span>
+              <span class="dtag" data-tag="原创">[原创]</span>
+              <span class="dtag" data-tag="调度员">[调度员]</span>
+              <span class="dtag" data-tag="故事:幻境">[故事:幻境]</span>
+              <span class="dtag" data-tag="物件">[物件]</span>
+            </div>
+
+            <div class="doc-credit">
+              <p>本文作者：HOSHINOAME</p>
+            </div>
+          </div>
+
+          <div style="margin-top:24px;padding-top:16px;border-top:1px dashed var(--line-soft);">
+            <a class="btn" href="archive.html">← 返回异常项目列表</a>
+          </div>
+        </div>
+
+        <aside class="rail">
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>元数据</div>
+            <div class="panel-b" style="padding:4px 14px 12px;">
+              <table class="meta-t">
+                <tr><td>项目编号</td><td>SCP-9347</td></tr>
+                <tr><td>项目等级</td><td><span class="tag safe">SAFE</span></td></tr>
+                <tr><td>状态</td><td>未收容</td></tr>
+                <tr><td>原收容区</td><td>Site-13 LCZ#142</td></tr>
+                <tr><td>负责研究员</td><td>Dr. C████ T██</td></tr>
+                <tr><td>标签</td><td style="color:var(--fg-dim)">#调度员 #物件</td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>本文目录</div>
+            <div class="panel-b" style="padding:10px 14px;">
+              <ul class="toc">
+                <li class="active">特殊收容措施</li>
+                <li>描述</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>相关条目</div>
+            <div class="panel-b">
+              <ul class="list" style="font-size:12.5px;">
+                <li><span class="id">实体</span><a class="tt" href="goc9347.html">KTE-9347</a></li>
+                <li><span class="id">系列</span><a class="tt" href="scp9261.html">SCP-9261 幻境</a></li>
+                <li><span class="id">索引</span><a class="tt" href="archive.html">全部异常项目</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：SCP-9347</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

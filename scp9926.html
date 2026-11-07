@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · SCP-9926</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：档案详情
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关人员档案</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">安保设施</span><span class="todo">TODO</span></div>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">技术与协议</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="s9926">
+      <div class="crumbs">
+        <a class="back" href="archive.html">← 返回异常项目列表</a>
+        <span style="margin:0 8px;"></span>主页：foundation / <b>异常项目列表</b> / SCP-9926
+      </div>
+
+      <div class="page-grid">
+        <div>
+          <div class="dossier-h">
+            <div class="top">
+              <span class="scp-id">SCP-9926</span>
+              <span class="tag thaumiel">THAUMIEL</span>
+              <span class="name">（“静待花开”）</span>
+            </div>
+            <div class="fields">
+              <div class="f"><span class="k">项目编号</span><span class="v">9926</span></div>
+              <div class="f"><span class="k">项目等级</span><span class="v">Thaumiel</span></div>
+              <div class="f"><span class="k">收容区域</span><span class="v">POI-1</span></div>
+              <div class="f"><span class="k">权限要求</span><span class="v">Level 4</span></div>
+              <div class="f"><span class="k">建档日期</span><span class="v">█/██/████</span></div>
+              <div class="f"><span class="k">最后修订</span><span class="v">█/██/████</span></div>
+              <div class="f"><span class="k">负责研究员</span><span class="v">Dr.Elowen</span></div>
+              <div class="f"><span class="k">状态</span><span class="v">收容中</span></div>
+            </div>
+          </div>
+
+          <h3 class="sec-title"><span>特殊收容措施</span><span class="tail">SCP-9926</span></h3>
+          <div class="prose">
+            <p>SCP-9926被收容于其宿主9926相关人员-01的体内。</p>
+
+            <div class="no-access">
+              <p>以下内容需要2147483647/9926级权限查看。</p>
+              <p>-您无权查看。</p>
+            </div>
+          </div>
+
+          <h3 class="sec-title"><span>描述</span><span class="tail">DESCRIPTION</span></h3>
+          <div class="prose">
+            <p>SCP-9926指代一类异常植物，█年生直立草本，孢子生殖。</p>
+            <p>项目当前寄生于<a href="vh.html">9926相关人员-01，织机计划相关人员-00，“记述人”</a>体内，观测到的唯一一朵花位于其左眼瞳孔中。</p>
+            <p>叶对生，单叶；叶片披针形，长5–10 cm，宽1–3 cm，先端渐尖，基部圆形，边缘全缘，羽状脉，纸质。</p>
+            <p>项目的花单生或数朵组成聚伞花序，花梗细长，无毛。花两性，辐射对称，重瓣；花被片多层，白色，倒卵形至长圆形，先端钝圆，边缘全缘，纸质，外轮较大，向内渐小且密集。花心特化，不具传统雄蕊与雌蕊；花蕊内部着生特化的肉质孢子叶，孢子叶腹面隐生球形孢子囊，聚集成孢子囊群，成熟时呈高白色色阶的淡黄色。孢子囊以纵裂方式开裂散播孢子。特别的，项目不具备传统意义上的花期，花一年常开。</p>
+            <p>根据模型推演，证实9926相关人员-1无意识地极大降低了其体内SCP-9926的生长速度。</p>
+            <p>观察到离开9926相关人员-1体内的孢子由于孢子未成熟而无法生长为植株，同时项目传播其孢子的速率稳定且远低于理论值。</p>
+          </div>
+
+          <h3 class="sec-title"><span>附件9926-1</span><span class="tail">访谈记录</span></h3>
+          <div class="prose">
+            <p>对相关人员9926-1（下称“对象”）的访谈记录。</p>
+            <p>采访者：SCP-9926研究主管，“织机”计划异常生物学顾问，Dr.Elowen。</p>
+            <p class="sfx">记录开始。</p>
+
+            <div class="quote"><span class="who">Dr.Elowen</span>我们观察到你体内的SCP-9926生长速度远低于理论值，这是为什么？</div>
+            <div class="quote"><span class="who">对象</span>也许我在有意无意之间控制了。</div>
+            <div class="quote"><span class="who">Dr.Elowen</span><span class="dir">（对回答的明显失望）</span>那你体内的SCP-9926孢子喷吐速率稳定且远低于理论值，这又是为什么？</div>
+            <div class="quote"><span class="who">对象</span>和上面一样。</div>
+            <div class="quote"><span class="who">Dr.Elowen</span><span class="dir">（没劲）</span>你体内9926喷出的孢子都是不成熟状态。</div>
+            <div class="quote"><span class="who">对象</span>这个我倒是知道，时候未到。它不喜欢无意义的牺牲。</div>
+            <div class="quote"><span class="who">Dr.Elowen</span><span class="dir">（重新提起兴趣）</span>时候是什么时候？</div>
+            <div class="quote"><span class="who">对象</span>胜利的时候。</div>
+            <div class="quote"><span class="who">Dr.Elowen</span>你是指织机计划成功的时候？</div>
+            <div class="quote"><span class="who">对象</span>对。</div>
+            <div class="quote"><span class="who">Dr.Elowen</span>那还要你这9926有何用？</div>
+            <div class="quote"><span class="who">对象</span>9926可以保护新生的时间线免受祂的同化，多准备一手总是好的。</div>
+            <div class="quote"><span class="who">Dr.Elowen</span>恕我直言，意义不大。</div>
+            <div class="quote"><span class="who">对象</span>基金会一直都是利益至上的组织，我不反驳，但还请你们去管好你们的织机，而不是来打扰我的退休生活。</div>
+            <div class="quote"><span class="who">对象</span>还有事吗？</div>
+
+            <p class="sfx">记录结束。</p>
+          </div>
+
+          <div class="doc-foot">
+            <div class="doc-tags">
+              <span class="dtag" data-tag="scp">[scp]</span>
+              <span class="dtag" data-tag="原创">[原创]</span>
+              <span class="dtag" data-tag="故事:主线">[故事:主线]</span>
+              <span class="dtag" data-tag="故事:幻境">[故事:幻境]</span>
+              <span class="dtag" data-tag="植物">[植物]</span>
+              <span class="dtag" data-tag="Vesper_HoshiNoAme">[Vesper_HoshiNoAme]</span>
+            </div>
+
+            <div class="doc-credit">
+              <p>本文作者：HOSHINOAME</p>
+            </div>
+          </div>
+
+          <div style="margin-top:24px;padding-top:16px;border-top:1px dashed var(--line-soft);">
+            <a class="btn" href="archive.html">← 返回异常项目列表</a>
+          </div>
+        </div>
+
+        <aside class="rail">
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>元数据</div>
+            <div class="panel-b" style="padding:4px 14px 12px;">
+              <table class="meta-t">
+                <tr><td>项目编号</td><td>SCP-9926</td></tr>
+                <tr><td>项目等级</td><td><span class="tag thaumiel">THAUMIEL</span></td></tr>
+                <tr><td>状态</td><td>收容中</td></tr>
+                <tr><td>收容区域</td><td>POI-1</td></tr>
+                <tr><td>负责研究员</td><td>Dr.Elowen</td></tr>
+                <tr><td>标签</td><td style="color:var(--fg-dim)">#植物 #主线</td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>本文目录</div>
+            <div class="panel-b" style="padding:10px 14px;">
+              <ul class="toc">
+                <li class="active">特殊收容措施</li>
+                <li>描述</li>
+                <li class="sub">形态</li>
+                <li>附件 9926-1</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><span class="dot"></span>相关条目</div>
+            <div class="panel-b">
+              <ul class="list" style="font-size:12.5px;">
+                <li><span class="id">宿主</span><a class="tt" href="vh.html">“记述人”</a></li>
+                <li><span class="id">实体</span><a class="tt" href="goc9347.html">KTE-9347</a></li>
+                <li><span class="id">设施</span><a class="tt" href="scp9261.html">SCP-9261 幻境</a></li>
+                <li><span class="id">索引</span><a class="tt" href="archive.html">全部异常项目</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：SCP-9926</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
