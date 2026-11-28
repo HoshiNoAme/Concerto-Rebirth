@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · Pulse · MTF-Theta-11</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：原创机动特遣队
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="personnel.html"><span class="br">├──</span><span class="lb">相关人员档案</span></a>
+      <a class="nav-item" href="a11.html"><span class="br">├──</span><span class="lb">安保设施</span></a>
+      <a class="nav-item" href="tech.html"><span class="br">├──</span><span class="lb">技术与协议</span></a>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="pulse">
+      <div class="crumbs">
+        <a class="back" href="mtf.html">← 返回原创机动特遣队</a>
+        <span style="margin:0 8px;"></span>主页：foundation / 原创机动特遣队 / Pulse
+      </div>
+
+      <div class="m-profile">
+
+        <!-- 左栏：立绘 + 数据 -->
+        <aside class="m-aside">
+          <div class="mp"><span class="pht">立 绘 待 补</span></div>
+          <div class="m-data">
+            <div><span class="k">姓名</span><span class="v">Mir█Fa█u</span></div>
+            <div><span class="k">代号</span><span class="v">Pulse</span></div>
+            <div><span class="k">所属</span><span class="v">MTF-Theta-11</span></div>
+            <div><span class="k">职位</span><span class="v">生命维持专员</span></div>
+            <div><span class="k">加入时间</span><span class="v">1/3/2012</span></div>
+            <div><span class="k">当前状态</span><span class="v">在役</span></div>
+          </div>
+        </aside>
+
+        <!-- 右栏：角色正文 -->
+        <div class="m-text">
+
+          <div class="dossier-h">
+            <div class="top">
+              <span class="scp-id">Pulse</span>
+              <span class="tag info">Tactical Medical Officer</span>
+              <span class="name">MTF-Theta-11 人事档案</span>
+            </div>
+          </div>
+
+          <h3 class="sec-title"><span>履历</span><span class="tail">SERVICE</span></h3>
+          <div class="prose">
+            <p>Pulse是MTF-Theta-11的生命维持专员。</p>
+            <p>Pulse在████高级中学完成了中学生涯，以优异的表现完成了高等学校全█统一招生考试。本应进入████大学就读，却因无法考证的他人因素导致录取通知书不被承认。被迫之下，进入一家私人诊所工作。在这期间，其因地缘关系与同期的T████和H████结识，这二人后来亦成为了MTF-Theta-11的成员。</p>
+            <p>在私人诊所工作的一年后，该地区附近的基金会设施Site-██发生严重的收容事故。<a href="https://scp-wiki-cn.wikidot.com/scp-008">SCP-008</a>突破收容，并与<a href="https://scp-wiki-cn.wikidot.com/scp-939">SCP-939</a>发生反应并以极快速度传播。事故发生时Pulse正在值夜班。面对冲入诊所的感染者，对象使用办公用品（一根中性笔、一把圆规和数个燕尾夹）组装出一把简陋弹弓，以手术刀和强效镇静剂针管为弹药，成功击杀五名SCP-008感染者。同时，对象在极度混乱中对诊所内的受伤平民进行了标准应急处置。</p>
+            <p>当时在事故地点附近的<a href="mtf-arctic.html">ETTRA特工Ni██tai██</a>第一时间赶到现场，在诊所内搜寻幸存者时结识Pulse。在MTF-Theta-11组建时，Arctic发出邀请，Pulse正式入队。</p>
+            <p>对象在<a href="scp9354.html">心智改造</a>中表现出极高的适配度，思维模式极度平稳。尽管其日常行为偶有手忙脚乱等普通人特有的失误，但在面对重症伤员时，能保持绝对专注。其对“拯救生命”的本能极大覆盖了对死亡与模因污染的恐惧。</p>
+          </div>
+
+          <h3 class="sec-title"><span>装备</span><span class="tail">EQUIPMENT</span></h3>
+          <div class="prose">
+            <p>Pulse配备了高切硬质战术头盔，配透明聚碳酸酯防弹全面罩。头盔两侧分别配置冷白光战术手电与暖黄光医疗检查灯。</p>
+            <p>服装为轻量化战术医疗外勤服，防弹材质为碳化硅陶瓷。腰挂医疗包。</p>
+            <p>对象装备了FM-S-OACM-2028型霰弹枪，代号为“海潮，全知者的深渊”。该武器为M1014霰弹枪改造的泛OACM武器，不严格遵循<a href="oacm.html">《方法》</a>中的开火逻辑，但使用OACM技术进行供能和布线。该武器配有两种弹药。</p>
+          </div>
+          <ul class="bullets">
+            <li><span class="cap r"></span><b style="color:var(--fg);">弹药一：“再见”乌托邦</b>：子母弹。红色胶囊。含微量杀伤装药及灾难性模因信息流，命中导致目标思维结构解体，对SCP-9644-B-1等高密度模因体有特效。</li>
+            <li><span class="cap b"></span><b style="color:var(--fg);">弹药二：再“见”乌托邦</b>：蓝色胶囊。释放特制模因净化剂-λ，用于清除友军身上的严重模因污染。</li>
+          </ul>
+          <div class="prose">
+            <p>其配备了医疗设备FA-OACM-0005，代号为“溪流，盲目者的坟墓”。微型医疗胶囊机械群，患者口服或注射后，可由Pulse通过平板操控或机械自行工作，进行应急内伤处理与病灶诊断。</p>
+            <p>特别的，Pulse配备有一小型黄铜钟，经过战术神学部和奇术部附魔，通过捕捉<a href="goc9348.html">UTE-9348</a>的钟声回响，将因严重模因污染濒死的人员意识强行锚定回现实。</p>
+          </div>
+
+          <h3 class="sec-title"><span>附录一：Pulse的泛自我介绍</span><span class="tail">IN HIS WORDS</span></h3>
+          <div class="mquote">
+            <p>“我是Pulse。”</p>
+            <p>“其实也不用自我介绍了吧？”</p>
+            <p>“但是……这次的我是新的我。”</p>
+            <p>“以前我一直不知道光明的未来又去了哪。”</p>
+            <p>“现在我的答案是，有希望和你们的未来就是光明的未来。”</p>
+          </div>
+
+          <h3 class="sec-title"><span>附录二：Fallacy的日志（节选）</span><span class="tail">LOG</span></h3>
+          <div class="prose">
+            <p>他们常说Pulse有某种神奇的魔术，可以受伤的人忘记疼痛……我虽然没有疼痛的概念，但最近却也在重度受损的时候生出了一丝对生命——有其他队员的生命的留恋，或许是某种角色扮演台词入戏太深了吧。但当Pulse真正在给我清除我结构和程序里的模因污染残留时，我确信我是真切的感受到了从他身上散发出来的希望的氛围，这如同哄婴儿入睡的摇篮曲一般温和，驱散了敌人和<a href="scp9644.html">苦痛</a>的痕迹。我们还有光明的未来。</p>
+            <p>我的确是有些出神了，应该是出神吧，他已经起身走了，还是<a href="mtf-arctic.html"><del>Arctic</del>Ninetails</a>把我叫起来的。</p>
+          </div>
+
+          <h3 class="sec-title"><span>附录三：来自Pulse宿舍床铺旁的便利贴（摘录）</span><span class="tail">NOTES</span></h3>
+          <div class="slip">
+            <p>“注意胶囊机器人不要装错瓶子，那些玻璃试管是它们的，不要拿成Aris的血瓶了！”</p>
+            <p>“滤毒罐有充足备用，在左数第三个柜子。”</p>
+          </div>
+
+          <div class="doc-foot">
+            <div class="doc-tags">
+              <span class="dtag" data-tag="角色">[角色]</span>
+              <span class="dtag" data-tag="MTFT11">[MTFT11]</span>
+              <span class="dtag" data-tag="SCP基金会">[SCP基金会]</span>
+              <span class="dtag" data-tag="主角">[主角]</span>
+              <span class="dtag" data-tag="原创">[原创]</span>
+            </div>
+            <div class="doc-credit">
+              <p>本文作者：HOSHINOAME</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：Pulse</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

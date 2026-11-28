@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · Acolyte · MTF-Theta-11</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：原创机动特遣队
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="personnel.html"><span class="br">├──</span><span class="lb">相关人员档案</span></a>
+      <a class="nav-item" href="a11.html"><span class="br">├──</span><span class="lb">安保设施</span></a>
+      <a class="nav-item" href="tech.html"><span class="br">├──</span><span class="lb">技术与协议</span></a>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="acolyte">
+      <div class="crumbs">
+        <a class="back" href="mtf.html">← 返回原创机动特遣队</a>
+        <span style="margin:0 8px;"></span>主页：foundation / 原创机动特遣队 / Acolyte
+      </div>
+
+      <div class="m-profile">
+
+        <!-- 左栏：立绘 + 数据 -->
+        <aside class="m-aside">
+          <div class="mp"><span class="pht">立 绘 待 补</span></div>
+          <div class="m-data">
+            <div><span class="k">姓名</span><span class="v">Coeurdevey·Aris</span></div>
+            <div><span class="k">代号</span><span class="v">Acolyte</span></div>
+            <div><span class="k">所属</span><span class="v">MTF-Theta-11</span></div>
+            <div><span class="k">职位</span><span class="v">司铎</span></div>
+            <div><span class="k">加入时间</span><span class="v">20/9/2012</span></div>
+            <div><span class="k">当前状态</span><span class="v">在役</span></div>
+          </div>
+        </aside>
+
+        <!-- 右栏：角色正文 -->
+        <div class="m-text">
+
+          <div class="dossier-h">
+            <div class="top">
+              <span class="scp-id">Acolyte</span>
+              <span class="tag info">Chaplain</span>
+              <span class="name">MTF-Theta-11 人事档案</span>
+            </div>
+          </div>
+
+          <h3 class="sec-title"><span>履历</span><span class="tail">SERVICE</span></h3>
+          <div class="prose">
+            <p>Acolyte是MTF-Theta-11的随队司铎。</p>
+            <p>Acolyte曾经是<a href="https://parawatch-wiki-cn.wikidot.com/">观谬维基</a>的活跃成员之一，毕业于███大学，频繁发布有关各种异常神性实体以及模因学相关的帖子。</p>
+            <p>对象因发现了信仰<a href="https://scp-wiki-cn.wikidot.com/scp-610">SCP-610</a>的欲肉教，并以此为起点发现了整个超自然界被基金会逮捕，成为D级人员并因相关人员失误错误的接受了<a href="scp9354.html">心智改造</a>。</p>
+            <p>其因具有科研潜质于2011年被招募加入战术神学部。拥有博士学位。</p>
+            <p>在加入基金会后，Acolyte不再被允许参与任何观谬维基的活动乃至进入观谬维基论坛网站。</p>
+            <p>对象由<a href="mtf-arctic.html">MTF-Theta-11指挥官“Arctic”</a>在该特遣队组建时指定加入MTF-Theta-11。在经过训练后通过人事部门测验和MTF指挥部测验，成为该特遣队的正式队员。</p>
+            <p>对象在使用枪械这一科目表现极差，及格通过。</p>
+          </div>
+
+          <h3 class="sec-title"><span>装备</span><span class="tail">EQUIPMENT</span></h3>
+          <div class="prose">
+            <p>Acolyte不具备常规攻击手段。</p>
+            <p>其装备了0003型头戴式战术模因定向放映仪（下称“放映仪”），位于其右眼，启动需要1ml<a href="goc9347.html">KTE-9347</a>的血液。启动后当任意除微生物，单细胞生物，昆虫，多足纲，八足纲等生物（下称“一类目标”）与Acolyte对视时，放映仪将发射模因抹杀剂，目标会因脑死亡而死，双目睁开，可能内出血。发射一次模因抹杀剂后放映仪关机，若要继续使用则需要等待冷却并重新启动。</p>
+            <p>另一武器为由战术神学部制造的仪式用具，西洋刺剑“执锋”。材质为W2高碳工具钢。无法用于实际刺击与战斗。可进行仪式“唱诗”，</p>
+            <p>仪式需要大约25s，15ml<a href="goc9347.html">KTE-9347</a>的血液。</p>
+            <p>当仪式“唱诗”完成后，操作者可透过介质观察到周围150m的一类目标的位置，表现为一团颜色依据其侵略性和危险度而定的光球。该效果类似于<a href="https://scp-wiki-cn.wikidot.com/scp-1344">SCP-1344</a>。持续30s。效果期间操作者将失去色觉，但可以判断光球的颜色。</p>
+            <p>操作者可以将“执锋”指向上述任意光球，此时有一束仅操作者可见的光束从上方命中光球代表的一类目标，目标将感到剧烈头痛，导致癫痫或严重的被害妄想。这通常导致目标与友方单位之间的自相残杀或目标脑死亡。</p>
+            <p>Acolyte的特制制服为长袍，并且在布料中有特制轻型高韧性防弹插板。装备了战术头盔并用来挂载放映仪。</p>
+            <p>在其腰部挂有血瓶，仅能用来容纳KTE-9347的血液。有细管连接至“执锋”和放映仪，血瓶口的微型泵可快速泵出血液。</p>
+            <p>当前仓库中剩余56mlKTE-9347的血液。</p>
+          </div>
+
+          <h3 class="sec-title"><span>附录：Acolyte的相关记录</span><span class="tail">RECORDED</span></h3>
+          <div class="mquote">
+            <p>“我想看看真正的神的样子。我相信他……我是不是应该说‘祂’……我相信祂是好人。”</p>
+            <p>“戴上这个头盔好热啊。能不能脱掉啊？”</p>
+            <p>“这是谁的血啊？该不会基金会抽我们的血就是为了……”</p>
+            <p>“我的剑可以让敌人对自己的队友开枪。哦……你要试试吗？”</p>
+          </div>
+
+          <div class="doc-foot">
+            <div class="doc-tags">
+              <span class="dtag" data-tag="角色">[角色]</span>
+              <span class="dtag" data-tag="MTFT11">[MTFT11]</span>
+              <span class="dtag" data-tag="SCP基金会">[SCP基金会]</span>
+              <span class="dtag" data-tag="主角">[主角]</span>
+              <span class="dtag" data-tag="原创">[原创]</span>
+            </div>
+            <div class="doc-credit">
+              <p>本文作者：HOSHINOAME</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：Acolyte</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

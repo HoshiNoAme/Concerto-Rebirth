@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · 条约协定模板</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：异常项目列表
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="personnel.html"><span class="br">├──</span><span class="lb">相关人员档案</span></a>
+      <a class="nav-item" href="a11.html"><span class="br">├──</span><span class="lb">安保设施</span></a>
+      <a class="nav-item active" href="tech.html"><span class="br">├──</span><span class="lb">技术与协议</span></a>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="techtreaty">
+      <div class="crumbs">
+        <a class="back" href="tech.html">← 返回技术与协议</a>
+        <span style="margin:0 8px;"></span>主页：foundation / 技术与协议 / 【条约协定】
+      </div>
+
+      <div class="dossier-h">
+        <div class="top">
+          <h1 class="doc-title"><span class="ph">【协定名称】</span><span class="doc-en">TREATY</span></h1>
+          <span class="tag neutral">条约协定</span>
+        </div>
+        <div class="fields">
+          <div class="f"><span class="k">文档类型</span><span class="v">条约协定</span></div>
+          <div class="f"><span class="k">缔约方</span><span class="v"><span class="ph">【甲方 / 乙方】</span></span></div>
+          <div class="f"><span class="k">生效日期</span><span class="v">█/██/████</span></div>
+          <div class="f"><span class="k">适用范围</span><span class="v"><span class="ph">【适用范围】</span></span></div>
+          <div class="f"><span class="k">保管方</span><span class="v"><span class="ph">【保管部门】</span></span></div>
+          <div class="f"><span class="k">最后修订</span><span class="v">█/██/████</span></div>
+          <div class="f"><span class="k">当前状态</span><span class="v"><span class="ph">【生效 / 中止 / 废止】</span></span></div>
+        </div>
+      </div>
+
+      <h3 class="sec-title"><span>总则</span><span class="tail">PREAMBLE</span></h3>
+      <div class="prose">
+        <p><span class="ph">【占位】</span>为什么签这份东西：是谁先提的、为了结束什么局面、各方各让了什么。</p>
+      </div>
+
+      <h3 class="sec-title"><span>条款</span><span class="tail">ARTICLES</span></h3>
+      <div class="prose">
+        <p><b>第一条</b>　<span class="ph">【占位】</span>一条一句，写清楚义务和边界，不写理由。</p>
+        <p><b>第二条</b>　<span class="ph">【占位】</span></p>
+        <p><b>第三条</b>　<span class="ph">【占位】</span></p>
+      </div>
+
+      <h3 class="sec-title"><span>签署</span><span class="tail">SIGNATURES</span></h3>
+      <div class="prose">
+        <p><span class="ph">【甲方签名 / 职务】</span>　　　<span class="ph">【乙方签名 / 职务】</span></p>
+        <p><span class="ph">【日期】</span></p>
+      </div>
+
+      <h3 class="sec-title"><span>附注</span><span class="tail">NOTES</span></h3>
+      <div class="prose">
+        <p><span class="ph">【占位】</span>补充说明：谁在监督执行、违约怎么处理、有没有秘密附加条款。</p>
+      </div>
+
+      <div class="doc-foot">
+        <div class="doc-tags">
+          <span class="dtag" data-tag="原创">[原创]</span>
+          <span class="dtag" data-tag="协定">[协定]</span>
+          <span class="dtag" data-tag="待填">[待填]</span>
+        </div>
+        <div class="doc-credit">
+          <p>本文作者：<span class="ph">【作者】</span></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：【条约协定】</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

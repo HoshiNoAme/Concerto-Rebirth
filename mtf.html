@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · 原创机动特遣队</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：原创机动特遣队
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="personnel.html"><span class="br">├──</span><span class="lb">相关人员档案</span></a>
+      <a class="nav-item" href="a11.html"><span class="br">├──</span><span class="lb">安保设施</span></a>
+      <a class="nav-item" href="tech.html"><span class="br">├──</span><span class="lb">技术与协议</span></a>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="mtf">
+      <div class="crumbs">主页：foundation / <b>原创机动特遣队</b></div>
+
+      <!-- 单位档案头：编号 + 标签 + 通称，下面接字段表 -->
+      <div class="dossier-h">
+        <div class="top">
+          <span class="scp-id">MTF-Theta-11</span>
+          <span class="tag info">机动特遣队</span>
+          <span class="name">（“The Pathfinders”）</span>
+        </div>
+        <div class="fields">
+          <div class="f"><span class="k">单位编号</span><span class="v">MTF-Theta-11</span></div>
+          <div class="f"><span class="k">单位代号</span><span class="v">The Pathfinders</span></div>
+          <div class="f"><span class="k">编制人数</span><span class="v">6 人</span></div>
+          <div class="f"><span class="k">驻扎地</span><span class="v"><a href="a11.html">Area-11</a></span></div>
+          <div class="f"><span class="k">直属指挥</span><span class="v"><a href="scp000.html">织机计划</a>委员会</span></div>
+          <div class="f"><span class="k">成立日期</span><span class="v">1/10/2012</span></div>
+          <div class="f"><span class="k">行动依据</span><span class="v"><a href="pend.html">处置协议：终末</a></span></div>
+          <div class="f"><span class="k">当前状态</span><span class="v">在役</span></div>
+        </div>
+      </div>
+
+      <!-- ================= 概述 ================= -->
+      <h3 class="sec-title"><span>概述</span><span class="tail">BRIEF</span></h3>
+      <div class="prose">
+        <p>MTF-Theta-11是一支专门用于在极高强度模因污染区域（特别是与<a href="scp9644b.html">SCP-9644-B</a>相关的）执行极端战术任务的特种机动特遣队。</p>
+        <p>该特遣队被授权作为<a href="scp000.html">织机计划</a>的地面执行单位，遵循<a href="pend.html">处置协议：终末</a>行动，负责在<a href="scp000.html">SCP-000</a>启动窗口前，清理所有可能干扰现实逻辑重写的异常实体。</p>
+      </div>
+
+      <!-- ================= 1) 人员状态 ================= -->
+      <ol class="comp">
+        <li>
+          <p><b style="color:var(--fg-bright);letter-spacing:.08em;">人员状态与<a href="scp9354.html">SCP-9354</a>改造</b></p>
+          <p>MTF-Theta-11全员已接受<a href="ivory.html">“象牙塔”心智重构工程</a>改造，该工程基于SCP-9354。</p>
+          <p>由于模因污染的极端致命性，常规特工的恐惧反射与高级共情能力在此处是致命缺陷。因此，MTF-Theta-11全体成员均已植入定制化模因芯片，进行深度的情感降维与恐惧阻断。</p>
+          <p><b style="color:var(--fg-bright);">战术评估：</b>改造极其成功。该小队在面对致死级实体时，表现出近乎病态的冷静与反常的乐观。他们能够极其高效地执行清除任务，且不会产生战后心理创伤。</p>
+          <p><b style="color:var(--fg-bright);">损耗评估：</b>MTF-Theta-11无替补机制。目前用于维持其心智状态的定制芯片（A-F号）库存为0，且无法复刻。若特遣队出现人员减员，该缺口将不可逆转。因此，在非必要情况下，织机计划委员会禁止MTF-Theta-11执行自杀式任务——除非织机计划直接受到威胁。</p>
+        </li>
+
+        <li>
+          <p><b style="color:var(--fg-bright);letter-spacing:.08em;">指挥链与行动协议</b></p>
+          <p>MTF-Theta-11接受织机计划委员会的直接指令。在紧急状态下，全队须无条件遵循处置协议：终末（DP.T.协议）。</p>
+          <p>在DP.T.协议激活期间，MTF-Theta-11拥有战区的最高豁免权。为清除阻碍织机计划进行的实体，他们有权调用任何级别的火力、牺牲任何级别的平民，或处决任何无法继续为织机计划服务的友军。</p>
+        </li>
+
+        <li>
+          <p><b style="color:var(--fg-bright);letter-spacing:.08em;">支援条款</b></p>
+          <p>在MTF-Theta-11的行动过程中，周围的基金会人员应该尽自己所能提供帮助，特别是对消解<a href="scp9644b1.html">SCP-9644-B-1-A</a>有经验的奥秘消解相关人员和同样遵循各种处置协议行动的织机计划直属单位。</p>
+        </li>
+
+        <li>
+          <p><b style="color:var(--fg-bright);letter-spacing:.08em;">损失处理</b></p>
+          <p>若出现减员，在回收有价值物品时应优先回收阵亡成员脑中的A-F号模因芯片，其次是其装备的先进武器装备。</p>
+        </li>
+      </ol>
+
+      <!-- ==================== 队员名册 ==================== -->
+      <h3 class="sec-title"><span>队员名册</span><span class="tail">ROSTER · 06</span></h3>
+      <div class="prose" style="margin-bottom:16px;">
+        <p>六名成员，各占一页。<b>立绘位已经留好</b>——把图片放进 <code style="color:var(--fg)">assets/img/</code>，
+          在对应卡片里写一行 <code style="color:var(--fg)">&lt;img src=&quot;立绘文件名&quot; alt=&quot;描述&quot;&gt;</code> 就会自动铺满，不用改尺寸。</p>
+      </div>
+
+      <div class="mgrid">
+        <a class="mcard" href="mtf-arctic.html">
+          <div class="mp"><span class="pht">立 绘</span></div>
+          <div class="mb">
+            <span class="mb-tag">指挥官</span>
+            <div class="mn">Arctic</div>
+            <div class="md">本名 Ninetails，ETTRA 出身。全队改造适配度最高的一个。</div>
+          </div>
+        </a>
+
+        <a class="mcard" href="mtf-fallacy.html">
+          <div class="mp"><span class="pht">立 绘</span></div>
+          <div class="mb">
+            <span class="mb-tag">火控员</span>
+            <div class="mn">Fallacy</div>
+            <div class="md">即 SCP-079。清空长期记忆后入职，背着三挺粒子束发射器。</div>
+          </div>
+        </a>
+
+        <a class="mcard" href="mtf-acolyte.html">
+          <div class="mp"><span class="pht">立 绘</span></div>
+          <div class="mb">
+            <span class="mb-tag">司铎</span>
+            <div class="mn">Acolyte</div>
+            <div class="md">随队司铎，战术神学部出身。右眼挂着放映仪，腰上挂着血瓶。</div>
+          </div>
+        </a>
+
+        <a class="mcard" href="mtf-pulse.html">
+          <div class="mp"><span class="pht">立 绘</span></div>
+          <div class="mb">
+            <span class="mb-tag">生命维持专员</span>
+            <div class="mn">Pulse</div>
+            <div class="md">队医。用办公用品打过感染者，随身带一只黄铜钟。</div>
+          </div>
+        </a>
+
+        <a class="mcard" href="mtf-quasar.html">
+          <div class="mp"><span class="pht">立 绘</span></div>
+          <div class="mb">
+            <span class="mb-tag">火力支援</span>
+            <div class="mn">Quasar</div>
+            <div class="md">背着一整套 SuperNOVA。天生不知道“悲伤”是什么。</div>
+          </div>
+        </a>
+
+        <a class="mcard" href="mtf-drizzle.html">
+          <div class="mp"><span class="pht">立 绘</span></div>
+          <div class="mb">
+            <span class="mb-tag">时序干涉</span>
+            <div class="mn">Drizzle</div>
+            <div class="md">履历已被销毁。体内种着自己的收容物，撑一把伞。</div>
+          </div>
+        </a>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：原创机动特遣队</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · 队员 NO. 01</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：原创机动特遣队
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="personnel.html"><span class="br">├──</span><span class="lb">相关人员档案</span></a>
+      <a class="nav-item" href="a11.html"><span class="br">├──</span><span class="lb">安保设施</span></a>
+      <a class="nav-item" href="tech.html"><span class="br">├──</span><span class="lb">技术与协议</span></a>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="mtfmember">
+      <div class="crumbs">
+        <a class="back" href="mtf.html">← 返回原创机动特遣队</a>
+        <span style="margin:0 8px;"></span>主页：foundation / 原创机动特遣队 / 队员 NO. 01
+      </div>
+
+      <div class="m-profile">
+
+        <!-- 左栏：立绘 + 数据 -->
+        <aside class="m-aside">
+          <div class="mp"><span class="pht">立 绘 待 补</span></div>
+          <div class="m-data">
+            <div><span class="k">姓名</span><span class="v ph">【占位】</span></div>
+            <div><span class="k">代号</span><span class="v ph">【占位】</span></div>
+            <div><span class="k">队内职务</span><span class="v ph">【占位】</span></div>
+            <div><span class="k">专长</span><span class="v ph">【占位】</span></div>
+            <div><span class="k">加入时间</span><span class="v">--/--/----</span></div>
+            <div><span class="k">当前状态</span><span class="v">在役</span></div>
+          </div>
+        </aside>
+
+        <!-- 右栏：角色正文 -->
+        <div class="m-text">
+
+          <div class="dossier-h">
+            <div class="top">
+              <span class="scp-id">NO. 01</span>
+              <span class="tag info">队员</span>
+              <span class="name">【姓名 / 代号】</span>
+            </div>
+          </div>
+
+          <h3 class="sec-title"><span>概述</span><span class="tail">OVERVIEW</span></h3>
+          <div class="prose">
+            <p class="ph">【占位】这个人是谁：年龄、出身、怎么进的队、在外面是什么样。</p>
+            <p class="ph">【占位】性格与说话方式。写两句就能立住，比写五段履历有用。</p>
+          </div>
+
+          <h3 class="sec-title"><span>履历</span><span class="tail">SERVICE</span></h3>
+          <div class="prose">
+            <p class="ph">【占位】加入特遣队之前的经历，以及队内的几次关键行动。</p>
+          </div>
+
+          <h3 class="sec-title"><span>关系</span><span class="tail">RELATIONS</span></h3>
+          <div class="prose">
+            <p class="ph">【占位】和其他五名成员的关系：谁跟谁熟、谁跟谁有过节。</p>
+          </div>
+
+          <div class="doc-foot">
+            <div class="doc-credit">
+              <p>本文作者：<span class="ph">【作者】</span></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：队员档案</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · SCP-9354 至纯至净的明天</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/area12.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：档案详情
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo-crimson.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="personnel.html"><span class="br">├──</span><span class="lb">相关人员档案</span></a>
+      <a class="nav-item" href="a11.html"><span class="br">├──</span><span class="lb">安保设施</span></a>
+      <a class="nav-item" href="tech.html"><span class="br">├──</span><span class="lb">技术与协议</span></a>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="s9354">
+      <div class="crumbs">
+        <a class="back" href="archive.html">← 返回异常项目列表</a>
+        <span style="margin:0 8px;"></span>主页：foundation / <b>异常项目列表</b> / SCP-9354
+      </div>
+
+      <div class="a12-wrap">
+
+        <!-- ============ 头部横幅 ============ -->
+        <header class="a12-hero">
+          <img class="a12-logo" src="assets/img/area12-logo.png" alt="Area-12 徽标">
+          <h1>SCP-9354 <span class="thin">至纯至净的明天</span></h1>
+          <div class="a12-kind">异常项目档案 / ANOMALY FILE</div>
+        </header>
+
+        <p class="a12-note">本文档采用ACS异常分类体系。</p>
+
+        <!-- ============ ACS ============ -->
+        <div class="acs">
+          <div class="acs-h"><span class="dot"></span>异常分级 · ACS<span class="right">SCP-9354</span></div>
+          <div class="acs-grid">
+            <div class="acs-cell lv-safe">
+              <div class="acs-k">收容等级</div><div class="acs-v">SAFE</div>
+              <div class="acs-meter"><b class="on"></b><b></b><b></b></div>
+            </div>
+            <div class="acs-cell lv-na">
+              <div class="acs-k">扰动等级</div><div class="acs-v">不适用</div>
+              <div class="acs-meter"><b></b><b></b><b></b><b></b><b></b></div>
+            </div>
+            <div class="acs-cell lv-caution">
+              <div class="acs-k">风险等级</div><div class="acs-v">CAUTION</div>
+              <div class="acs-meter"><b class="on"></b><b class="on"></b><b></b><b></b><b></b></div>
+            </div>
+            <div class="acs-cell lv-topsecret">
+              <div class="acs-k">保密等级</div><div class="acs-v">5 最高机密</div>
+              <div class="acs-meter"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b></b></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ 特殊收容措施 ============ -->
+        <h3 class="sec-title"><span>特殊收容措施</span><span class="tail">CONTAINMENT</span></h3>
+        <div class="prose">
+          <p>SCP-9354只能由基金会的高级管理人员，即拥有五级及以上权限的O5议员，伦理道德委员会高级成员，以及被授权的技术人员知晓。</p>
+          <p>只能有一份电子文档和一份纸质文档记载有项目，这些文档应该由RAISA的部长管理。</p>
+          <p>若有得知项目相关内容的无关人员，应该立即由MTF-Psi-24（“正常人联盟”）进行记忆删除，有必要时可以处决。</p>
+        </div>
+
+        <!-- ============ 描述 ============ -->
+        <h3 class="sec-title"><span>描述</span><span class="tail">DESCRIPTION</span></h3>
+        <div class="prose">
+          <p>SCP-9354是一套心智改造技术，包括注入思想钢印，修改神经传输路径在内的多个技术。当前对项目的使用都应该在Area-12的指定地点进行。</p>
+          <p>部分技术需要一个模因学芯片（下称“芯片”）来实现，这些芯片目前库存3张，不被允许继续生产，分别编号为M-MC-9354-G，M-MC-9354-H和M-MC-9354-I。</p>
+        </div>
+
+        <p style="margin:18px 0 0;font-size:13.5px;font-weight:650;color:#000;">制造芯片的具体技术：</p>
+        <div class="denied">该内容需要权限6/宇宙绝密，您无权查看。</div>
+
+        <div class="prose">
+          <p style="margin-top:18px;">接受项目技术改造的受试者往往表现出了以下特性：</p>
+        </div>
+        <ol class="traits">
+          <li><b style="color:#000;">恐惧缺失：</b>在面对正常人类应该感到恐惧的各种事物时没有特殊情感，心率平稳，有记录“不理解为什么要害怕”的发言。</li>
+          <li><b style="color:#000;">认知退行：</b>受试者的共情能力退化，社会化进程倒退，认知总体退行到15-16岁青少年的状态。</li>
+          <li><b style="color:#000;">遵循思想钢印：</b>将注入的思想钢印视为底层逻辑般的真理，在下意识层面遵守，即使这可能导致死亡。</li>
+          <li><b style="color:#000;">生命渴望缺失：</b>受试者不再特别珍视自己和他人的生命，这有导致无价值牺牲的隐患。</li>
+        </ol>
+
+        <!-- ============ 附录9354-1 ============ -->
+        <h3 class="sec-title"><span>附录9354-1：处决通告</span><span class="tail">NOTICE</span></h3>
+
+        <div class="notice">
+          <div class="nt">通告</div>
+          <p>高级研究员████ █████，认知科学部副部长██████ ███在内的五人擅自使用<a href="scp9644b1.html">SCP-9644-B-1-A</a>，一种异常黑色晶体粉末内析出的异常人格模型和记忆进行人体实验，惨无人道，骇人听闻，已经于████年██月█日在Area-12被处决。</p>
+          <p>部分边缘和激进的技术并非完全安全，特别是涉及异常的，希望各位研究员引以为戒。</p>
+          <div class="sig">
+            伦理道德委员会<br>
+            ████年██月█日
+          </div>
+        </div>
+
+        <p style="margin:0 0 6px;font-size:13px;color:var(--fg-mute);letter-spacing:.1em;">评论区</p>
+        <div class="comments">
+          <div class="cm"><b>ToooooM</b><span>所以那些粉里真的有死人的记忆！</span></div>
+          <div class="cm"><b>ToooooM</b><span>天啊...这，这真是太...</span></div>
+          <div class="cm"><b>pea123</b><span>考虑到这个上面好像是个特别危险的项目，倒也没那么难以理解...</span></div>
+        </div>
+
+        <!-- ============ 附录9354-2 ============ -->
+        <h3 class="sec-title"><span>附录9354-2：部分技术记录</span><span class="tail">TECHNICAL LOG</span></h3>
+
+        <p style="margin:0 0 4px;font-size:14px;font-weight:650;color:#000;">认知退化和情感凋亡方法</p>
+        <p style="margin:0;font-size:13.5px;color:var(--fg-dim);">需要芯片。</p>
+        <ol class="steps">
+          <li>向芯片内输入公式A=A。</li>
+          <li>准备5毫克取自<a href="scp9644b.html">SCP-9644-B</a>的细密黑色晶体粉末，这些粉末应该至少有4毫克的奇术签名符合2＾36848013=-6↑↑↑3=1.351667。</li>
+          <li>提取粉末中的模因信息，注入到芯片中。</li>
+          <li>为对象使用模因净化剂“再‘见’乌托邦”。</li>
+        </ol>
+
+        <div class="doc-foot">
+          <div class="doc-tags">
+            <span class="dtag" data-tag="原创">[原创]</span>
+            <span class="dtag" data-tag="scp">[scp]</span>
+            <span class="dtag" data-tag="area12">[area12]</span>
+            <span class="dtag" data-tag="技术">[技术]</span>
+            <span class="dtag" data-tag="改造">[改造]</span>
+            <span class="dtag" data-tag="苦难笼">[苦难笼]</span>
+            <span class="dtag" data-tag="基金会制造">[基金会制造]</span>
+          </div>
+          <div class="doc-credit">
+            <p>本文作者：HOSHINOAME</p>
+          </div>
+        </div>
+
+        <!-- ============ 下一篇 ============ -->
+        <a class="next-card" href="ivory.html">
+          <div class="nc-k">下 一 篇</div>
+          <div class="nc-main">
+            <span class="nc-no">象牙塔</span>
+            <span class="nc-a" aria-hidden="true">&rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：SCP-9354</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · Area-12 极昼回廊</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/area12.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：档案详情
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo-crimson.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="personnel.html"><span class="br">├──</span><span class="lb">相关人员档案</span></a>
+      <a class="nav-item" href="a11.html"><span class="br">├──</span><span class="lb">安保设施</span></a>
+      <a class="nav-item" href="tech.html"><span class="br">├──</span><span class="lb">技术与协议</span></a>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="area12">
+      <div class="crumbs">
+        <a class="back" href="archive.html">← 返回异常项目列表</a>
+        <span style="margin:0 8px;"></span>主页：foundation / <b>异常项目列表</b> / Area-12
+      </div>
+
+      <div class="a12-wrap">
+
+        <!-- ============ 头部横幅 ============ -->
+        <header class="a12-hero">
+          <img class="a12-logo" src="assets/img/area12-logo.png" alt="Area-12 徽标">
+          <h1>Area-12 <span class="thin">极昼回廊</span></h1>
+          <div class="a12-kind">异常项目档案 / ANOMALY FILE</div>
+        </header>
+
+        <!-- ============ 条目信息 ============ -->
+        <div class="a12-info">
+          <div><div class="k">项目编号</div><div class="v">Area-12</div></div>
+          <div><div class="k">项目等级</div><div class="v"><span class="ph">【占位】</span></div></div>
+          <div><div class="k">收容区域</div><div class="v"><span class="ph">【占位】</span></div></div>
+          <div><div class="k">权限要求</div><div class="v">Level 4</div></div>
+          <div><div class="k">建档日期</div><div class="v">█/██/████</div></div>
+          <div><div class="k">最后修订</div><div class="v">█/██/████</div></div>
+          <div><div class="k">负责研究员</div><div class="v"><span class="ph">【占位】</span></div></div>
+          <div><div class="k">状态</div><div class="v" style="color:#c62828">收容中</div></div>
+        </div>
+
+        <!-- ============ 特殊收容措施 ============ -->
+        <h3 class="sec-title"><span>特殊收容措施</span><span class="tail">CONTAINMENT</span></h3>
+        <div class="prose">
+          <p><span class="ph">【占位】</span>这里写怎么把它关住：入口怎么封、谁有权进、里面的人怎么轮换、什么情况下必须撤离。项目是「地方」的话，收容措施通常就是一套门禁与巡逻制度。</p>
+        </div>
+
+        <!-- ============ 描述 ============ -->
+        <h3 class="sec-title"><span>描述</span><span class="tail">DESCRIPTION</span></h3>
+        <div class="prose">
+          <p><span class="ph">【占位】</span>先一句话说清它是什么，再展开异常性质。像这种"一条走不完的走廊"型的项目，重点是写清楚<strong>它怎么违反常识</strong>：多长、走到头会发生什么、时间在里面怎么流逝、有没有人在里面待过。</p>
+          <p><span class="ph">【占位】</span>异常性质的具体表现要给可复现的观测条件；无法复现的，写明"未证实"。</p>
+        </div>
+
+        <!-- ============ 附录 ============ -->
+        <h3 class="sec-title"><span>附录</span><span class="tail">APPENDIX</span></h3>
+        <div class="prose">
+          <p><span class="ph">【占位】</span>探索记录、访谈、回收物清单都可以放这一节。</p>
+        </div>
+
+        <!-- ============ 相关条目 ============ -->
+        <h3 class="sec-title"><span>相关条目</span><span class="tail">RELATED</span></h3>
+        <div class="prose">
+          <ul style="list-style:none;padding:0;margin:0;">
+            <li style="border-bottom:1px solid var(--line);padding:9px 0;">全部条目：<a href="archive.html">异常项目列表</a></li>
+            <li style="border-bottom:1px solid var(--line);padding:9px 0;">驻防单位：<a href="mtf.html">原创机动特遣队</a></li>
+            <li style="padding:9px 0;">时间线：<a href="timeline.html">时间线</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：Area-12</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

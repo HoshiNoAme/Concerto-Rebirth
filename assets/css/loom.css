@@ -1,0 +1,379 @@
+/* ============================================================
+   SCP-000「织机」—— 工业版式  assets/css/loom.css
+   ------------------------------------------------------------
+   不是终端、不是公文、不是报告 —— 是**一台机器的工程图**。
+
+   · 钢灰底 + 极细蓝图网格（28px 一格）
+   · 黄黑警示条纹当分割带（hazard tape）
+   · 规格用等宽字的铭牌呈现，编号「0 0 0」故意拉开
+   · 附录000-1 是钉在页面上的备忘录，000-2 是零件表
+   · 主色只有一种：安全琥珀（#ff9e1b）；红只用在危险提示
+
+   与 style.css 无关，不加载任何站内样式。
+   ============================================================ */
+
+:root{
+  --ink:      #e8eef6;
+  --body:     #b9c2cd;
+  --dim:      #7d8894;
+  --steel:    #2a323d;
+  --steel-2:  #1b2129;
+  --panel:    #141920;
+  --bg:       #0e1116;
+  --amber:    #ff9e1b;
+  --rust:     #d6432b;
+  --mono:     "Cascadia Mono",ui-monospace,Consolas,"Courier New",monospace;
+  --sans:     "Segoe UI",system-ui,-apple-system,"Microsoft YaHei","PingFang SC",sans-serif;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:
+    linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px) 0 0/100% 28px,
+    linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px) 0 0/28px 100%,
+    var(--bg);
+  color:var(--body);
+  font-family:var(--sans);
+  font-size:14.5px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:80px;
+}
+::selection{background:var(--amber);color:#0e1116;}
+a{color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(255,158,27,.35);}
+a:hover{border-bottom-color:var(--amber);background:rgba(255,158,27,.08);}
+
+/* ---------------- 黄黑警示带 ---------------- */
+.tape{
+  height:12px;
+  background:repeating-linear-gradient(45deg, var(--amber) 0 12px, #12161b 12px 24px);
+  opacity:.75;
+}
+.tape.thin{height:6px;opacity:.5;}
+
+/* ---------------- 报头铭牌 ---------------- */
+.plate{
+  border-bottom:1px solid var(--steel);
+  background:linear-gradient(180deg, #171c23, #0e1216);
+}
+.plate-in{max-width:1000px;margin:0 auto;padding:26px 28px 0;}
+
+.back{
+  display:inline-block;margin-bottom:22px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  color:var(--dim);border-bottom:1px solid transparent;
+}
+.back:hover{color:var(--amber);background:none;border-bottom-color:rgba(255,158,27,.4);}
+
+.plate .k{
+  display:flex;align-items:center;gap:12px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.34em;color:var(--dim);
+}
+.plate .k span{color:var(--amber);}
+
+.plate h1{
+  margin:16px 0 6px;
+  font-family:var(--mono);font-size:clamp(38px,7.2vw,86px);
+  font-weight:700;line-height:1;letter-spacing:.01em;
+  color:var(--ink);
+  text-shadow:0 0 34px rgba(255,158,27,.18);
+}
+.plate h1 .nm{
+  font-family:var(--sans);font-size:.26em;font-weight:400;
+  letter-spacing:.5em;color:var(--amber);
+  margin-left:.5em;vertical-align:.9em;
+}
+
+/* ---------------- 头部横幅（与 Area-12 版同构）----------------
+   2px 边框的大方框，徽标居中，标题在下面，再一行类型说明。
+   Area-12 是白底黑框，这里是钢灰底 + 琥珀，其余结构一模一样。
+   ----------------------------------------------------------------- */
+.loom-hero{
+  position:relative;
+  margin:18px 0 0;
+  border:2px solid #3d4756;
+  background:linear-gradient(180deg, #12171d, #0a0d10);
+  padding:28px 24px 24px;
+  text-align:center;
+}
+/* 左上角一小块琥珀，压住边框 */
+.loom-hero::before{
+  content:"";position:absolute;left:-2px;top:-2px;
+  width:54px;height:6px;background:var(--amber);
+}
+.loom-hero .hero-logo{
+  display:block;width:118px;height:auto;margin:0 auto 6px;
+  filter:drop-shadow(0 0 26px rgba(255,158,27,.32));
+}
+.loom-hero h1{
+  margin:0;
+  font-family:var(--mono);font-size:clamp(30px,5.4vw,58px);
+  font-weight:700;line-height:1.15;letter-spacing:.03em;
+  color:var(--ink);
+  text-shadow:0 0 32px rgba(255,158,27,.22);
+}
+.loom-hero h1 .nm{
+  font-family:var(--sans);font-size:.36em;font-weight:400;
+  letter-spacing:.42em;color:var(--amber);
+  margin-left:.42em;vertical-align:.4em;
+}
+.loom-hero .kind{
+  display:inline-block;margin-top:14px;padding-top:12px;
+  border-top:1px solid var(--steel);
+  font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--dim);
+}
+
+/* 规格铭牌 */
+.spec{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  border-top:1px solid var(--steel);margin-top:26px;
+}
+.spec-i{padding:14px 18px;border-left:1px solid var(--steel);}
+.spec-i:first-child{border-left:0;padding-left:0;}
+.spec-i .k{
+  font-family:var(--mono);font-size:9px;letter-spacing:.26em;color:var(--dim);
+}
+.spec-i .v{
+  margin-top:7px;font-family:var(--mono);font-size:17px;letter-spacing:.2em;color:var(--ink);
+}
+.spec-i .v.amber{color:var(--amber);}
+.spec-i .v.spaced{letter-spacing:.5em;}   /* 编号「0 0 0」 */
+/* 值比较长的时候用这一档，别把铭牌撑爆 */
+.spec-i .v.sm{
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.02em;
+  line-height:1.7;color:#c6d0dc;
+}
+.spec-i .v.sm a{font-size:12.5px;}
+/* 三格铭牌 */
+.spec.spec-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+
+/* ---------------- 主体 ---------------- */
+.doc{max-width:1000px;margin:0 auto;padding:0 28px;}
+
+/* 章节头：编号牌 + 标题 + 拖尾细线 */
+.sec{margin-top:46px;}
+.sec-h{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+.sec-h .n{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;
+  color:var(--amber);border:1px solid rgba(255,158,27,.4);
+  padding:2px 8px;flex:none;
+}
+.sec-h h2{
+  margin:0;font-size:16px;font-weight:650;letter-spacing:.24em;color:var(--ink);
+}
+.sec-h::after{
+  content:"";flex:1;height:1px;
+  background:linear-gradient(90deg, var(--steel), transparent);
+}
+p{margin:0 0 1em;color:var(--body);}
+.lead{color:#cfd7e2;}
+
+/* ---------------- 工序：1）退火 / 2）压模 / 3）结晶 ---------------- */
+.proc{margin:22px 0;counter-reset:p;}
+.proc-i{
+  position:relative;margin:0 0 16px;padding:14px 20px 16px 66px;
+  background:linear-gradient(90deg, rgba(255,158,27,.045), transparent 60%);
+  border-left:2px solid rgba(255,158,27,.45);
+}
+.proc-i::before{
+  counter-increment:p;content:counter(p);
+  position:absolute;left:16px;top:12px;
+  font-family:var(--mono);font-size:30px;line-height:1;
+  color:rgba(255,158,27,.32);font-weight:700;
+}
+.proc-i h3{
+  margin:0 0 8px;font-size:14.5px;font-weight:650;
+  letter-spacing:.3em;color:var(--amber);
+}
+.proc-i p{margin:0 0 .7em;font-size:14px;}
+.proc-i p:last-child{margin-bottom:0;}
+
+/* ---------------- 附录000-1：备忘录 ---------------- */
+.memo{
+  margin-top:8px;border:1px solid var(--steel);border-top:3px solid var(--amber);
+  background:#131820;
+}
+.memo-h{
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding:12px 22px;border-bottom:1px solid var(--steel);
+  font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--dim);
+}
+.memo-h b{color:var(--amber);font-weight:600;}
+.memo-b{padding:22px 24px 24px;}
+.memo-b .goal{
+  margin:0 0 20px;padding-bottom:14px;border-bottom:1px dashed var(--steel);
+  font-size:15.5px;color:var(--ink);letter-spacing:.03em;
+}
+.step{margin:0 0 20px;}
+.step:last-child{margin-bottom:0;}
+.step .k{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;color:var(--amber);
+}
+.step h4{
+  margin:6px 0 8px;font-size:15px;font-weight:650;
+  letter-spacing:.14em;color:var(--ink);
+}
+.step p{font-size:14px;margin:0 0 .7em;}
+.step p:last-child{margin-bottom:0;}
+.memo .note{font-family:var(--mono);font-size:11.5px;color:var(--dim);letter-spacing:.04em;}
+
+/* 总结：整份计划的收尾 */
+.summary{
+  margin-top:26px;padding:18px 22px;
+  border:1px solid rgba(255,158,27,.35);
+  background:linear-gradient(180deg, rgba(255,158,27,.07), transparent);
+}
+.summary p{margin:0 0 .6em;color:#d8e0ea;font-size:14.5px;}
+.summary .shout{
+  margin:8px 0 0;font-family:var(--mono);font-size:19px;
+  letter-spacing:.34em;color:var(--amber);font-weight:700;
+  text-shadow:0 0 22px rgba(255,158,27,.45);
+}
+
+/* ---------------- 附录000-2：零件表 ---------------- */
+.mod{margin:0 0 20px;border:1px solid var(--steel);}
+.mod-h{
+  display:flex;align-items:baseline;gap:12px;
+  padding:10px 18px;background:#171d25;border-bottom:1px solid var(--steel);
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;color:var(--amber);
+}
+.mod-h .no{color:var(--dim);}
+.mod-list{padding:4px 18px 12px;}
+.mod-item{
+  display:grid;grid-template-columns:148px 1fr;gap:16px;
+  padding:9px 0;border-bottom:1px dotted #232a33;
+}
+.mod-item:last-child{border-bottom:0;}
+.mod-item .t{
+  font-family:var(--mono);font-size:12px;letter-spacing:.04em;
+  color:#9fb0c2;padding-top:1px;
+}
+.mod-item .d{font-size:13.5px;line-height:1.85;color:var(--body);}
+
+/* ---------------- 文末 ---------------- */
+.foot{
+  max-width:1000px;margin:44px auto 0;padding:0 28px;
+}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+.tags span{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--amber);border:1px solid rgba(255,158,27,.35);
+  padding:2px 9px;
+}
+.by{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:var(--dim);
+  padding-top:14px;border-top:1px solid var(--steel);
+}
+
+/* ---------------- 响应式 ---------------- */
+@media (max-width:760px){
+  body{padding-bottom:50px;}
+  .plate-in,.doc,.foot{padding-left:16px;padding-right:16px;}
+  .spec{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .spec-i{padding:12px 14px;}
+  .spec-i:nth-child(2n+1){border-left:0;padding-left:0;}
+  .spec-i:nth-child(n+3){border-top:1px solid var(--steel);}
+  .proc-i{padding:12px 14px 14px 52px;}
+  .proc-i::before{left:10px;font-size:24px;}
+  .memo-b{padding:18px 16px 20px;}
+  .mod-item{grid-template-columns:1fr;gap:4px;}
+}
+
+/* ============================================================
+   附录用：注音 / 权限门 / 投票表 / 结语
+   ------------------------------------------------------------
+   ruby   注音：小字在上、大字在下（被放逐者之图书馆 → 版本库）
+   gate   权限校验序列：警告行 + 掩码输入 + 三条"通过"
+   vote   投票表：一格一个方块
+   speech O5-1 的结语：左边一条琥珀竖线，最后三行放大
+   ============================================================ */
+ruby{ruby-align:center;}
+ruby rt{
+  font-family:var(--sans);font-size:.6em;line-height:1.2;
+  letter-spacing:.04em;color:var(--amber);
+  margin-bottom:2px;
+}
+a ruby rt{color:var(--amber);border:0;}
+
+/* ---------- 权限校验序列 ---------- */
+.gate{
+  margin:18px 0 22px;padding:18px 22px 16px;
+  border:1px solid var(--steel);background:#080b0e;
+  font-family:var(--mono);font-size:12.5px;line-height:2.05;
+  color:#9fb0c2;
+}
+.gate p{margin:0;}
+.gate .warn{color:#e2603c;letter-spacing:.03em;}
+.gate .lbl{margin-top:14px;color:var(--dim);}
+.gate .mask{
+  display:inline-block;margin:8px 0 4px;padding:6px 14px;
+  border:1px solid var(--steel);background:#04070a;
+  color:var(--amber);letter-spacing:.26em;font-size:13px;
+}
+.gate .mask .cur{
+  animation:blink 1.05s steps(1) infinite;
+}
+.gate .dots{color:#3d4a58;letter-spacing:.3em;}
+.gate .ok{color:#7fd6a0;}
+.gate .hello{margin-top:6px;color:var(--amber);letter-spacing:.08em;}
+
+/* ---------- 投票表 ---------- */
+.vote{
+  margin:20px 0 0;border-collapse:collapse;
+  font-family:var(--mono);font-size:12.5px;
+}
+.vote caption{
+  text-align:left;padding:0 0 16px;
+  font-size:13.5px;letter-spacing:.08em;color:var(--ink);
+  font-family:var(--sans);
+}
+.vote thead th{
+  padding:0 26px 8px 0;
+  font-weight:400;font-size:10.5px;letter-spacing:.24em;color:var(--dim);
+  border-bottom:1px solid var(--steel);
+}
+.vote tbody th{
+  padding:6px 26px 6px 0;
+  font-weight:400;letter-spacing:.08em;color:#9fb0c2;
+  border-bottom:1px solid #171d24;
+}
+.vote td{
+  width:58px;padding:6px 0;
+  border-bottom:1px solid #171d24;
+}
+.vote td.on::before{
+  content:"";display:inline-block;width:10px;height:10px;
+  background:var(--amber);
+  box-shadow:0 0 10px rgba(255,158,27,.55);
+}
+
+/* ---------- O5-1 的结语 ---------- */
+.speech{
+  margin:26px 0 0;padding:20px 24px 22px;
+  border-left:2px solid var(--amber);
+  background:linear-gradient(90deg, rgba(255,158,27,.055), transparent 72%);
+}
+.speech .sp-k{
+  margin-bottom:14px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.38em;color:var(--amber);
+}
+.speech p{
+  margin:0 0 .85em;font-size:13.8px;line-height:2.05;color:#c6d0dc;
+}
+.speech p:last-child{margin-bottom:0;}
+.speech .climax{
+  margin-top:16px;color:var(--amber);letter-spacing:.04em;
+}
+.speech .climax.big{
+  margin-top:4px;font-size:16px;letter-spacing:.1em;
+  text-shadow:0 0 22px rgba(255,158,27,.45);
+}
+.speech .creed{
+  margin:22px 0 0;
+  font-family:var(--mono);font-size:15px;letter-spacing:.26em;
+  color:#fff;text-shadow:0 0 24px rgba(255,158,27,.4);
+}
+.speech .sig{
+  margin-top:12px;text-align:right;
+  font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--dim);
+}

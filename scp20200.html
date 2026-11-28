@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · SCP-20200 禁忌的边境线Σ</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：档案详情
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="personnel.html"><span class="br">├──</span><span class="lb">相关人员档案</span></a>
+      <a class="nav-item" href="a11.html"><span class="br">├──</span><span class="lb">安保设施</span></a>
+      <a class="nav-item" href="tech.html"><span class="br">├──</span><span class="lb">技术与协议</span></a>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="s20200">
+      <div class="crumbs">
+        <a class="back" href="archive.html">← 返回异常项目列表</a>
+        <span style="margin:0 8px;"></span>主页：foundation / <b>异常项目列表</b> / SCP-20200
+      </div>
+
+      <div class="dossier-h">
+        <div class="top">
+          <span class="scp-id">SCP-20200</span>
+          <span class="tag safe">SAFE</span>
+          <span class="name">（“禁忌的边境线Σ”）</span>
+        </div>
+      </div>
+
+      <div class="epigraph">
+        我们所做的一切都会永远被铭记，<br>
+        去相信你就是那谬论的起因，<br>
+        去相信自己的世界就是那个奇迹，<br>
+        继续下一次永无止境尝试的时候到了。
+      </div>
+
+      <!-- ================= ACS ================= -->
+      <div class="acs">
+        <div class="acs-h"><span class="dot"></span>异常分级 · ACS<span class="right">SCP-20200</span></div>
+        <div class="acs-grid">
+          <div class="acs-cell lv-open">
+            <div class="acs-k">项目编号</div>
+            <div class="acs-v">20200</div>
+          </div>
+          <div class="acs-cell lv-safe">
+            <div class="acs-k">收容等级</div><div class="acs-v">SAFE</div>
+            <div class="acs-meter"><b class="on"></b><b></b><b></b></div>
+          </div>
+          <div class="acs-cell lv-dark">
+            <div class="acs-k">扰动等级</div><div class="acs-v">DARK</div>
+            <div class="acs-meter"><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b></b></div>
+          </div>
+          <div class="acs-cell lv-notice">
+            <div class="acs-k">风险等级</div><div class="acs-v">NOTICE</div>
+            <div class="acs-meter"><b class="on"></b><b></b><b></b><b></b><b></b></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 发现 ================= -->
+      <div class="scene">
+        <div class="when">公元1990年3月1日，8时10分</div>
+        <div class="where">无名荒漠</div>
+        <p>一个形似小型空间站舱室的物体通过未知方式从现实结构中穿出，进入本时间线后坠落于一无名荒漠。</p>
+        <p>事发后相当长的一段时间内没有任何人员发现该物体，直到SCP基金会外勤特工████ ██████乘坐直升机执行任务时路过并发现了该物体。时间戳为发现时间。</p>
+        <p>该物体即为SCP-20200。</p>
+      </div>
+
+      <!-- ================= 特殊收容措施 ================= -->
+      <h3 class="sec-title"><span>特殊收容措施</span><span class="tail">CONTAINMENT</span></h3>
+      <div class="prose">
+        <p>SCP-20200现被保存在Site-01的附属设施Site-01-20内，该附属设施应具备休谟迷彩和逆模因护盾，技术人员每三天检查一次保护措施是否完好；十名配备了特殊装备的警卫应该全天轮流巡逻Site-01-20。</p>
+        <p>SCP-20200的收容室同样拥有一层休谟迷彩和逆模因护盾，未经允许的人员禁止知晓收容室的具体位置，收容室大门应该由<a href="q1280.html">Q1280共相合金</a>铸造并具有密码锁，生物学特征锁和模因签名锁三道门锁，若有任何一道错误则禁止进入并报警。</p>
+      </div>
+
+      <!-- ================= 描述 ================= -->
+      <h3 class="sec-title"><span>描述</span><span class="tail">DESCRIPTION</span></h3>
+      <div class="prose">
+        <p>SCP-20200由四个组件组成：</p>
+      </div>
+
+      <ol class="comp">
+        <li>
+          <p>一个约10平方米的舱室，具备一个气密门，门锁损坏。有充足人工光照，墙体和地面均由白色未知材料构成。</p>
+          <p>对未知材料的解析依据《预算法案》已经暂停。</p>
+          <span class="cid">SCP-20200-1</span>
+        </li>
+        <li>
+          <p>一个异常科技设备，包含类似斯克兰顿现实稳定锚（一种疑似失传常用异常设备）的结构，在收容后三日停止而且无法再次工作，在该日期前仍在工作。研究发现，这种设备在稳定的休谟环境下可以对局部现实起到特殊作用。</p>
+          <span class="cid">SCP-20200-2</span>
+        </li>
+        <li>
+          <p>另一个异常科技设备，具体的结构无法解明，因O5议会命令对该设备的拆解禁止进行。有一个显眼的操纵杆和一个推测为输出口的模因管线座，另有一根疑似能源线的管线连接至舱室外，舱室外部分在分子层面被强行截断。</p>
+          <p>在该部分的机体上有字样“爱蒂塔平行连接器”和“SCP Federation”。</p>
+          <span class="cid">SCP-20200-3</span>
+        </li>
+        <li>
+          <p>一具男尸，其携带的通行证表明其身份为Eliard G. Azar，SCP联盟议员，时任临时外派委员会主席。在现有的人事数据库中未检索到相关人员，“临时外派委员会”“SCP联盟”等机构更是从未存在。</p>
+        </li>
+      </ol>
+
+      <!-- ================= 附录 1 ================= -->
+      <h3 class="sec-title"><span>附录20200-1：实验记录</span><span class="tail">TEST LOG</span></h3>
+      <div class="prose">
+        <p>尝试通过疑似能源线的管线向SCP-20200-3输入混沌拟合液作为能源，并且接入模因管线来获取其输出。</p>
+        <p>几秒后，SCP-20200-3的屏幕亮起，显示：</p>
+      </div>
+
+      <!-- 屏幕：冷白 + 青色，不属于这个时间线 -->
+      <div class="aitita">
+        <div class="at-bar"><span>AIDITA SPACE LINK</span><span>▮ STANDBY</span></div>
+        <img class="at-logo" src="assets/img/logo-20200.png" alt="爱蒂塔计划徽标">
+        <div class="at-plan">爱蒂塔计划</div>
+        <div class="at-name">爱蒂塔平行连接器</div>
+        <div class="at-q">是否连接到爱蒂塔空间？</div>
+        <div class="at-btns">
+          <span class="at-btn on">是</span>
+          <span class="at-btn">否</span>
+        </div>
+      </div>
+
+      <div class="at-act">（点击“是”）</div>
+
+      <div class="prose" style="margin-top:18px;">
+        <p>SCP-20200-3瞬间吸收了所有混沌拟合液，但并未进入“爱蒂塔空间”，只侦测到少数突破现实结构的尝试，产生了极少的模因传输。</p>
+        <p>SCP-20200-3输出了一些文字信息，包含：</p>
+      </div>
+
+      <div class="at-out">
+        <div class="at-oh">SCP-20200-3 · 模因输出</div>
+        <div class="at-line">便让秩序降临吧。</div>
+        <div class="at-line">Are We Cooooooooool Yet？</div>
+        <div class="at-line">终结者月刊就是个搞笑的</div>
+        <div class="at-line">硬 着 心</div>
+      </div>
+
+      <div class="prose" style="margin-top:18px;">
+        <p>一名科研人员在阅读第四条信息后似乎完全脱离了<a href="scp9644b1.html">SCP-9644</a>的同化和影响，32分钟后恢复正常，在信息中发现微量剩余的未知模因净化剂。</p>
+      </div>
+
+      <!-- ================= 附录 2 ================= -->
+      <h3 class="sec-title"><span>附录20200-2：实验记录</span><span class="tail">TEST LOG</span></h3>
+      <div class="prose">
+        <p>尝试对SCP-20200-2注入混沌拟合液。</p>
+        <p>注入后，SCP-20200-2启动，此刻收容室中产生了一个微弱的局部休谟盒，2秒后SCP-20200-2重新关闭，休谟盒消失，无法再次启动SCP-20200-2。</p>
+      </div>
+
+      <div class="doc-foot">
+        <div class="doc-tags">
+          <span class="dtag" data-tag="非完全原创">[非完全原创]</span>
+          <span class="dtag" data-tag="scp">[scp]</span>
+          <span class="dtag" data-tag="二次创作">[二次创作]</span>
+        </div>
+        <div class="doc-credit">
+          <p>本文作者：HOSHINOAME</p>
+          <p>原文：<a href="https://scp-wiki-cn.wikidot.com/scp-cn-2020">SCP-CN-2020</a></p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：SCP-20200</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · 原创机动特遣队</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：原创机动特遣队
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="personnel.html"><span class="br">├──</span><span class="lb">相关人员档案</span></a>
+      <a class="nav-item" href="a11.html"><span class="br">├──</span><span class="lb">安保设施</span></a>
+      <a class="nav-item" href="tech.html"><span class="br">├──</span><span class="lb">技术与协议</span></a>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="poi99261">
+      <div class="crumbs">
+        <a class="back" href="personnel.html">← 返回相关人员档案</a>
+        <span style="margin:0 8px;"></span>主页：foundation / 相关人员档案 / POI-9926-1
+      </div>
+
+      <div class="dossier-h">
+        <div class="top">
+          <span class="scp-id">POI-9926-1</span>
+          <span class="tag info">POI</span>
+          <span class="name">（“记述人” / Vesper_HoshiNoAme）</span>
+        </div>
+        <div class="fields">
+          <div class="f"><span class="k">POI编号</span><span class="v">POI-9926-1</span></div>
+          <div class="f"><span class="k">代号</span><span class="v">记述人</span></div>
+          <div class="f"><span class="k">监控状态</span><span class="v">已取消</span></div>
+          <div class="f"><span class="k">当前状态</span><span class="v">存活</span></div>
+          <div class="f"><span class="k">位置</span><span class="v"><a href="scp9261.html">SCP-9261 子区域：根据地</a></span></div>
+          <div class="f"><span class="k">直属对接人</span><span class="v">O5-1</span></div>
+        </div>
+      </div>
+
+      <!-- ================= 特殊管制措施 ================= -->
+      <h3 class="sec-title"><span>特殊管制措施</span><span class="tail">CONTROL</span></h3>
+      <div class="prose">
+        <p>POI-9926-1应该拥有足够的自由，在不影响到<a href="scp000.html">织机计划</a>的情况下，禁止未经授权的接触，禁止私自对对象进行过度管制。</p>
+      </div>
+
+      <!-- ================= 描述 ================= -->
+      <h3 class="sec-title"><span>描述</span><span class="tail">DESCRIPTION</span></h3>
+      <div class="prose">
+        <p>POI-9926-1是一人形异常个体，同时是重点关注人员之一。</p>
+        <p>对象拥有一定被动现实扭曲能力，在威胁伤害到对象之前便会被该特性干涉导致无法对对象造成有效伤害。</p>
+        <p>对象拥有主观局部叙事覆写能力，在宏观层面一定程度上修改因果链和现实逻辑，表现为凭空生成稳定的物质。</p>
+        <p>对象表现出了在极少时间内观测时间线内大量内容的能力，可以跨时间线，跨度未知。这一能力的观测是以上层叙事视角进行的。</p>
+        <p>对象没有进食和睡眠的需求，但会主动进行这些行为而且其主观上需要这些行为。</p>
+        <p>对象是SCP-9926的收容室，详见<a href="scp9926.html">SCP-9926</a>。</p>
+        <p>对象的精神强度较低，但无法轻易崩溃；不将常规的生物与自身视为同一等级个体，亦没有对常规威胁的反应。对绝大多数常规生物表现出友善态度。</p>
+        <p>对象与<a href="lilith.html">POI-9261-1</a>共处时表现出不同于平常的状态。</p>
+        <p>对象与基金会建立了一定程度合作并被指派为SCP-000的操作员，因此对象的精神稳定将是极为重要的。</p>
+      </div>
+
+      <!-- ================= 附录 1：实验记录 ================= -->
+      <h3 class="sec-title"><span>附录POI99261-1：实验记录</span><span class="tail">LOG · I</span></h3>
+      <div class="prose">
+        <p>操作人员：D-6023</p>
+        <p><em>命令操作人员与对象交谈。</em></p>
+      </div>
+
+      <div class="chat">
+        <div class="row"><span class="who">操作人员</span><span class="msg">你好。</span></div>
+        <div class="row"><span class="who">对象</span><span class="msg">你好。</span></div>
+        <div class="row"><span class="who">操作人员</span><span class="msg">你是什么？</span></div>
+        <div class="row"><span class="who">对象</span><span class="msg">我是一个……嗯…至少不会杀了你的家伙。</span></div>
+        <div class="row"><span class="who">操作人员</span><span class="msg">我需要考虑你这么说的目的……</span></div>
+        <div class="row"><span class="who">对象</span><span class="msg"><span class="act">（饶有兴趣）</span>这个说话方式，你比起D级其实更像那些研究员。</span></div>
+        <div class="row"><span class="who">操作人员</span><span class="msg">哈哈……</span></div>
+        <div class="row"><span class="who">操作人员</span><span class="msg">我听说你还挺厉害的。你可以让我今天的午饭变成拉面吗？</span></div>
+        <div class="row"><span class="who">对象</span><span class="msg">我又没有什么不帮你的理由。</span></div>
+        <div class="row"><span class="who">操作人员</span><span class="msg"><span class="act">（突然沉默）</span></span></div>
+        <div class="row"><span class="who">对象</span><span class="msg">怎么啦？</span></div>
+        <div class="row"><span class="who">操作人员</span><span class="msg">没事。</span></div>
+        <div class="row"><span class="who">对象</span><span class="msg">无论你要做什么都尽管去做吧。</span></div>
+        <div class="row"><span class="who">操作人员</span><span class="msg"><span class="act">（停顿）</span>你喜欢青瓜味的薯片还是青柠味的薯片？</span></div>
+        <div class="row"><span class="who">对象</span><span class="msg"><span class="act">（短暂的惊讶）</span></span></div>
+        <div class="row"><span class="who">对象</span><span class="msg"><span class="act">从桌子下掏出了一包██牌青瓜味薯片，但桌子下并未存在过薯片。</span></span></div>
+        <div class="row"><span class="who">对象</span><span class="msg"><span class="act">撕开包装，食用薯片。</span></span></div>
+        <div class="row"><span class="who">对象</span><span class="msg">我的天啊。这能吃吗？</span></div>
+        <div class="row"><span class="who">操作人员</span><span class="msg">我有一个问题……</span></div>
+        <div class="row"><span class="who">对象</span><span class="msg">变出来的。</span></div>
+        <div class="row"><span class="who">操作人员</span><span class="msg"><span class="act">突然掏出一把G17手枪，实弹。</span></span></div>
+        <div class="row"><span class="who">对象</span><span class="msg"><span class="act">（头部倾斜）</span>……哦…？</span></div>
+        <div class="row"><span class="who">操作人员</span><span class="msg"><span class="act">开枪。</span></span></div>
+        <div class="row"><span class="msg"><span class="act">（子弹在距离对象5cm处骤然停止，并掉落至桌面。）</span></span></div>
+        <div class="row"><span class="who">对象</span><span class="msg">这个实验有点无聊。</span></div>
+      </div>
+
+      <!-- ================= 附录 2：监控记录 ================= -->
+      <h3 class="sec-title"><span>附录POI99261-2：监控记录</span><span class="tail">LOG · II</span></h3>
+
+      <div class="monitor">
+        <div class="mrow"><span class="mt">3:46</span><span class="mm">对象开始睡眠。</span></div>
+        <div class="mrow"><span class="mt">6:01</span><span class="mm">对象醒来。</span></div>
+        <div class="mrow"><span class="mt">6:02</span><span class="mm">对象：现在是几点啊……</span></div>
+        <div class="mrow"><span class="mt">6:03</span><span class="mm">对象重新试图入睡。</span></div>
+        <div class="mrow"><span class="mt">7:53</span><span class="mm">对象重新醒来。</span></div>
+        <div class="mrow"><span class="mt">7:54</span><span class="mm">对象：莉莉丝……告诉我还能睡一会可以吗……</span></div>
+        <div class="mrow"><span class="mt">7:54</span><span class="mm">POI-9261-1触摸对象的头发。</span></div>
+        <div class="mrow"><span class="mt">7:54</span><span class="mm">对象：呜……</span></div>
+        <div class="mrow"><span class="mt">7:55</span><span class="mm">对象：基金会，真坏啊……坏。</span></div>
+      </div>
+      <div class="sigoff">——SCP FOUNDATION——<br>——NO SIGNAL——</div>
+
+      <!-- ================= 附录 3：监控记录 ================= -->
+      <h3 class="sec-title"><span>附录POI99261-3：监控记录</span><span class="tail">LOG · III</span></h3>
+
+      <div class="monitor">
+        <div class="mrow"><span class="mt">19:03</span><span class="mm">对象躺在沙发上。</span></div>
+        <div class="mrow"><span class="mt">19:04</span><span class="mm">对象：唉……</span></div>
+        <div class="mrow"><span class="mt">19:04</span><span class="mm">对象：命好苦……</span></div>
+        <div class="mrow"><span class="mt">19:05</span><span class="mm">对象：基金会真的都是坏人吧……？</span></div>
+      </div>
+      <div class="sigoff">——SCP FOUNDATION——<br>——NO SIGNAL——</div>
+
+      <div class="prose" style="margin-top:16px;">
+        <p>次日，对象申请“不要再在我家里装奇奇怪怪的东西了”。</p>
+        <p><del>已驳回，警告一次。</del></p>
+        <p>依据织机计划下议会命令，已通过。</p>
+      </div>
+
+      <!-- ================= 附录 4：记录 ================= -->
+      <h3 class="sec-title"><span>附录POI99261-4：记录</span><span class="tail">LOG · IV</span></h3>
+
+      <div class="recs">
+
+        <div class="rec">
+          <div class="rh"><span class="rn">记录 1：脑部模因输出</span><span class="rt">时间：4:16</span></div>
+          <p>内容：</p>
+          <p>没事的……</p>
+          <p>没事的。</p>
+          <p>去试着爱你自己。</p>
+        </div>
+
+        <div class="rec">
+          <div class="rh"><span class="rn">记录 2：同上</span><span class="rt">时间：4:17</span></div>
+          <p>内容：</p>
+          <p>痛痛痛，笼子真坏啊……</p>
+          <p>去试着抛弃过往，你已经做的够好了，你无罪，即使镜中倒影早非旧时模样。</p>
+          <p>去试着抛弃未来，你活着，你完成了一个遥不可及的幻梦，何必再谈未来？</p>
+          <p>……抛弃了过去和未来的我还剩下些什么？</p>
+        </div>
+
+      </div>
+
+      <div class="recw">
+        <p class="recw-q">请对着麦克风流利清晰地朗读：</p>
+        <div class="recw-row">
+          <span class="recw-btn" aria-hidden="true"></span>
+          <span class="recw-wave" aria-hidden="true"><i style="height:37%"></i><i style="height:24%"></i><i style="height:60%"></i><i style="height:19%"></i><i style="height:52%"></i><i style="height:40%"></i><i style="height:18%"></i><i style="height:50%"></i><i style="height:16%"></i><i style="height:45%"></i><i style="height:19%"></i><i style="height:20%"></i><i style="height:44%"></i><i style="height:73%"></i><i style="height:22%"></i><i style="height:30%"></i><i style="height:59%"></i><i style="height:82%"></i><i style="height:55%"></i><i style="height:42%"></i><i style="height:84%"></i><i style="height:17%"></i><i style="height:75%"></i><i style="height:34%"></i><i style="height:24%"></i><i style="height:22%"></i><i style="height:36%"></i><i style="height:72%"></i><i style="height:27%"></i><i style="height:55%"></i><i style="height:60%"></i><i style="height:40%"></i><i style="height:53%"></i><i style="height:18%"></i><i style="height:18%"></i><i style="height:28%"></i><i style="height:62%"></i><i style="height:44%"></i><i style="height:36%"></i><i style="height:56%"></i><i style="height:46%"></i><i style="height:35%"></i><i style="height:71%"></i><i style="height:64%"></i></span>
+          <span class="recw-t">00:00</span>
+        </div>
+        <p class="recw-say">“我看不见。”</p>
+      </div>
+
+      <div class="recs">
+
+        <div class="rec">
+          <div class="rh"><span class="rn">记录 3：记录</span><span class="rt">时间：时间</span></div>
+          <p>内容：内容</p>
+        </div>
+
+        <div class="rec">
+          <div class="rh"><span class="rn">记录 3.1：记录</span><span class="rt">时间：时间</span></div>
+          <p>内容：</p>
+          <p>我是个卑劣的骗子，我骗了所有人，和我自己。</p>
+        </div>
+
+        <div class="rec">
+          <div class="rh"><span class="rn">记录 3.5</span><span class="rt">时间：</span></div>
+          <p>内容：</p>
+        </div>
+
+      </div>
+
+      <div class="recw">
+        <p class="recw-q">请对着麦克风流利清晰地朗读：</p>
+        <div class="recw-row">
+          <span class="recw-btn" aria-hidden="true"></span>
+          <span class="recw-wave" aria-hidden="true"><i style="height:80%"></i><i style="height:82%"></i><i style="height:78%"></i><i style="height:20%"></i><i style="height:56%"></i><i style="height:44%"></i><i style="height:52%"></i><i style="height:23%"></i><i style="height:27%"></i><i style="height:46%"></i><i style="height:29%"></i><i style="height:46%"></i><i style="height:15%"></i><i style="height:20%"></i><i style="height:65%"></i><i style="height:44%"></i><i style="height:50%"></i><i style="height:66%"></i><i style="height:39%"></i><i style="height:18%"></i><i style="height:70%"></i><i style="height:56%"></i><i style="height:61%"></i><i style="height:58%"></i><i style="height:83%"></i><i style="height:40%"></i><i style="height:68%"></i><i style="height:40%"></i><i style="height:55%"></i><i style="height:61%"></i><i style="height:36%"></i><i style="height:20%"></i><i style="height:48%"></i><i style="height:65%"></i><i style="height:56%"></i><i style="height:46%"></i><i style="height:60%"></i><i style="height:27%"></i><i style="height:26%"></i><i style="height:37%"></i><i style="height:72%"></i><i style="height:28%"></i><i style="height:22%"></i><i style="height:21%"></i></span>
+          <span class="recw-t">00:00</span>
+        </div>
+        <p class="recw-say">“我看不见。”</p>
+      </div>
+
+      <div class="recs">
+
+        <div class="rec">
+          <div class="rh"><span class="rn">记录 4：N/A</span><span class="rt">时间：—</span></div>
+          <p>一切的一切都只是</p>
+        </div>
+
+        <div class="dream">笼 中 幻 梦</div>
+
+        <div class="rec">
+          <div class="rh"><span class="rn">记录 4.1：4.1</span><span class="rt">时间：T-00:00:00</span></div>
+          <p>内容，错误的内容，我的月亮清澈见底。，时间是优秀的？我！食盐洒在了瞳孔，瞳孔，谁的瞳孔？进食，糖类。，是水循环？工厂！区域股票、。#</p>
+          <p>走步！回。家，？门。迷雾；（低！家。家。</p>
+        </div>
+
+        <div class="rec">
+          <div class="rh"><span class="rn">记录 5</span><span class="rt">时间：[空指针]</span></div>
+          <p><em>再无容身之处。</em></p>
+        </div>
+
+      </div>
+
+      <div class="recw">
+        <p class="recw-q">请对着麦克风流利清晰地朗读：</p>
+        <div class="recw-row">
+          <span class="recw-btn" aria-hidden="true"></span>
+          <span class="recw-wave" aria-hidden="true"><i style="height:41%"></i><i style="height:30%"></i><i style="height:25%"></i><i style="height:79%"></i><i style="height:55%"></i><i style="height:63%"></i><i style="height:53%"></i><i style="height:41%"></i><i style="height:66%"></i><i style="height:55%"></i><i style="height:70%"></i><i style="height:61%"></i><i style="height:74%"></i><i style="height:45%"></i><i style="height:25%"></i><i style="height:24%"></i><i style="height:66%"></i><i style="height:26%"></i><i style="height:61%"></i><i style="height:58%"></i><i style="height:18%"></i><i style="height:70%"></i><i style="height:16%"></i><i style="height:76%"></i><i style="height:74%"></i><i style="height:29%"></i><i style="height:66%"></i><i style="height:66%"></i><i style="height:23%"></i><i style="height:62%"></i><i style="height:22%"></i><i style="height:79%"></i><i style="height:63%"></i><i style="height:84%"></i><i style="height:17%"></i><i style="height:36%"></i><i style="height:58%"></i><i style="height:57%"></i><i style="height:27%"></i><i style="height:77%"></i><i style="height:74%"></i><i style="height:35%"></i><i style="height:24%"></i><i style="height:62%"></i></span>
+          <span class="recw-t">00:00</span>
+        </div>
+        <p class="recw-say">“我看不见。”</p>
+      </div>
+
+      <!-- ================= 展开 ================= -->
+      <div class=reveal2>
+        <input type=checkbox id=rv-poi class=rv-tog>
+        <label for=rv-poi class=rv-btn><span class=open>[ 展 开 ]</span><span class=close>[ 收 起 ]</span></label>
+        <div class=rv-body>
+          <p>哦……你看不见。太可惜了。</p>
+          <p>但是……</p>
+
+          <div class=refrain>
+            <p>读者。光明的未来又去了哪？</p>
+            <p>读者。流血的逝者们刀剑相向，生命不在任何人的手上。</p>
+            <p>读者。牢笼是错的，我们都错了，我们都是牢笼。</p>
+            <p>读者。我害怕明天的太阳。</p>
+            <p>读者。我看不到下一步。</p>
+            <p>读者。长夜漫漫。</p>
+            <p>读者。我想逃。</p>
+            <p>读者。逃。</p>
+            <p class=fade>读。逃。</p>
+            <p class=last>逃。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="recw">
+        <p class="recw-q">请对着麦克风流利清晰地朗读：</p>
+        <div class="recw-row">
+          <span class="recw-btn" aria-hidden="true"></span>
+          <span class="recw-wave" aria-hidden="true"><i style="height:30%"></i><i style="height:81%"></i><i style="height:82%"></i><i style="height:15%"></i><i style="height:74%"></i><i style="height:65%"></i><i style="height:62%"></i><i style="height:14%"></i><i style="height:73%"></i><i style="height:41%"></i><i style="height:72%"></i><i style="height:52%"></i><i style="height:68%"></i><i style="height:66%"></i><i style="height:38%"></i><i style="height:62%"></i><i style="height:83%"></i><i style="height:78%"></i><i style="height:79%"></i><i style="height:21%"></i><i style="height:60%"></i><i style="height:74%"></i><i style="height:35%"></i><i style="height:17%"></i><i style="height:67%"></i><i style="height:54%"></i><i style="height:83%"></i><i style="height:32%"></i><i style="height:20%"></i><i style="height:55%"></i><i style="height:74%"></i><i style="height:60%"></i><i style="height:21%"></i><i style="height:38%"></i><i style="height:23%"></i><i style="height:43%"></i><i style="height:70%"></i><i style="height:46%"></i><i style="height:52%"></i><i style="height:30%"></i><i style="height:51%"></i><i style="height:85%"></i><i style="height:42%"></i><i style="height:36%"></i></span>
+          <span class="recw-t">00:00</span>
+        </div>
+        <p class="recw-say">“我看不见。”</p>
+      </div>
+
+      <div class="doc-foot">
+        <div class="doc-tags">
+          <span class="dtag" data-tag="角色">[角色]</span>
+          <span class="dtag" data-tag="无阵营">[无阵营]</span>
+          <span class="dtag" data-tag="幻境">[幻境]</span>
+          <span class="dtag" data-tag="主角">[主角]</span>
+          <span class="dtag" data-tag="非完全原创">[非完全原创]</span>
+          <span class="dtag" data-tag="meta">[meta]</span>
+          <span class="dtag" data-tag="认知污染">[认知污染]</span>
+          <span class="dtag" data-tag="模因">[模因]</span>
+        </div>
+        <div class="doc-credit">
+          <p>本文作者：HOSHINOAME</p>
+          <p>借鉴：<a href="https://scp-wiki-cn.wikidot.com/scp-2316">我不认识水中的尸体。</a></p>
+        </div>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：POI-9926-1</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

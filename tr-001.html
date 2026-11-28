@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · 《协奏曲协议》</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：异常项目列表
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="personnel.html"><span class="br">├──</span><span class="lb">相关人员档案</span></a>
+      <a class="nav-item" href="a11.html"><span class="br">├──</span><span class="lb">安保设施</span></a>
+      <a class="nav-item active" href="tech.html"><span class="br">├──</span><span class="lb">技术与协议</span></a>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="tr001">
+      <div class="crumbs">
+        <a class="back" href="tech.html">← 返回技术与协议</a>
+        <span style="margin:0 8px;"></span>主页：foundation / 技术与协议 / 协奏曲协议
+      </div>
+
+      <div class="dossier-h">
+        <div class="top">
+          <h1 class="doc-title">《协奏曲协议》<span class="doc-en">The Concerto Protocol</span></h1>
+          <span class="tag neutral">条约协定</span>
+        </div>
+        <div class="fields">
+          <div class="f"><span class="k">文档类型</span><span class="v">条约协定</span></div>
+          <div class="f"><span class="k">发起方</span><span class="v">全球超自然联盟</span></div>
+          <div class="f"><span class="k">签署方</span><span class="v">SCP基金会、混沌分裂者、蛇之手、破碎之神教会及其它21个组织</span></div>
+          <div class="f"><span class="k">生效日期</span><span class="v">1/1/2020</span></div>
+          <div class="f"><span class="k">生效范围</span><span class="v">全球</span></div>
+          <div class="f"><span class="k">保管方</span><span class="v">各签署方各备一份副本</span></div>
+          <div class="f"><span class="k">最后修订</span><span class="v">19/12/2019</span></div>
+          <div class="f"><span class="k">当前状态</span><span class="v" style="color:var(--c-safe)">生效</span></div>
+        </div>
+        <div class="doc-note">
+          全球超自然联盟代表加入其的国家的意见。<br>
+          各签署方各备一份本协议的副本。
+        </div>
+      </div>
+
+      <!-- ==================== 前言 ==================== -->
+      <h3 class="sec-title"><span>前言</span><span class="tail">PREAMBLE</span></h3>
+      <div class="prose">
+        <p>我们在此确认一个客观事实：以苦难笼及其附属现象为敌的战争，是当前时间线唯一首要且必要的战争，任何在此时刻挑起内部全面战争的组织与国家，均被视为人类的叛徒。</p>
+        <p>由于晶骸脱离控制已是必将发生的未来，晶骸同样是人类的主要敌人之一。</p>
+      </div>
+
+      <!-- ==================== 零 ==================== -->
+      <h3 class="sec-title"><span>任务确立</span><span class="tail">MANDATE</span></h3>
+      <div class="prose">
+        <p>超自然界的各组织已经被赋予了一个伟大的任务：带领全文明脱离苦难笼的控制。</p>
+        <p>所有签署方代表已经宣誓：必须完成任务，坚定维护规则，保证文明存续。</p>
+        <p>为完成这一伟大任务，现规定各签署方的四大原则和一大准备：</p>
+        <ul class="plain-list">
+          <li>一致对外原则。</li>
+          <li>存续优先原则。</li>
+          <li>战时合作原则。</li>
+          <li>背叛杀灭原则。</li>
+        </ul>
+        <p>和一大准备：击碎帷幕。</p>
+      </div>
+
+      <!-- ==================== 一 ==================== -->
+      <h3 class="sec-title"><span>一致对外原则</span><span class="tail">UNITY</span></h3>
+      <div class="prose">
+        <ol class="clauses">
+          <li>自协议签署之日起，全面停止人类内部的高烈度灭绝性冲突，不论以何种方式。因该协议而起的战争除外，但必须快速完成目标而且尽可能减少损失。</li>
+          <li>禁止在SCP-9644抵抗指数低于0.1的地区周围50000米内爆发任何针对其它签署方的火力打击。若不同签署方的武装人员在上述范围内相遇，应该优先解决外部威胁。</li>
+          <li>有智慧的非敌意异常属于人类的盟友，与人类站在同一战线上。人类禁止对这些异常抱有负面看法，这些异常同样不被允许攻击和间接伤害人类。</li>
+          <li>各签署方人员应该熟知彼此对苦难笼，晶骸的称呼，以及可以与彼此进行基本的交流和战术配合。现规定“苦难笼”，“爪牙”，“侵蚀体”，“侵蚀”，“晶骸”等标准称呼。应尽量使用标准称呼，SCP-9644，SCP-9644-B，SCP-9098等同样可以使用，是次要称呼。</li>
+        </ol>
+      </div>
+
+      <!-- ==================== 二 ==================== -->
+      <h3 class="sec-title"><span>存续优先原则</span><span class="tail">SURVIVAL</span></h3>
+      <div class="prose">
+        <p>无论各签署方理念差异如何，都应该遵守以下底线：</p>
+        <ol class="clauses">
+          <li>禁止直接使用导致人类完全灭绝或时间线破碎的武器。若支持同归于尽的票数高于80%则可以使用。</li>
+          <li>保护平民。各方的武装人员禁止伤害平民，禁止直接或间接导致平民被侵蚀或被大范围武器和异常杀死。若有可靠证据表明并非刻意或是该平民的主观意愿则该规则作废。</li>
+          <li>保留火种。任何组织不得蓄意破坏和攻击属于人类的避难所，基因种子库乃至“深空彼岸”提案的载人航天器。</li>
+          <li>自杀规则：在即将被侵蚀时允许而且建议自杀，但若自杀将导致违反第二原则的第二条则不允许，若自杀将导致人类文明断绝则绝对不允许。</li>
+          <li>签署方之间不应干预对方对抗苦难笼的提案进行。</li>
+        </ol>
+      </div>
+
+      <!-- ==================== 三 ==================== -->
+      <h3 class="sec-title"><span>战时合作原则</span><span class="tail">COOPERATION</span></h3>
+      <div class="prose">
+        <ol class="clauses">
+          <li>各方有义务在协奏曲预警通讯频段上上传苦难笼的异常活动，侵蚀范围，晶骸沉坠范围等。</li>
+          <li>若遭遇灾难级侵蚀或高危晶骸个体则立即上传至协奏曲预警通讯频段。</li>
+          <li>各签署方在与苦难笼，晶骸，异常交战时应该互相掩护并共享情报，火力。</li>
+        </ol>
+      </div>
+
+      <!-- ==================== 四 ==================== -->
+      <h3 class="sec-title"><span>背叛杀灭原则</span><span class="tail">TREASON</span></h3>
+      <div class="prose">
+        <p>若有任意签署方乃至人类势力妄图利用苦难笼，晶骸或妄图与苦难笼，晶骸友好结盟则被视为人类的叛徒。各签署方有权且必须快速联合并将其彻底消灭。</p>
+      </div>
+
+      <!-- ==================== 五 ==================== -->
+      <h3 class="sec-title"><span>击碎帷幕</span><span class="tail">BREAKING THE VEIL</span></h3>
+      <div class="prose">
+        <p>自本协议签署起，签署方应该配合执行混沌分裂者“击碎帷幕”预案，大致方针为逐渐解开帷幕，向常态社会慢慢揭晓真相。</p>
+      </div>
+
+      <!-- ==================== 结语 ==================== -->
+      <h3 class="sec-title"><span>结语</span><span class="tail">CLOSING</span></h3>
+      <div class="oath">
+        <p>协奏曲协议会是未来所有人行动的底线和原则。</p>
+        <p>如果你相信人类可以赢，那么胜利就一定在前方等待着我们。</p>
+        <p class="last">你是个人类，你生而为人。</p>
+      </div>
+
+      <div class="doc-foot">
+        <div class="doc-tags">
+          <span class="dtag" data-tag="原创">[原创]</span>
+          <span class="dtag" data-tag="故事">[故事]</span>
+          <span class="dtag" data-tag="故事:主线">[故事:主线]</span>
+        </div>
+        <div class="doc-credit">
+          <p>本文作者：HOSHINOAME</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：《协奏曲协议》</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

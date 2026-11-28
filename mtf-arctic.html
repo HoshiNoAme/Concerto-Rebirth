@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · Arctic · MTF-Theta-11</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：原创机动特遣队
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="personnel.html"><span class="br">├──</span><span class="lb">相关人员档案</span></a>
+      <a class="nav-item" href="a11.html"><span class="br">├──</span><span class="lb">安保设施</span></a>
+      <a class="nav-item" href="tech.html"><span class="br">├──</span><span class="lb">技术与协议</span></a>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="arctic">
+      <div class="crumbs">
+        <a class="back" href="mtf.html">← 返回原创机动特遣队</a>
+        <span style="margin:0 8px;"></span>主页：foundation / 原创机动特遣队 / Arctic
+      </div>
+
+      <div class="m-profile">
+
+        <!-- 左栏：立绘 + 数据 -->
+        <aside class="m-aside">
+          <div class="mp"><span class="pht">立 绘 待 补</span></div>
+          <div class="m-data">
+            <div><span class="k">姓名</span><span class="v">Y██if██ Ninet█ils</span></div>
+            <div><span class="k">代号</span><span class="v">Arctic</span></div>
+            <div><span class="k">所属</span><span class="v">MTF-Theta-11</span></div>
+            <div><span class="k">职位</span><span class="v">指挥官</span></div>
+            <div><span class="k">加入时间</span><span class="v">1/1/2012</span></div>
+            <div><span class="k">当前状态</span><span class="v">在役</span></div>
+          </div>
+        </aside>
+
+        <!-- 右栏：角色正文 -->
+        <div class="m-text">
+
+          <div class="dossier-h">
+            <div class="top">
+              <span class="scp-id">Arctic</span>
+              <span class="tag info">Commander</span>
+              <span class="name">MTF-Theta-11 人事档案</span>
+            </div>
+          </div>
+
+          <h3 class="sec-title"><span>履历</span><span class="tail">SERVICE</span></h3>
+          <div class="prose">
+            <p>MTF-Theta-11的指挥官“Arctic”在就任该职位前曾任潜在威胁战术响应局（ETTRA）特工，有在强模因环境下工作的经验。经过培训后以110.5/120分的成绩通过考核，随后被选派至MTF-Theta-11。</p>
+            <p>“Arctic”已接受<a href="scp9354.html">心智改造</a>，对高危模因污染具有抗性。她是MTF-Theta-11中改造适配度最高的成员之一。该现象推测与“Arctic”的出身有关。</p>
+          </div>
+
+          <h3 class="sec-title"><span>装备</span><span class="tail">EQUIPMENT</span></h3>
+          <div class="prose">
+            <p>“Arctic”配备MTF-M-45型标准轻量化战术防弹衣，材质为复合装甲。装备有标准战术头盔，材质为芳纶纤维。在安全区域通常摘除并悬挂于腰后。面部佩戴全球超自然联盟产0036型特种模因成像目镜。</p>
+            <p>主要武器为SCP基金会的改造产物OACM-AXK971——基于AEK971的改造现代化突击步枪，使用了<a href="oacm.html">OACM</a>技术。</p>
+            <p>特别的，“Arctic”配备了一把名为“指令”的.357左轮手枪，采用六发转轮。弹药包括：混沌拟合液高爆弹、奇术附魔弹、通讯中继弹、致盲弹、烟雾发生弹、普通弹。经观察，“Arctic”对该手枪情有独钟，并享受使用其的过程。然而，在实际任务记录中，该手枪的使用场景绝大多数为关键决策点。</p>
+            <p>事实证明该手枪为六响枪，但曾观察到“Arctic”于备用弹药袋之外取出了一枚异常子弹。</p>
+            <p>“Arctic”装备有短距神经脉冲通信系统，由SCP基金会于2013年研发，可实现2.5米内的无声通讯。</p>
+            <p>“Arctic”装备有一便携区域模因净化装置，SCP基金会2012年产，0001奇术重构型。需要长时间启动，启动后可以清除作用范围内绝大多数的模因污染，这包括强制暂停SCP-9644-B的“镇压”行为并清除其主要影响。</p>
+            <p>该装置由一可折叠智能战术车运送，该战术车可自动跟随，在交战时自动寻找安全位置躲避。<a href="mtf-quasar.html">Quasar</a>被指派担任该战术车的维护员。</p>
+          </div>
+
+          <h3 class="sec-title"><span>附录：“Arctic”的自我介绍</span><span class="tail">IN HER WORDS</span></h3>
+          <div class="mquote">
+            <p>“我叫Ninetails。传说中的九尾狐可以救所有人。我觉得我应该试试。”</p>
+          </div>
+
+          <div class="doc-foot">
+            <div class="doc-tags">
+              <span class="dtag" data-tag="角色">[角色]</span>
+              <span class="dtag" data-tag="MTFT11">[MTFT11]</span>
+              <span class="dtag" data-tag="SCP基金会">[SCP基金会]</span>
+              <span class="dtag" data-tag="主角">[主角]</span>
+              <span class="dtag" data-tag="原创">[原创]</span>
+            </div>
+            <div class="doc-credit">
+              <p>本文作者：HOSHINOAME</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：Arctic</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · 异常材料档案 Q1280 共相合金</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：档案详情
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="personnel.html"><span class="br">├──</span><span class="lb">相关人员档案</span></a>
+      <a class="nav-item" href="a11.html"><span class="br">├──</span><span class="lb">安保设施</span></a>
+      <a class="nav-item active" href="tech.html"><span class="br">├──</span><span class="lb">技术与协议</span></a>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="q1280">
+      <div class="crumbs">
+        <a class="back" href="tech.html">← 返回技术与协议</a>
+        <span style="margin:0 8px;"></span>主页：foundation / <b>技术与协议</b> / Q1280
+      </div>
+
+      <div class="dossier-h">
+        <div class="top">
+          <span class="scp-id">Q1280</span>
+          <span class="tag info">材料档案</span>
+          <span class="name">（“共相合金 Universal Alloy”）</span>
+        </div>
+        <div class="fields">
+          <div class="f"><span class="k">材料名称</span><span class="v">Q1280 共相合金</span></div>
+          <div class="f"><span class="k">英文名</span><span class="v">Q1280 Universal Alloy</span></div>
+          <div class="f"><span class="k">密级</span><span class="v">Level 4</span></div>
+          <div class="f"><span class="k">类别</span><span class="v">人工亚稳态凝聚态材料</span></div>
+        </div>
+      </div>
+
+      <!-- ================= 一、概述 ================= -->
+      <h3 class="sec-title"><span>一、概述</span><span class="tail">OVERVIEW</span></h3>
+      <div class="prose">
+        <p>Q1280共相合金是基金会目前能制造的最高强度的人工亚稳态凝聚态材料。</p>
+        <p>其本质为铁-钴-镍基多晶合金，但在制造过程中，通过<a href="oacm.html">OACM</a>的物理场引导，将序元微晶网络强行压入了金属的晶界之中。</p>
+        <p>这种材料被用于<a href="scp000.html">工程：10K</a>的建设和各类需要特别对待的设备中。</p>
+      </div>
+
+      <!-- ================= 二、核心异常特性 ================= -->
+      <h3 class="sec-title"><span>二、核心异常特性</span><span class="tail">PROPERTIES</span></h3>
+
+      <ol class="comp">
+        <li>
+          <p><b style="color:var(--fg-bright);letter-spacing:.06em;">现实抗性</b></p>
+          <p>Q1280共相合金不会在具有强模因浓度的区域被腐蚀，序元晶格的结构保证了它的休谟稳定性。例如，其可以在<a href="scp9261.html">SCP-9261</a>内长期存在，同时结构强度不受影响。</p>
+          <p>Q1280共相合金具备固化局部休谟的特性，但范围小，影响脆弱，不能作为主要用途。</p>
+        </li>
+        <li>
+          <p><b style="color:var(--fg-bright);letter-spacing:.06em;">模因阻断</b></p>
+          <p>Q1280共相合金一定程度上可以阻绝模因污染。</p>
+        </li>
+        <li>
+          <p><b style="color:var(--fg-bright);letter-spacing:.06em;">物理防护</b></p>
+          <p>Q1280共相合金的硬度极高，韧性优秀，常规的火力极难穿透Q1280。有时序元内部的内化宇宙遭到破坏，亦可以一定程度上起到爆反的作用。</p>
+        </li>
+      </ol>
+
+      <!-- ================= 三、缺陷 ================= -->
+      <h3 class="sec-title"><span>三、缺陷</span><span class="tail">LIMITATIONS</span></h3>
+      <div class="prose">
+        <p>制造Q1280需要极其庞大的资源，消耗大，产量少。目前，SCP基金会生产的所有Q1280共相合金都应该优先供给<a href="scp000.html">工程：10K</a>。</p>
+      </div>
+
+      <div class="doc-foot">
+        <div class="doc-tags">
+          <span class="dtag" data-tag="原创">[原创]</span>
+          <span class="dtag" data-tag="故事">[故事]</span>
+          <span class="dtag" data-tag="技术">[技术]</span>
+          <span class="dtag" data-tag="织机">[织机]</span>
+        </div>
+        <div class="doc-credit">
+          <p>本文作者：HOSHINOAME</p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：异常材料档案 Q1280</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

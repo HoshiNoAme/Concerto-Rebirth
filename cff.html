@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · 异常材料文档 混沌拟合液</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：档案详情
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="personnel.html"><span class="br">├──</span><span class="lb">相关人员档案</span></a>
+      <a class="nav-item" href="a11.html"><span class="br">├──</span><span class="lb">安保设施</span></a>
+      <a class="nav-item active" href="tech.html"><span class="br">├──</span><span class="lb">技术与协议</span></a>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="cff">
+      <div class="crumbs">
+        <a class="back" href="tech.html">← 返回技术与协议</a>
+        <span style="margin:0 8px;"></span>主页：foundation / <b>技术与协议</b> / 混沌拟合液
+      </div>
+
+      <div class="dossier-h">
+        <div class="top">
+          <span class="scp-id">CFF</span>
+          <span class="tag info">材料文档</span>
+          <span class="name">（“混沌拟合液 Chaotic Fitting Fluid”）</span>
+        </div>
+        <div class="fields">
+          <div class="f"><span class="k">材料名称</span><span class="v">混沌拟合液</span></div>
+          <div class="f"><span class="k">英文名</span><span class="v">Chaotic Fitting Fluid</span></div>
+          <div class="f"><span class="k">密级</span><span class="v">Level 3</span></div>
+          <div class="f"><span class="k">代号</span><span class="v">CFF</span></div>
+        </div>
+      </div>
+
+      <!-- ================= 一、定义 ================= -->
+      <h3 class="sec-title"><span>一、定义</span><span class="tail">DEFINITION</span></h3>
+      <div class="prose">
+        <p>混沌拟合液（CFF）是一种人工合成的亚稳态高密度液态能量介质。</p>
+        <p>其本质为“热寂现实提取物”与“液态序元”在特定休谟场下的强制耦合产物。</p>
+        <p>该液体在常温常压下呈现深蓝紫色，具有微弱自发光性。其表观粘度约为水的2.5倍，但实际密度极高（约14.5 g/cm³），且具有极强的表面张力。</p>
+        <div class="swatch"><i></i>常温常压下的表观颜色</div>
+      </div>
+
+      <!-- ================= 二、制备原理 ================= -->
+      <h3 class="sec-title"><span>二、制备原理与相态稳定机制</span><span class="tail">SYNTHESIS</span></h3>
+
+      <ol class="comp">
+        <li>
+          <p><b style="color:var(--fg-bright);letter-spacing:.08em;">基底抽取</b></p>
+          <p>从已进入热寂状态的平行时间线中抽取残存的现实物质。该类物质休谟指数极低，完全惰性，不具备任何物理或化学活性。</p>
+        </li>
+        <li>
+          <p><b style="color:var(--fg-bright);letter-spacing:.08em;">能量注入</b></p>
+          <p>将高浓度液态序元注入热寂现实基底中。因内化宇宙的排斥性，需通过OACM超频共振阵列，在液体内部强制引发局部奇点坍缩。</p>
+        </li>
+        <li>
+          <p><b style="color:var(--fg-bright);letter-spacing:.08em;">稳态维持</b></p>
+          <p>极端能量被压缩在热寂现实的低休谟壁垒中，形成高压胶体。热寂现实的“惰性”是维持该液体不瞬间汽化的唯一物理限制。一旦该限制被打破，内部能量将发生无规则暴走。</p>
+        </li>
+      </ol>
+
+      <!-- ================= 三、参数 ================= -->
+      <h3 class="sec-title"><span>三、理化特性与能量参数</span><span class="tail">PARAMETERS</span></h3>
+
+      <div class="gauge">
+        <div>
+          <div class="k">能量密度</div>
+          <div class="v">85<span class="u">MJ/mL</span></div>
+        </div>
+        <div>
+          <div class="k">实际密度</div>
+          <div class="v">14.5<span class="u">g/cm³</span></div>
+        </div>
+        <div>
+          <div class="k">表观粘度</div>
+          <div class="v">2.5<span class="u">× 水</span></div>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>能量密度约为 85 MJ/mL，该数值远超常规化学燃料与核燃料。</p>
+        <p><b style="color:var(--fg-bright);">休谟指数衰减：</b>在开放环境中，CFF的休谟指数呈断崖式下降。</p>
+        <p><b style="color:var(--fg-bright);">热力学破坏性：</b>释放能量时，伴随着局部区域热寂法则的短暂覆盖，表现为极速降温与动能撕裂。</p>
+        <p><b style="color:var(--fg-bright);">存储要求：</b>必须使用<a href="q1280.html">Q1280共相合金</a>或具备同等休谟抗性的容器。常规金属或玻璃容器会因承受不住内部的高压强与微观现实张力而碎裂。</p>
+      </div>
+
+      <!-- ================= 四、安全风险 ================= -->
+      <h3 class="sec-title"><span>四、安全风险与接触防护</span><span class="tail">HAZARD</span></h3>
+
+      <div class="hazard">
+        <div class="hk">物理爆炸风险</div>
+        <p>CFF对动能极其敏感。剧烈震动或外壳物理破损会导致内部热寂壁垒失衡，引发等同于高能炸药级别的现实冲击波。</p>
+      </div>
+
+      <!-- ================= 五、应用 ================= -->
+      <h3 class="sec-title"><span>五、战术与工业应用</span><span class="tail">APPLICATION</span></h3>
+
+      <ol class="comp">
+        <li>
+          <p><b style="color:var(--fg-bright);letter-spacing:.08em;">SCP-000 核心能源</b></p>
+          <p>作为<a href="scp000.html">SCP-000</a>的主供能介质。</p>
+        </li>
+        <li>
+          <p><b style="color:var(--fg-bright);letter-spacing:.08em;">军事使用</b></p>
+          <p>加入高爆弹，重火力武器弹药中以得到更大的威力。</p>
+        </li>
+      </ol>
+
+      <div class="doc-foot">
+        <div class="doc-tags">
+          <span class="dtag" data-tag="故事">[故事]</span>
+          <span class="dtag" data-tag="技术">[技术]</span>
+          <span class="dtag" data-tag="原创">[原创]</span>
+        </div>
+        <div class="doc-credit">
+          <p>本文作者：HOSHINOAME</p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：异常材料文档 CFF</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

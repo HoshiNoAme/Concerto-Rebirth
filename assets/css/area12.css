@@ -1,0 +1,363 @@
+/* ============================================================
+   Area-12 主题  —— assets/css/area12.css
+   ------------------------------------------------------------
+   给「Area-12 极昼回廊」这类设施档案用的**整套白色 + 红**主题。
+
+   做法：**在 style.css 之后加载**，把配色变量整体换掉，
+   再补一个设施页专用的头部横幅（.a12-hero）。
+   结构（顶栏 / 侧栏 / 导航树 / 栅格）全部沿用 style.css，一行没改。
+
+   要点：
+     · 白底 + 红（#c62828）作副色，去掉显像管、扫描线、辉光
+     · 字体从等宽换成无衬线，字号比终端版大一号
+     · Area-12 徽标是白底方图，用 mix-blend-mode:multiply 化掉白底，
+       这样标题叠在它上面也不会被那块白方块盖住
+   ============================================================ */
+
+/* ---------------- 换掉整套配色 ---------------- */
+:root{
+  --bg:        #ffffff;
+  --bg-deep:   #f5f6f8;
+  --panel:     #ffffff;
+  --panel-2:   #f7f8fa;
+  --line:      #e4e7ec;
+  --line-soft: #eef0f4;
+  --line-hot:  #c62828;
+  --fg:        #1a1d23;
+  --fg-dim:    #5c6473;
+  --fg-mute:   #98a0ad;
+  --fg-bright: #000000;
+  --glow:      none;
+  --glow-soft: none;
+  --scan:      transparent;
+
+  /* 语义色在白底上要压深，否则看不清 */
+  --c-safe:   #0d7a44;
+  --c-euclid: #96650a;
+  --c-keter:  #c62828;
+  --c-thaum:  #5b3fc4;
+  --c-apolly: #a81f92;
+  --c-info:   #0b6fa4;
+  --c-mute:   #7b8494;
+}
+
+/* ---------------- 基础 ---------------- */
+body{
+  background:var(--bg-deep);
+  color:var(--fg);
+  font-family:"Segoe UI",system-ui,-apple-system,"Microsoft YaHei","PingFang SC",sans-serif;
+  font-size:14.5px;line-height:1.8;letter-spacing:0;
+  text-shadow:none;
+}
+.crt-overlay,.sweep{display:none;}   /* 这版不要显像管 */
+h1,h2,h3,h4{letter-spacing:.02em;}
+::selection{background:var(--line-hot);color:#fff;}
+:focus-visible{outline:1px solid var(--line-hot);outline-offset:2px;}
+
+/* ---------------- 顶栏 ---------------- */
+.topbar{
+  background:rgba(255,255,255,.94);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(10px);
+  box-shadow:0 1px 3px rgba(20,24,32,.04);
+}
+.brand img.brand-logo{filter:none;}
+.brand .b-name{color:#000;text-shadow:none;font-weight:700;}
+.brand .b-sub{color:var(--line-hot);letter-spacing:.32em;}
+.topbar .chip{
+  background:#f7f8fa;border-color:var(--line);color:var(--fg-dim);
+}
+.topbar .chip b{color:#000;}
+.topbar .btn{
+  background:#fff;border-color:var(--line);color:var(--fg-dim);
+}
+.topbar .btn:hover{border-color:var(--line-hot);color:var(--line-hot);}
+
+/* ---------------- 侧栏 ---------------- */
+.sidebar{
+  background:#fbfbfc;
+  border-right:1px solid var(--line);
+}
+.nav-group h4{color:var(--fg-mute);}
+.nav-item{color:var(--fg-dim);border-left:2px solid transparent;}
+.nav-item:hover{color:#000;background:#f2f3f5;border-left-color:var(--line-hot);}
+.nav-item.active{background:#fff;border-left-color:var(--line-hot);color:#000;}
+.nav-tree .nav-item.active{background:#fff;border-left-color:var(--line-hot);}
+.nav-tree .nav-item.active .lb{color:#000;font-weight:600;}
+.nav-tree .nav-item.active .br{color:var(--line-hot);}
+.nav-tree .nav-root{border-color:var(--line);color:var(--fg);}
+.nav-tree .nav-root:hover{border-color:var(--line-hot);}
+.nav-tree .nav-root.active{border-color:var(--line-hot);box-shadow:none;background:#fff;}
+
+/* ---------------- 底栏 ---------------- */
+.statusbar{
+  background:rgba(255,255,255,.94);
+  border-top:1px solid var(--line);
+  box-shadow:0 -1px 6px rgba(20,24,32,.05);
+}
+.statusbar .led{background:var(--line-hot);box-shadow:0 0 6px rgba(198,40,40,.5);}
+
+/* ---------------- 正文容器 ---------------- */
+.page-grid{grid-template-columns:minmax(0,1fr) 280px;}
+
+/* ============================================================
+   设施页专用的头部横幅（照着你画的那个框做的）
+   ============================================================ */
+.a12-hero{
+  position:relative;
+  border:2px solid #111;
+  background:#fff;
+  padding:34px 26px 30px;
+  text-align:center;
+  margin:0 0 22px;
+}
+/* 左上角一小块红，压住边框 */
+.a12-hero::before{
+  content:"";position:absolute;left:-2px;top:-2px;
+  width:54px;height:6px;background:var(--line-hot);
+}
+.a12-hero .a12-logo{
+  display:block;width:152px;height:152px;margin:0 auto 8px;
+  mix-blend-mode:multiply;      /* 白底方图化掉，标题才不会被白块盖住 */
+}
+.a12-hero h1{
+  position:relative;z-index:2;
+  font-size:clamp(24px,3.4vw,36px);font-weight:700;
+  letter-spacing:.12em;color:#111;line-height:1.3;
+}
+.a12-hero h1 .thin{font-weight:300;color:var(--line-hot);letter-spacing:.18em;}
+.a12-hero .a12-kind{
+  position:relative;z-index:2;
+  display:inline-block;margin-top:14px;padding-top:12px;
+  border-top:1px solid var(--line);
+  font-family:"Cascadia Mono",ui-monospace,Consolas,monospace;
+  font-size:11px;letter-spacing:.3em;color:var(--fg-mute);
+}
+/* 这版没有显像管效果，CRT 开关没意义 */
+#crtBtn{display:none;}
+
+/* 横幅下面的信息格：固定 4 列，8 格正好两行 */
+.a12-info{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:1px;background:var(--line);border:1px solid var(--line);
+  margin:0 0 30px;
+}
+.a12-info div{background:#fff;padding:14px 16px;}
+.a12-info .k{
+  font-family:"Cascadia Mono",ui-monospace,Consolas,monospace;
+  font-size:9.5px;letter-spacing:.2em;color:var(--fg-mute);
+}
+.a12-info .v{margin-top:7px;font-size:14px;color:#000;font-weight:600;}
+
+/* ---------------- 覆盖终端味的章节标题 ---------------- */
+.sec-title{
+  margin:34px 0 16px;padding:0 0 10px;
+  font-size:13.5px;letter-spacing:.18em;color:#000;font-weight:650;
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:10px;
+}
+.sec-title::before{
+  content:"";width:4px;height:15px;background:var(--line-hot);
+  order:1;flex:none;
+}
+.sec-title::after{content:none;}
+.sec-title span{order:2;}
+.sec-title .tail{
+  order:4;margin-left:auto;font-size:11px;letter-spacing:.14em;
+  color:var(--fg-mute);font-weight:400;
+}
+
+/* ---------------- 正文段落 ---------------- */
+.prose{font-size:14.5px;line-height:2;color:var(--fg-dim);}
+.prose p{margin:0 0 1em;}
+.prose strong,.prose b{color:#000;}
+
+/* 工作区卡片（分区 / 部门）—— 这一页暂时没用到，留着给以后的设施页 */
+.a12-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+.a12-card{
+  border:1px solid var(--line);background:#fff;padding:15px 16px;
+  border-left:3px solid var(--line-hot);transition:.15s;
+}
+.a12-card:hover{box-shadow:0 4px 16px rgba(20,24,32,.08);transform:translateY(-1px);}
+.a12-card .n{font-size:14px;font-weight:650;color:#000;}
+.a12-card .d{margin-top:6px;font-size:12.5px;line-height:1.75;color:var(--fg-dim);}
+
+/* 占位标记：模板里一眼看得出该填哪 */
+.ph{
+  background:#fdf3d6;border-bottom:1px solid #e6c874;color:#7a5a12;
+  padding:0 3px;border-radius:2px;font-style:normal;
+}
+
+/* ============================================================
+   档案内容专用（SCP-9354 这类条目用到的）
+   ============================================================ */
+
+/* ACS 分级条：白底版 */
+.acs{
+  background:#fff;border-color:var(--line);border-radius:0;
+  margin:0 0 26px;
+}
+.acs-h{
+  background:#f7f8fa;color:#000;border-bottom-color:var(--line);
+  font-size:11.5px;letter-spacing:.18em;
+}
+.acs-h .dot{background:var(--line-hot);box-shadow:none;}
+.acs-h .right{color:var(--fg-mute);}
+.acs-cell{border-left-color:var(--line);border-top-width:3px;}
+.acs-k{color:var(--fg-mute);}
+.acs-v{text-shadow:none;font-size:17px;}
+.acs-meter b.on{box-shadow:none;}
+/* 压深等级色（原来的色是按深底设计的，白底上会糊） */
+.lv-safe{--lv:#0d7a44;}      .lv-euclid{--lv:#8a6400;}    .lv-keter{--lv:#c62828;}
+.lv-thaumiel{--lv:#4b30b8;}  .lv-apollyon{--lv:#9a1a85;}
+.lv-notice{--lv:#3f7a2e;}    .lv-caution{--lv:#96700a;}   .lv-warning{--lv:#a8681f;}
+.lv-danger{--lv:#b4451f;}    .lv-critical{--lv:#c62828;}
+.lv-open{--lv:#5b6473;}      .lv-restricted{--lv:#0b6fa4;} .lv-secret{--lv:#4b30b8;}
+.lv-confidential{--lv:#a81f92;} .lv-topsecret{--lv:#9a1a85;} .lv-cosmic{--lv:#8a6a00;}
+.lv-na{--lv:#98a0ad;}
+
+/* 文档说明那种一行小字 */
+.a12-note{margin:0 0 14px;font-size:12px;letter-spacing:.06em;color:var(--fg-mute);}
+
+/* 权限不足：虚线红框 */
+.denied{
+  margin:14px 0;padding:14px 18px;
+  border:1px dashed #c62828;background:#fff6f5;
+  color:#a8281f;font-size:13px;letter-spacing:.04em;
+}
+
+/* 受试者特性：编号 + 一条一句 */
+.traits{list-style:none;padding:0;margin:0 0 1em;counter-reset:t;}
+.traits li{
+  position:relative;padding:9px 0 9px 34px;
+  border-bottom:1px dashed var(--line);
+  font-size:13.5px;line-height:1.85;color:var(--fg-dim);
+}
+.traits li:last-child{border-bottom:0;}
+.traits li::before{
+  counter-increment:t;content:counter(t) "）";
+  position:absolute;left:0;top:9px;
+  color:var(--line-hot);font-weight:650;
+}
+
+/* 技术步骤 */
+.steps{list-style:none;padding:0;margin:14px 0 1em;counter-reset:s;}
+.steps li{
+  position:relative;padding:10px 0 10px 72px;
+  border-bottom:1px solid var(--line);
+  font-size:13.5px;line-height:1.85;color:var(--fg-dim);
+}
+.steps li:last-child{border-bottom:0;}
+.steps li::before{
+  counter-increment:s;content:"第 " counter(s) " 步";
+  position:absolute;left:0;top:12px;
+  font-size:11px;letter-spacing:.1em;color:var(--fg-mute);
+}
+
+/* 处决通告：像一张贴在布告栏上的公文 */
+.notice{
+  margin:16px 0 22px;padding:24px 28px;
+  background:#fff;border:1px solid var(--line);
+  border-top:3px solid var(--line-hot);
+}
+.notice .nt{
+  text-align:center;font-size:20px;letter-spacing:.5em;
+  font-weight:700;color:#000;margin-bottom:18px;
+  text-indent:.5em;                      /* 抵消字距造成的右偏 */
+}
+.notice p{font-size:13.5px;line-height:1.95;color:var(--fg-dim);}
+.notice .sig{
+  margin-top:16px;padding-top:12px;border-top:1px solid var(--line-soft);
+  text-align:right;font-size:12.5px;line-height:1.9;color:var(--fg-mute);
+}
+
+/* 评论区 */
+.comments{margin:6px 0 0;border-top:1px solid var(--line);padding-top:6px;}
+.comments .cm{
+  display:flex;gap:12px;padding:8px 0;
+  border-bottom:1px dotted var(--line);
+  font-size:13px;line-height:1.7;color:var(--fg-dim);
+}
+.comments .cm:last-child{border-bottom:0;}
+.comments .cm b{flex:none;width:96px;color:var(--line-hot);font-weight:600;}
+
+/* 下一篇卡片（这一页的「象牙塔」还没建，做成不可点） */
+.next-card.soon{cursor:default;opacity:.8;}
+.next-card.soon:hover{transform:none;box-shadow:none;background:#fff;}
+.next-card .soon-tag{
+  margin-left:10px;font-size:10px;letter-spacing:.14em;
+  color:var(--fg-mute);border:1px solid var(--line);border-radius:2px;padding:1px 6px;
+}
+
+/* 正文里的链接：红色 + 细下划线（.notice / .steps 这些不在 .prose 里的也要） */
+.prose a, .notice a, .steps li a, .traits li a, .comments a{
+  color:var(--line-hot);
+  text-decoration:none;
+  border-bottom:1px solid rgba(198,40,40,.35);
+}
+.prose a:hover, .notice a:hover, .steps li a:hover, .traits li a:hover, .comments a:hover{
+  border-bottom-color:var(--line-hot);
+  background:#fff5f4;
+}
+
+/* 文末标签与署名（覆盖 style.css 里 70px 的大间距） */
+.doc-foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);}
+.doc-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.dtag{
+  font-size:11.5px;color:var(--fg-dim);padding:1px 5px;border-radius:2px;
+}
+.dtag:hover{color:var(--line-hot);background:#f4f5f7;}
+.doc-credit{margin-top:14px;font-size:12.5px;color:var(--fg-mute);}
+.doc-credit p{margin:0;}
+
+/* 工程档案：左上角的位置标记（//Area-12 //极昼中心） */
+.a12-stamp{
+  margin:0 0 16px;padding-left:12px;
+  border-left:2px solid var(--line-hot);
+  font-family:"Cascadia Mono",ui-monospace,Consolas,monospace;
+  font-size:12px;line-height:1.95;letter-spacing:.1em;
+  font-style:italic;color:var(--fg-mute);
+}
+
+/* 工程标题 */
+.a12-title{
+  margin:0 0 20px;
+  font-size:clamp(20px,2.6vw,27px);line-height:1.45;
+  font-weight:700;letter-spacing:.02em;color:#000;
+}
+.a12-title .dash{color:var(--fg-mute);font-weight:400;margin:0 .1em;}
+
+/* 密级 / 隶属 / 项目主管 */
+.a12-meta{
+  display:grid;grid-template-columns:100px 1fr 140px;
+  border-top:1px solid #111;border-bottom:1px solid var(--line);
+  margin:0 0 28px;padding:12px 0;
+  font-size:13px;
+}
+.a12-meta > div{padding:0 14px;border-left:1px solid var(--line);}
+.a12-meta > div:first-child{padding-left:0;border-left:0;}
+.a12-meta .k{
+  display:block;margin-bottom:4px;
+  font-family:"Cascadia Mono",ui-monospace,Consolas,monospace;
+  font-size:9.5px;letter-spacing:.2em;color:var(--fg-mute);
+}
+.a12-meta .v{color:#000;font-weight:600;line-height:1.6;}
+
+/* 声明：委员会驳回了什么 */
+.declaration{
+  margin:28px 0 0;padding:15px 18px;
+  border-left:3px solid #c62828;background:#fff6f6;
+  font-size:13.5px;line-height:1.9;color:var(--fg-dim);
+}
+.declaration b{
+  display:block;margin-bottom:4px;color:#a8281f;
+  font-size:12px;letter-spacing:.24em;font-weight:700;
+}
+
+/* ---------------- 响应式 ---------------- */
+@media (max-width:880px){
+  .a12-hero{padding:22px 16px 20px;}
+  .a12-hero .a12-logo{width:96px;height:96px;}
+  .page-grid{grid-template-columns:1fr;}
+  .a12-info{grid-template-columns:repeat(2,minmax(0,1fr));}
+}

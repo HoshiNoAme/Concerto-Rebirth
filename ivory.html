@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-crt="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SCP FOUNDATION · 心智重构工程「象牙塔」</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/area12.css">
+<link rel="icon" href="assets/img/logo.png">
+<script>try{if(localStorage.getItem('crt')==='off')document.documentElement.dataset.crt='off';}catch(e){}</script>
+<!--
+  页面：档案详情
+  公共样式在 assets/css/style.css，交互在 assets/js/site.js。
+  注意：左导航在 5 个页面里各有一份（为了不依赖 JS 也能用），
+        加页面 / 改导航时，5 个 html 都要改一遍。
+-->
+</head>
+<body>
+
+<!-- CRT 效果层 -->
+<div class="crt-overlay" aria-hidden="true"></div>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- SCP 基金会徽标（assets/img/logo.png，由源图染色生成） -->
+    <img class="brand-logo" src="assets/img/logo-crimson.png" alt="SCP 基金会徽标" height="30" width="32">
+    <div>
+      <div class="b-name">SCP FOUNDATION</div>
+      <div class="b-sub">SECURE · CONTAIN · PROTECT</div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <span class="chip hide-sm">终端 <b>NET-07</b></span>
+  <span class="chip">本地时间 <b id="clock">--:--:--</b></span>
+  <button class="btn" id="crtBtn" title="开/关显像管效果">CRT 开</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <nav class="nav-group nav-tree">
+      <a class="nav-item nav-root" href="foundation.html"><span class="lb">主页</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">作战记录「FOR THE LOOM」</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="mtf.html"><span class="br">├──</span><span class="lb">原创机动特遣队</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">Side Story</span><span class="todo">TODO</span></div>
+      <a class="nav-item active" href="archive.html"><span class="br">├──</span><span class="lb">异常项目列表</span></a>
+      <div class="nav-item disabled"><span class="br">├──</span><span class="lb">相关组织</span><span class="todo">TODO</span></div>
+      <a class="nav-item" href="personnel.html"><span class="br">├──</span><span class="lb">相关人员档案</span></a>
+      <a class="nav-item" href="a11.html"><span class="br">├──</span><span class="lb">安保设施</span></a>
+      <a class="nav-item" href="tech.html"><span class="br">├──</span><span class="lb">技术与协议</span></a>
+      <a class="nav-item" href="timeline.html"><span class="br">└──</span><span class="lb">时间线</span></a>
+    </nav>
+
+    <nav class="nav-group">
+      <h4>关于本页</h4>
+      <div class="panel"><div class="panel-b" style="font-size:11.5px;color:var(--fg-dim);line-height:1.7;">
+        这是<b style="color:var(--fg);">版式演示</b>，正文均为占位文本。<br>
+        树中<b>变暗</b>的页面还没做（标 TODO），其余可直接点开。
+      </div></div>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="page active" data-page="ivory">
+      <div class="crumbs">
+        <a class="back" href="scp9354.html">← 返回 SCP-9354</a>
+        <span style="margin:0 8px;"></span>主页：foundation / 异常项目列表 / SCP-9354 / 象牙塔
+      </div>
+
+      <div class="a12-wrap">
+
+        <div class="a12-stamp">Area-12<br>极昼中心</div>
+
+        <h1 class="a12-title">档案：心智重构工程<span class="dash">——</span>“象牙塔”</h1>
+
+        <div class="a12-meta">
+          <div><span class="k">密级</span><span class="v">5</span></div>
+          <div><span class="k">隶属</span><span class="v">SCP基金会认知科学部<br>织机计划委员会</span></div>
+          <div><span class="k">项目主管</span><span class="v">O5-█</span></div>
+        </div>
+
+        <!-- ============ 概述 ============ -->
+        <h3 class="sec-title"><span>概述</span><span class="tail">OVERVIEW</span></h3>
+        <div class="prose">
+          <p>本工程旨在为对抗<a href="scp9644b1.html">SCP-9644</a>的特别行动队提供可以在极端环境下进行作战的抗模因污染精神心智状态。</p>
+          <p>由于常规特工在接触<a href="scp9644b1.html">SCP-9644</a>及重度模因污染区时，极易因恐惧、绝望、焦虑等负面情绪导致精神崩溃甚至死亡，被侵蚀，本部门受命于Area-12开发了一套激进的心智重构手术。</p>
+        </div>
+
+        <!-- ============ 物理环境 ============ -->
+        <h3 class="sec-title"><span>物理环境</span><span class="tail">ENVIRONMENT</span></h3>
+        <div class="prose">
+          <p>Area-12的轻型收容区LCZ-304号子区域已经被封锁并被用于工程的实施，其内部所有房间和走廊常年亮着纯白强光。这种环境的目的是在改造前，先摧毁受试者的一部分常规认知并导致一定程度上的感官剥夺。</p>
+        </div>
+
+        <!-- ============ 改造流程 ============ -->
+        <h3 class="sec-title"><span>改造流程（节选）</span><span class="tail">PROCEDURE</span></h3>
+        <ol class="traits">
+          <li><b style="color:#000;">恐惧阻断</b><br>通过芯片，切断受试者杏仁核与高级皮层的部分连接。<br>这导致受试者极难出现恐惧的情绪，但也会导致一定的战术缺陷。</li>
+          <li><b style="color:#000;">思想钢印</b><br>为受试者注入思想钢印，主要按照处置协议：终末的内容编写，核心内容即为“织机至上”。此外，还有“苦难笼一类都是需要消灭的敌人”，“我做的任何不反对织机的事都是正确的”等内容。</li>
+          <li><b style="color:#000;">情感降维</b><br>强行抑制部分共情神经。这导致受试者不会被失败和悲伤影响，但相应的也难以主动反思和自我进步，也会影响认知的正常发展，使认知倒退至青少年状态。</li>
+        </ol>
+
+        <!-- ============ 声明 ============ -->
+        <div class="declaration">
+          <b>声 明</b>
+          对项目身体本身的改造已被伦理道德委员会驳回。
+        </div>
+
+        <!-- ============ 标签与署名 ============ -->
+        <div class="doc-foot">
+          <div class="doc-tags">
+            <span class="dtag" data-tag="原创">[原创]</span>
+            <span class="dtag" data-tag="scp">[scp]</span>
+            <span class="dtag" data-tag="苦难笼">[苦难笼]</span>
+            <span class="dtag" data-tag="area12">[area12]</span>
+            <span class="dtag" data-tag="基金会制造">[基金会制造]</span>
+          </div>
+          <div class="doc-credit">
+            <p>本文作者：HOSHINOAME</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="statusbar">
+  <span class="sb"><span class="led"></span>连接稳定</span>
+  <span class="sb">节点 FOUND-07</span>
+  <span class="sb">加密 AES-256</span>
+  <span class="sb" id="sbPage">当前视图：象牙塔</span>
+  <span class="spacer"></span>
+  <span class="sb">［版式演示 占位内容］</span>
+  <span class="cursor"></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
